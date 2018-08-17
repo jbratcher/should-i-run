@@ -10,12 +10,14 @@ import './App.css';
 class App extends Component {
 
   state = {
-    data: null,
+    airQuality: 0,
+    data: {},
     cityInput: "",
     stateInput: ""
   }
 
   stdRequest = `http://api.airvisual.com/v2/nearest_city?${apiKey}`;
+  
   cityStateRequest = `http://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
   // Helper funtions
@@ -24,10 +26,16 @@ class App extends Component {
 
     fetch(`http://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`)
       .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log('Error: ', err))
-
-      console.log(this.state.cityInput, this.state.stateInput)
+      .then(parsedJSON => this.setState({
+          data: parsedJSON.data,
+          airQuality : parsedJSON.data.current.pollution.aqius
+      }))
+      .catch(err => console.log('Error: ', err));
+      
+      this.setState({
+        cityInput: "",
+        stateInput: ""
+      });
   }
 
   getData = (e) => {
@@ -44,15 +52,13 @@ class App extends Component {
   handleCityInput = e => {
     this.setState({
       cityInput: e.target.value
-    })
-    console.log(this.state.cityInput);
+    });
   }
 
   handleStateInput = e => {
     this.setState({
       stateInput: e.target.value
-    })
-    console.log(this.state.stateInput);
+    });
   }
 
   render() {
@@ -69,7 +75,9 @@ class App extends Component {
           getData={this.getData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
-
+          data={this.state.data}
+          airQuality={this.state.airQuality}
+          
         />
 
         <Footer />

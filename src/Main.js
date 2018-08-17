@@ -13,17 +13,24 @@ const Main = props =>
         <input onChange={props.handleStateInput} value={props.stateInput} type="text" id="stateInput" name="state"></input>
         <button onClick={props.getData} type="submit" value="submit" name="submit">Get Data</button>
       </form>
+      
+      <p>Selected City: {props.data.city}</p>
+      <p>Selected State: {props.data.state}</p>
+      <p>Current Air Quality: {props.airQuality}</p>
+      
 
     </main>
 
   ;
 
   Main.propTypes = {
+    airQuality: PropTypes.number,
+    data: PropTypes.object,
     getData: PropTypes.func.isRequired,
     handleCityInput: PropTypes.func.isRequired,
     handleStateInput: PropTypes.func.isRequired,
     cityInput: PropTypes.string,
     stateInput:  PropTypes.string,
-  }
+  };
 
   export default Main;

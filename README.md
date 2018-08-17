@@ -9,7 +9,7 @@ Using React, Fetch and airvisual API to get air quality data for cities around t
 
 ### Version
 
-0.0.1
+0.0.2
 
 
 ## Install Dependencies
@@ -38,6 +38,12 @@ npm start
 * ???
 
 #### Change Log
+
+###### 0.0.2
+
+* Added feature: display city, state, and air quality data on submit of form
+* Cleared inputs on submit
+
 
 ###### 0.0.1
 
