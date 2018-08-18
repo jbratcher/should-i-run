@@ -1,7 +1,7 @@
 {
   "name": "AQapi",
   "version": "0.1.0",
-  "homepage": "https://jbratcher.github.io/AQapi",
+  "homepage": "https://jbratcher.github.io/AQapi/",
   "private": false,
   "dependencies": {
     "gh-pages": "^1.2.0",
