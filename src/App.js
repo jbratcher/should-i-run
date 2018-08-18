@@ -24,7 +24,7 @@ class App extends Component {
 
   fetchStd = () => {
 
-    fetch(`http://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`)
+    fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => this.setState({
           data: parsedJSON.data,
@@ -62,8 +62,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log("This is the process.env", process.env.PUBLIC_URL);
     
     return (
 
