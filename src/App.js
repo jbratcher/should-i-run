@@ -16,9 +16,9 @@ class App extends Component {
     stateInput: ""
   }
 
-  stdRequest = `http://api.airvisual.com/v2/nearest_city?${apiKey}`;
+  stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
   
-  cityStateRequest = `http://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
+  cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
   // Helper funtions
 
