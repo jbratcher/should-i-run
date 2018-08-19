@@ -28,6 +28,15 @@ main input {
   padding: 0.5rem 0;
 }
 
+#dataOutput {
+  display: flex;
+  flex-direction: column;
+}
+
+#dataOutput p {
+  margin: 1rem 0;
+}
+
 footer {
   display: flex;
   justify-content: space-around;

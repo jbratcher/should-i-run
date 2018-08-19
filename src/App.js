@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     airQuality: 0,
     data: {},
+    dataRequested: false,
     cityInput: "",
     stateInput: ""
   }
@@ -43,8 +44,11 @@ class App extends Component {
 
     this.setState({
       cityInput: this.state.cityInput,
-      stateinput: this.state.stateInput
+      stateinput: this.state.stateInput,
+      dataRequested: true
     });
+    
+    
 
     this.fetchStd(e);
   }
@@ -77,6 +81,7 @@ class App extends Component {
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
           data={this.state.data}
+          dataRequested={this.state.dataRequested}
           airQuality={this.state.airQuality}
           
         />
