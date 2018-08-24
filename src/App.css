@@ -21,11 +21,26 @@ main, form {
   padding: 1rem 0;
 }
 
-main input {
+main form {
+  width: 75vw;
+}
+
+main form label {
+  font-size: 1.25rem;
+}
+
+main form input {
   border-radius: 10%;
-  max-width: 20vw;
   margin: 0.5rem 0;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+button[type='submit'] {
+  background: #ccc;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 #dataOutput {
@@ -35,6 +50,14 @@ main input {
 
 #dataOutput p {
   margin: 1rem 0;
+}
+
+#dataOutput p b {
+  margin-right: 1rem;
+}
+
+#dataOutput p span {
+  font-size: 1.25rem;
 }
 
 footer {

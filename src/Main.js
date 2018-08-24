@@ -17,9 +17,18 @@ const Main = props =>
       <section id="dataOutput">
         {props.dataRequested ?
         <React.Fragment>
-          <p>Selected City: {props.data.city}</p>
-          <p>Selected State: {props.data.state}</p>
-          <p>Current Air Quality: {props.airQuality}</p>
+          <p>
+            <b>Selected City:</b> 
+            <span id="cityOutput">{props.data.city}</span>
+          </p>
+          <p>
+            <b>Selected State:</b>
+            <span id="stateOutput">{props.data.state}</span>
+          </p>
+          <p>
+            <b>Current Air Quality:</b> 
+            <span id="airQualityOutput">{props.airQuality}</span>
+          </p>
         </React.Fragment>
         : null
         }
