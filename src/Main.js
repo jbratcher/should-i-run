@@ -1,38 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Form from './Form';
+import Output from './Output';
 
 const Main = props =>
 
     <main>
 
       <h2>Enter a Location</h2>
-      <form>
-        <label htmlFor="city">City</label>
-        <input onChange={props.handleCityInput} value={props.cityInput} type="text" id="cityInput" name="city"></input>
-        <label htmlFor="state">State</label>
-        <input onChange={props.handleStateInput} value={props.stateInput} type="text" id="stateInput" name="state"></input>
-        <button onClick={props.getData} type="submit" value="submit" name="submit">Get Data</button>
-      </form>
       
-      <section id="dataOutput">
-        {props.dataRequested ?
-        <React.Fragment>
-          <p>
-            <b>Selected City:</b> 
-            <span id="cityOutput">{props.data.city}</span>
-          </p>
-          <p>
-            <b>Selected State:</b>
-            <span id="stateOutput">{props.data.state}</span>
-          </p>
-          <p>
-            <b>Current Air Quality:</b> 
-            <span id="airQualityOutput">{props.airQuality}</span>
-          </p>
-        </React.Fragment>
-        : null
-        }
-      </section>
+      <Form 
+        cityInput={props.cityInput}
+        handleCityInput={props.handleCityInput}
+        stateInput={props.stateInput}
+        handleStateInput={props.handleStateInput}
+        getData={props.getData}
+      />
+      
+      <Output
+        airQuality={props.airQuality}
+        data={props.data}
+        dataRequested={props.dataRequested}
+      />
 
     </main>
 
