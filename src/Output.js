@@ -15,6 +15,10 @@ const Output = props =>
             <span id="stateOutput">{props.data.state}</span>
           </p>
           <p>
+            <b>Selected Country:</b>
+            <span id="countryOutput">{props.data.country}</span>
+          </p>
+          <p>
             <b>Current Air Quality:</b> 
             <span id="airQualityOutput">{props.airQuality}</span>
           </p>

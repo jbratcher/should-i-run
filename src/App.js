@@ -14,18 +14,21 @@ class App extends Component {
     data: {},
     dataRequested: false,
     cityInput: "",
-    stateInput: ""
+    stateInput: "",
+    countryInput: ""
   }
 
   stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
   
   cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
+  
+  globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
 
   // Helper funtions
 
   fetchStd = () => {
 
-    fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`)
+    fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => this.setState({
           data: parsedJSON.data,
@@ -33,10 +36,11 @@ class App extends Component {
       }))
       .catch(err => console.log('Error: ', err));
       
-      this.setState({
-        cityInput: "",
-        stateInput: ""
-      });
+    this.setState({
+      cityInput: "",
+      stateInput: "",
+      countryInput: ""
+    });
   }
 
   getData = (e) => {
@@ -45,6 +49,7 @@ class App extends Component {
     this.setState({
       cityInput: this.state.cityInput,
       stateinput: this.state.stateInput,
+      countryInput: this.state.countryInput,
       dataRequested: true
     });
     
@@ -64,6 +69,12 @@ class App extends Component {
       stateInput: e.target.value
     });
   }
+  
+  handleCountryInput = e => {
+    this.setState({
+      countryInput: e.target.value
+    });
+  }
 
   render() {
     
@@ -77,9 +88,11 @@ class App extends Component {
 
           cityInput={this.state.cityInput}
           stateInput={this.state.stateInput}
+          countryInput={this.state.countryInput}
           getData={this.getData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
+          handleCountryInput={this.handleCountryInput}
           data={this.state.data}
           dataRequested={this.state.dataRequested}
           airQuality={this.state.airQuality}

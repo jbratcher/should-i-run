@@ -14,6 +14,8 @@ const Main = props =>
         handleCityInput={props.handleCityInput}
         stateInput={props.stateInput}
         handleStateInput={props.handleStateInput}
+        countryInput={props.countryInput}
+        handleCountryInput={props.handleCountryInput}
         getData={props.getData}
       />
       
@@ -34,8 +36,10 @@ const Main = props =>
     getData: PropTypes.func.isRequired,
     handleCityInput: PropTypes.func.isRequired,
     handleStateInput: PropTypes.func.isRequired,
+    handleCountryInput: PropTypes.func.isRequired,
     cityInput: PropTypes.string,
     stateInput:  PropTypes.string,
+    countryInput: PropTypes.string
   };
 
   export default Main;
