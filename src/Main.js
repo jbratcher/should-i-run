@@ -5,19 +5,28 @@ import Output from './Output';
 
 const Main = props =>
 
-    <main>
-
-      <h2>Enter a Location</h2>
+    <main id="main">
+    
+      <section id="formSection">
+    
+        <section id="mainNav">
+          <a href="#main"><i className="fas fa-angle-double-right" id="openNav"></i></a>
+          <a href="#top"><i className="fas fa-angle-double-left" id="closeNav"></i></a>
+        </section>
+  
+        <h2>Enter a Location</h2>
+        
+        <Form 
+          cityInput={props.cityInput}
+          handleCityInput={props.handleCityInput}
+          stateInput={props.stateInput}
+          handleStateInput={props.handleStateInput}
+          countryInput={props.countryInput}
+          handleCountryInput={props.handleCountryInput}
+          getData={props.getData}
+        />
       
-      <Form 
-        cityInput={props.cityInput}
-        handleCityInput={props.handleCityInput}
-        stateInput={props.stateInput}
-        handleStateInput={props.handleStateInput}
-        countryInput={props.countryInput}
-        handleCountryInput={props.handleCountryInput}
-        getData={props.getData}
-      />
+      </section>
       
       <Output
         airQuality={props.airQuality}

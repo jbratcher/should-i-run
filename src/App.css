@@ -1,8 +1,19 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 header {
+  background: #ccc;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+  height: 15vh;
 }
 
 nav ul {
@@ -14,15 +25,67 @@ nav ul li {
   margin: 0 0.5rem;
 }
 
-main, form {
+main {
+  background: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  width: 50vw;
+  height: 70vh;
+}
+
+main:target {
+  width: 100vw;
+}
+
+main h2 {
+  padding: 1rem 0;
+}
+
+main #mainNav {
+  position: absolute;
+  top: 0.5rem;
+  right: -5rem;
+  
+}
+
+main:target #mainNav {
+  top: -0.5rem;
+  right: -3rem;
+}
+
+main #mainNav a {
+  margin: 0 0.5rem;
+}
+
+#main:target #openNav {
+  display: none;
+}
+
+#main:target #closeNav {
+  display: block;
+}
+
+#closeNav {
+  display: none;
+}
+
+main form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
 }
 
-main form {
-  width: 75vw;
+#formSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 main form label {
@@ -35,17 +98,22 @@ main form input {
   padding: 0.5rem;
 }
 
-button[type='submit'] {
+main form button[type='submit'] {
   background: #ccc;
   border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  margin: 1rem 0;
 }
 
 #dataOutput {
+  background: #fefefe;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
 }
 
 #dataOutput p {
@@ -61,7 +129,15 @@ button[type='submit'] {
 }
 
 footer {
+  background: #333;
+  color: #eee;
   display: flex;
   justify-content: space-around;
-  padding-top: 10vh;
+  align-items: center;
+  height: 15vh;
+}
+
+footer span a {
+  color: #eee;
+  text-decoration: none;
 }
