@@ -26,46 +26,46 @@ nav ul li {
 }
 
 main {
-  background: #eee;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  position: relative;
+  justify-content: space-between;
   text-align: center;
   transition: all 0.5s ease-in-out;
-  width: 50vw;
   height: 70vh;
 }
 
-main:target {
-  width: 100vw;
+#formSection {
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  width: 30vw;
+}
+
+#formSection:target {
+  width: 60vw;
 }
 
 main h2 {
   padding: 1rem 0;
 }
 
-main #mainNav {
+#mainNav a {
+  color: #333;
   position: absolute;
+  text-decoration: none;
   top: 0.5rem;
-  right: -5rem;
-  
+  right: 0.5rem;
 }
 
-main:target #mainNav {
-  top: -0.5rem;
-  right: -3rem;
-}
-
-main #mainNav a {
-  margin: 0 0.5rem;
-}
-
-#main:target #openNav {
+#formSection:target #openNav {
   display: none;
 }
 
-#main:target #closeNav {
+#formSection:target #closeNav {
   display: block;
 }
 
@@ -78,14 +78,6 @@ main form {
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
-}
-
-#formSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
 main form label {
@@ -113,7 +105,7 @@ main form button[type='submit'] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50vw;
+  width: 100%;
 }
 
 #dataOutput p {

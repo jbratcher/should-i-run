@@ -10,8 +10,8 @@ const Main = props =>
       <section id="formSection">
     
         <section id="mainNav">
-          <a href="#main"><i className="fas fa-angle-double-right" id="openNav"></i></a>
-          <a href="#top"><i className="fas fa-angle-double-left" id="closeNav"></i></a>
+          <a href="#formSection"><i className="fas fa-angle-double-right fa-2x" id="openNav"></i></a>
+          <a href="#top"><i className="fas fa-angle-double-left fa-2x" id="closeNav"></i></a>
         </section>
   
         <h2>Enter a Location</h2>
