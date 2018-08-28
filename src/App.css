@@ -27,11 +27,10 @@ nav ul li {
 
 main {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   transition: all 0.5s ease-in-out;
-  height: 70vh;
 }
 
 #formSection {
@@ -42,7 +41,7 @@ main {
   justify-content: center;
   position: relative;
   transition: all 0.5s ease-in-out;
-  width: 30vw;
+  width: 100%;
 }
 
 #formSection:target {
@@ -61,12 +60,8 @@ main h2 {
   right: 0.5rem;
 }
 
-#formSection:target #openNav {
+#openNav {
   display: none;
-}
-
-#formSection:target #closeNav {
-  display: block;
 }
 
 #closeNav {
@@ -132,4 +127,52 @@ footer {
 footer span a {
   color: #eee;
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    height: 70vh;
+  }
+  
+  #formSection {
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    width: 30vw;
+    height: 100%;
+  }
+  
+  #formSection:target {
+    width: 60vw;
+  }
+  
+  #openNav {
+    display: block;
+  }
+  
+  #closeNav {
+    display: none;
+  }
+  
+  #formSection:target #openNav {
+    display: none;
+  }
+  
+  #formSection:target #closeNav {
+    display: block;
+  }
+  
+  
+  
+  
 }
