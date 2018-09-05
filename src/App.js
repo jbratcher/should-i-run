@@ -8,24 +8,28 @@ import './App.css';
 // App Component Main
 
 class App extends Component {
+  
+  constructor() {
+    super();
+    this.state = {
+      airQuality: 0,
+      data: {},
+      dataRequested: false,
+      cityInput: "",
+      stateInput: "",
+      countryInput: ""
+    };
+    this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
+    
+    this.cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
-  state = {
-    airQuality: 0,
-    data: {},
-    dataRequested: false,
-    cityInput: "",
-    stateInput: "",
-    countryInput: ""
+    this.globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
   }
 
-  stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
+  componentDidMount() {
+    console.log('mounted component');
+  }
   
-  cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
-  
-  globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
-
-  // Helper funtions
-
   fetchStd = () => {
 
     fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
@@ -45,17 +49,15 @@ class App extends Component {
 
   getData = (e) => {
     e.preventDefault();
-
+    
     this.setState({
       cityInput: this.state.cityInput,
       stateinput: this.state.stateInput,
       countryInput: this.state.countryInput,
       dataRequested: true
     });
-    
-    
 
-    this.fetchStd(e);
+    this.fetchStd();
   }
 
   handleCityInput = e => {

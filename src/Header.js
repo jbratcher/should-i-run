@@ -4,14 +4,12 @@ const Header = props =>
 
       <header>
         <section id="brand">
-          <h1>Air Quality Data</h1>
+          <h1>AQapi</h1>
         </section>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Data</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li><a href="#top">Air Quality</a></li>
+            <li><a href="#about">About</a></li>
           </ul>
         </nav>
       </header>
