@@ -34,10 +34,14 @@ class App extends Component {
 
     fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
-      .then(parsedJSON => this.setState({
+      .then(parsedJSON => {
+        this.setState({
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius
-      }))
+        });
+          console.log(parsedJSON);  
+        }
+      )
       .catch(err => console.log('Error: ', err));
       
     this.setState({
