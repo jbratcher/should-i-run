@@ -1,12 +1,14 @@
 *, *::after, *::before {
   box-sizing: border-box;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 body {
   background: #fefefe;
   font-family: sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 header {
   background: #ccc;
@@ -14,27 +16,38 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 15vh;
-  padding: 0 2rem; }
+  padding: 0 2rem;
+}
+
 
 nav ul {
   display: flex;
-  list-style-type: none; }
-  nav ul li {
-    margin: 0 0.5rem; }
-    nav ul li a {
+  list-style-type: none;
+  
+  li {
+    margin: 0 0.5rem;
+    
+    a {
       color: #000;
-      text-decoration: none; }
+      text-decoration: none;
+    }
+    
+  }
+  
+}
 
 #brand h1 {
   font-family: 'Righteous', cursive;
-  font-size: 3rem; }
+  font-size: 3rem;
+}
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 0.5s ease-in-out; }
+  transition: all 0.5s ease-in-out;
+}
 
 #formSection {
   background: #eee;
@@ -42,50 +55,63 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 5rem;
   position: relative;
   transition: all 0.5s ease-in-out;
-  width: 100%; }
+  width: 100%;
+}
 
 #formSection:target {
-  width: 60vw; }
+  width: 60vw;
+}
 
 main h2 {
   padding: 1rem 0;
-  position: relative; }
+  position: relative;
+}
 
 #mainNav a {
   color: #333;
   position: absolute;
   text-decoration: none;
   top: 0.5rem;
-  right: 35%; }
+  right: 35%;
+}
 
 #openNav {
-  display: none; }
+  display: none;
+}
 
 #closeNav {
-  display: none; }
+  display: none;
+}
 
 main form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
-  position: relative; }
-  main form label {
-    font-size: 1.25rem; }
-  main form input {
+  position: relative;
+  
+  label {
+    font-size: 1.25rem;
+  }
+  
+  input {
     border-radius: 10%;
     margin: 0.5rem 0;
-    padding: 0.5rem; }
-  main form button[type='submit'] {
+    padding: 0.5rem;
+  }
+
+  button[type='submit'] {
     background: #ccc;
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    margin: 1rem 0; }
+    margin: 1rem 0;
+  }
+
+}
 
 #dataOutput {
   background: #fefefe;
@@ -93,13 +119,22 @@ main form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; }
-  #dataOutput p {
-    margin: 1rem 0; }
-    #dataOutput p b {
-      margin-right: 1rem; }
-    #dataOutput p span {
-      font-size: 1.25rem; }
+  width: 100%;
+  
+  p {
+    margin: 1rem 0;
+    
+    b {
+      margin-right: 1rem;
+    }
+    
+    span {
+      font-size: 1.25rem;
+    }
+
+  }
+
+}
 
 footer {
   background: #333;
@@ -107,16 +142,26 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15vh; }
-  footer span a {
+  height: 15vh;
+  
+  span a {
     color: #eee;
-    text-decoration: none; }
+    text-decoration: none;
+  }
+
+}
 
 @media (min-width: 768px) {
+  
   nav {
-    margin-right: 1rem; }
-    nav ul li {
-      padding: 0 1rem; }
+    margin-right: 1rem;
+    
+    ul li {
+      padding: 0 1rem;  
+    }
+    
+  }
+  
   main {
     display: flex;
     flex-direction: row;
@@ -124,7 +169,9 @@ footer {
     height: 70vh;
     text-align: center;
     transition: all 0.5s ease-in-out;
-    position: relative; }
+    position: relative;
+  }
+  
   #formSection {
     background: #eee;
     display: flex;
@@ -134,24 +181,46 @@ footer {
     position: relative;
     transition: all 0.5s ease-in-out;
     width: 7.5vw;
-    height: 100%; }
-    #formSection h2, #formSection form {
+    height: 100%;
+    
+    h2, form {
       opacity: 0;
-      z-index: -1; }
-    #formSection:target {
-      width: 60vw; }
-      #formSection:target h2, #formSection:target form {
+      z-index: -1;
+    }
+    
+    &:target {
+      width: 60vw;
+      
+      h2, form {
         opacity: 1;
         z-index: 1;
-        transition: 0.5s all 0.3s ease; }
-      #formSection:target #mainNav a {
+        transition: 0.5s all 0.3s ease;
+      }
+      
+      #mainNav a {
         right: 0.5rem;
-        transition: 0.5s all 0.3s ease; }
-    #formSection:target #openNav {
-      display: none; }
-    #formSection:target #closeNav {
-      display: block; }
+        transition: 0.5s all 0.3s ease;
+      }
+      
+    }
+  
+    &:target #openNav {
+      display: none;
+    }
+    
+    &:target #closeNav {
+      display: block;
+    }
+  
+  
+  }
+  
   #openNav {
-    display: block; }
+    display: block;
+  }
+  
   #closeNav {
-    display: none; } }
+    display: none;
+  }
+  
+}
