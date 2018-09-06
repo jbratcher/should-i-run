@@ -23,17 +23,17 @@ header {
 nav ul {
   display: flex;
   list-style-type: none;
-  
+
   li {
     margin: 0 0.5rem;
-    
+
     a {
       color: #000;
       text-decoration: none;
     }
-    
+
   }
-  
+
 }
 
 #brand h1 {
@@ -55,6 +55,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%;
@@ -91,11 +92,11 @@ main form {
   align-items: center;
   padding: 1rem 0;
   position: relative;
-  
+
   label {
     font-size: 1.25rem;
   }
-  
+
   input {
     border-radius: 10%;
     margin: 0.5rem 0;
@@ -120,14 +121,14 @@ main form {
   align-items: center;
   justify-content: center;
   width: 100%;
-  
+
   p {
     margin: 1rem 0;
-    
+
     b {
       margin-right: 1rem;
     }
-    
+
     span {
       font-size: 1.25rem;
     }
@@ -143,7 +144,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   height: 15vh;
-  
+
   span a {
     color: #eee;
     text-decoration: none;
@@ -152,26 +153,27 @@ footer {
 }
 
 @media (min-width: 768px) {
-  
+
   nav {
     margin-right: 1rem;
-    
+
     ul li {
-      padding: 0 1rem;  
+      padding: 0 1rem;
     }
-    
+
   }
-  
+
   main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 70vh;
+    min-hei: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
     position: relative;
   }
-  
+
   #formSection {
     background: #eee;
     display: flex;
@@ -182,45 +184,45 @@ footer {
     transition: all 0.5s ease-in-out;
     width: 7.5vw;
     height: 100%;
-    
+
     h2, form {
       opacity: 0;
       z-index: -1;
     }
-    
+
     &:target {
       width: 60vw;
-      
+
       h2, form {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease;
       }
-      
+
       #mainNav a {
         right: 0.5rem;
         transition: 0.5s all 0.3s ease;
       }
-      
+
     }
-  
+
     &:target #openNav {
       display: none;
     }
-    
+
     &:target #closeNav {
       display: block;
     }
-  
-  
+
+
   }
-  
+
   #openNav {
     display: block;
   }
-  
+
   #closeNav {
     display: none;
   }
-  
+
 }
