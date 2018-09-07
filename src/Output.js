@@ -22,6 +22,10 @@ const Output = props =>
             <b>Current Air Quality:</b> 
             <span id="airQualityOutput">{props.airQuality}</span>
           </p>
+          <p>
+            <b>Main Pollutant:</b> 
+            <span id="mainPollutantOutput">{props.mainPollutant}</span>
+          </p>
         </React.Fragment>
         : null
         }
@@ -33,6 +37,7 @@ const Output = props =>
     airQuality: PropTypes.number,
     data: PropTypes.object,
     dataRequested: PropTypes.bool.isRequired,
+    mainPollutant: PropTypes.string
   };
 
   export default Output;

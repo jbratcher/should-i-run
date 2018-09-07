@@ -11,14 +11,17 @@ class App extends Component {
   
   constructor() {
     super();
+    
     this.state = {
       airQuality: 0,
+      cityInput: "",
+      countryInput: "",
       data: {},
       dataRequested: false,
-      cityInput: "",
       stateInput: "",
-      countryInput: ""
+      mainPollutant: ""
     };
+    
     this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
     
     this.cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
@@ -37,7 +40,8 @@ class App extends Component {
       .then(parsedJSON => {
         this.setState({
           data: parsedJSON.data,
-          airQuality : parsedJSON.data.current.pollution.aqius
+          airQuality : parsedJSON.data.current.pollution.aqius,
+          mainPollutant: parsedJSON.data.current.pollution.mainus
         });
           console.log(parsedJSON);  
         }
@@ -102,6 +106,7 @@ class App extends Component {
           data={this.state.data}
           dataRequested={this.state.dataRequested}
           airQuality={this.state.airQuality}
+          mainPollutant={this.state.mainPollutant}
           
         />
 

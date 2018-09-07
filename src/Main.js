@@ -32,6 +32,7 @@ const Main = props =>
         airQuality={props.airQuality}
         data={props.data}
         dataRequested={props.dataRequested}
+        mainPollutant={props.mainPollutant}
       />
 
     </main>
@@ -48,7 +49,8 @@ const Main = props =>
     handleCountryInput: PropTypes.func.isRequired,
     cityInput: PropTypes.string,
     stateInput:  PropTypes.string,
-    countryInput: PropTypes.string
+    countryInput: PropTypes.string,
+    mainPollutant: PropTypes.string
   };
 
   export default Main;
