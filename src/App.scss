@@ -15,9 +15,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
   padding: 0 2rem;
-}
+}ight
 
 
 nav ul {
@@ -143,8 +142,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15vh;
-
+  
   span a {
     color: #eee;
     text-decoration: none;
@@ -168,7 +166,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     height: 70vh;
-    min-hei: 100%;
+    min-height: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
     position: relative;
