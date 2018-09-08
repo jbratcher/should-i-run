@@ -8,22 +8,24 @@ body {
   font-family: sans-serif;
   overflow-x: hidden; }
 
+#root {
+  display: flex;
+  height: 100%; }
+
 header {
   background: #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem; }
+  padding: 1rem;
+  width: 100vw; }
 
-ight
 nav ul {
   display: flex;
   list-style-type: none; }
-  ight
-nav ul li {
+  nav ul li {
     margin: 0 0.5rem; }
-    ight
-nav ul li a {
+    nav ul li a {
       color: #000;
       text-decoration: none; }
 
@@ -44,13 +46,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%; }
-
-#formSection:target {
-  width: 60vw; }
 
 main h2 {
   padding: 1rem 0;
@@ -108,7 +106,8 @@ footer {
   color: #eee;
   display: flex;
   justify-content: space-around;
-  align-items: center; }
+  align-items: center;
+  padding: 2rem; }
   footer span a {
     color: #eee;
     text-decoration: none; }

@@ -10,13 +10,19 @@ body {
   overflow-x: hidden;
 }
 
+#root {
+  display: flex;
+  height: 100%;
+}
+
 header {
   background: #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
-}ight
+  padding: 1rem;
+  width: 100vw;
+}
 
 
 nav ul {
@@ -54,14 +60,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%;
-}
-
-#formSection:target {
-  width: 60vw;
 }
 
 main h2 {
@@ -142,6 +143,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 2rem;
   
   span a {
     color: #eee;
