@@ -8,13 +8,17 @@ body {
   font-family: sans-serif;
   overflow-x: hidden; }
 
+#root {
+  display: flex;
+  height: 100%; }
+
 header {
   background: #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
-  padding: 0 2rem; }
+  padding: 1rem;
+  width: 100vw; }
 
 nav ul {
   display: flex;
@@ -42,13 +46,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%; }
-
-#formSection:target {
-  width: 60vw; }
 
 main h2 {
   padding: 1rem 0;
@@ -107,7 +107,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 15vh; }
+  padding: 2rem; }
   footer span a {
     color: #eee;
     text-decoration: none; }
@@ -122,7 +122,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     height: 70vh;
-    min-hei: 100%;
+    min-height: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
     position: relative; }
