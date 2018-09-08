@@ -1,45 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
 import Output from './Output';
 
-const Main = props =>
-
-    <main id="main">
-    
-      <section id="formSection">
-    
-        <section id="mainNav">
-          <a href="#formSection"><i className="fas fa-angle-double-right fa-2x" id="openNav"></i></a>
-          <a href="#top"><i className="fas fa-angle-double-left fa-2x" id="closeNav"></i></a>
-        </section>
+class Main extends Component {
   
-        <h2>Enter a Location</h2>
-        
-        <Form 
-          cityInput={props.cityInput}
-          handleCityInput={props.handleCityInput}
-          stateInput={props.stateInput}
-          handleStateInput={props.handleStateInput}
-          countryInput={props.countryInput}
-          handleCountryInput={props.handleCountryInput}
-          getData={props.getData}
-        />
-      
-      </section>
-      
-      <Output
-        airQuality={props.airQuality}
-        data={props.data}
-        dataRequested={props.dataRequested}
-        mainPollutant={props.mainPollutant}
-      />
-
-    </main>
-
-  ;
-
-  Main.propTypes = {
+  constructor(props) {
+    super(props);
+  }
+  
+  static propTypes = {
     airQuality: PropTypes.number,
     data: PropTypes.object,
     dataRequested: PropTypes.bool.isRequired,
@@ -50,7 +20,54 @@ const Main = props =>
     cityInput: PropTypes.string,
     stateInput:  PropTypes.string,
     countryInput: PropTypes.string,
+    countryList: PropTypes.array.isRequired,
     mainPollutant: PropTypes.string
   };
+  
+  render() {
+    
+    return(
+      
+      <main id="main">
+    
+        <section id="formSection">
+      
+          <section id="mainNav">
+            <a href="#formSection"><i className="fas fa-angle-double-right fa-2x" id="openNav"></i></a>
+            <a href="#top"><i className="fas fa-angle-double-left fa-2x" id="closeNav"></i></a>
+          </section>
+    
+          <h2>Enter a Location</h2>
+          
+          <Form 
+            cityInput={this.props.cityInput}
+            handleCityInput={this.props.handleCityInput}
+            stateInput={this.props.stateInput}
+            handleStateInput={this.props.handleStateInput}
+            countryInput={this.props.countryInput}
+            countryList={this.props.countryList}
+            handleCountryInput={this.props.handleCountryInput}
+            getData={this.props.getData}
+          />
+        
+        </section>
+        
+        <Output
+          airQuality={this.props.airQuality}
+          data={this.props.data}
+          dataRequested={this.props.dataRequested}
+          mainPollutant={this.props.mainPollutant}
+        />
+  
+      </main>
+      
+    )
+
+  }
+  
+
+    
+
+}
 
   export default Main;
