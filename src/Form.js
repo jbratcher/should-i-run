@@ -9,17 +9,6 @@ class Form extends Component {
     this.state = {};
   }
   
-  static propTypes = {
-    getData: PropTypes.func.isRequired,
-    handleCityInput: PropTypes.func.isRequired,
-    handleStateInput: PropTypes.func.isRequired,
-    handleCountryInput: PropTypes.func.isRequired,
-    cityInput: PropTypes.string,
-    stateInput:  PropTypes.string,
-    countryInput: PropTypes.string,
-    countryList: PropTypes.array.isRequired
-  };
-  
   render() {
     
     let list = this.props.countryList;
@@ -42,11 +31,17 @@ class Form extends Component {
     
   }
 
-
+  static propTypes = {
+    getData: PropTypes.func.isRequired,
+    handleCityInput: PropTypes.func.isRequired,
+    handleStateInput: PropTypes.func.isRequired,
+    handleCountryInput: PropTypes.func.isRequired,
+    cityInput: PropTypes.string,
+    stateInput:  PropTypes.string,
+    countryInput: PropTypes.string,
+    countryList: PropTypes.array.isRequired
+  };
       
-
-  
-  
 }
 
   export default Form;

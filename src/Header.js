@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Header = props =>
-
+class Header extends Component {
+  
+  constructor(props) {
+    super(props);
+    
+    this.state = {};
+  }
+  
+  render() {
+    
+    return(
+      
       <header>
         <section id="brand">
           <h1>AQapi</h1>
@@ -13,7 +23,11 @@ const Header = props =>
           </ul>
         </nav>
       </header>
+        
+    );
+  }
+  
+  
+}
 
-;
-
-  export default Header;
+export default Header;

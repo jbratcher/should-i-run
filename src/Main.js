@@ -11,21 +11,6 @@ class Main extends Component {
     this.state = {};
   }
   
-  static propTypes = {
-    airQuality: PropTypes.number,
-    data: PropTypes.object,
-    dataRequested: PropTypes.bool.isRequired,
-    getData: PropTypes.func.isRequired,
-    handleCityInput: PropTypes.func.isRequired,
-    handleStateInput: PropTypes.func.isRequired,
-    handleCountryInput: PropTypes.func.isRequired,
-    cityInput: PropTypes.string,
-    stateInput:  PropTypes.string,
-    countryInput: PropTypes.string,
-    countryList: PropTypes.array.isRequired,
-    mainPollutant: PropTypes.string
-  };
-  
   render() {
     
     return(
@@ -67,9 +52,22 @@ class Main extends Component {
 
   }
   
-
+  static propTypes = {
+    airQuality: PropTypes.number,
+    data: PropTypes.object,
+    dataRequested: PropTypes.bool.isRequired,
+    getData: PropTypes.func.isRequired,
+    handleCityInput: PropTypes.func.isRequired,
+    handleStateInput: PropTypes.func.isRequired,
+    handleCountryInput: PropTypes.func.isRequired,
+    cityInput: PropTypes.string,
+    stateInput:  PropTypes.string,
+    countryInput: PropTypes.string,
+    countryList: PropTypes.array.isRequired,
+    mainPollutant: PropTypes.string
+  };
     
 
 }
 
-  export default Main;
+export default Main;

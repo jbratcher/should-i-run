@@ -19,8 +19,8 @@ class App extends Component {
       countryList: [],
       data: {},
       dataRequested: false,
-      stateInput: "",
-      mainPollutant: ""
+      mainPollutant: "",
+      stateInput: ""
     };
     
     this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
@@ -33,7 +33,7 @@ class App extends Component {
   
   fetchCountryList = () => {
     
-    fetch(`http://api.airvisual.com/v2/countries?key=${apiKey}`)
+    fetch(`https://api.airvisual.com/v2/countries?key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
@@ -100,6 +100,8 @@ class App extends Component {
   
   componentWillMount() {
     this.fetchCountryList();
+    // add city and state list
+    // how to handle conditional rendering for city => state => country cascade
   }
 
   render() {
