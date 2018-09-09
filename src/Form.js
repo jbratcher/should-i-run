@@ -6,7 +6,7 @@ class Form extends Component {
   constructor(props) {
     super(props);
     
-    
+    this.state = {};
   }
   
   static propTypes = {
@@ -21,15 +21,9 @@ class Form extends Component {
   };
   
   render() {
+    
+    let list = this.props.countryList;
 
-    let countryListItems = this.props.countryList.map((country,i) => {
-      console.log('test');
-      return <option key={i}>${country}</option>;
-    });
-    
-    console.log(this.props.countryList.isArray());
-    console.log(countryListItems);
-    
     return(
       
       <form>
@@ -38,13 +32,14 @@ class Form extends Component {
         <label htmlFor="state">State</label>
         <input onChange={this.props.handleStateInput} value={this.props.stateInput} type="text" id="stateInput" name="state"></input>
         <label htmlFor="country">Country</label>
-        <select>
-          {countryListItems}
+        <select onChange={this.props.handleCountryInput}>
+          {list.map((country, i) => <option key={i} value={country}>{country}</option> )}
         </select>
         <button onClick={this.props.getData} type="submit" value="submit" name="submit">Get Data</button>
       </form>
       
-    )
+    );
+    
   }
 
 

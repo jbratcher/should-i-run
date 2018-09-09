@@ -76,9 +76,14 @@ main form {
   main form label {
     font-size: 1.25rem; }
   main form input {
-    border-radius: 10%;
+    border-radius: 1rem;
     margin: 0.5rem 0;
     padding: 0.5rem; }
+  main form select {
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    width: 100%; }
   main form button[type='submit'] {
     background: #ccc;
     border: none;
