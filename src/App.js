@@ -16,6 +16,7 @@ class App extends Component {
       airQuality: 0,
       cityInput: "",
       countryInput: "",
+      countryList: [],
       data: {},
       dataRequested: false,
       stateInput: "",
@@ -27,11 +28,22 @@ class App extends Component {
     this.cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
     this.globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
+    
   }
-
-  componentDidMount() {
-    console.log('mounted component');
+  
+  fetchCountryList = () => {
+    
+    fetch(`http://api.airvisual.com/v2/countries?key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(country => {
+        return this.setState({
+          countryList: [...this.state.countryList, country.country]
+        });
+      }))
+      .catch(err => console.log(err));
+      
   }
+        
   
   fetchStd = () => {
 
@@ -85,6 +97,10 @@ class App extends Component {
       countryInput: e.target.value
     });
   }
+  
+  componentWillMount() {
+    this.fetchCountryList();
+  }
 
   render() {
     
@@ -99,6 +115,7 @@ class App extends Component {
           cityInput={this.state.cityInput}
           stateInput={this.state.stateInput}
           countryInput={this.state.countryInput}
+          countryList={this.state.countryList}
           getData={this.getData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
