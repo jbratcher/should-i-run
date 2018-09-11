@@ -8,31 +8,59 @@ import './App.css';
 // App Component Main
 
 class App extends Component {
-  
+
   constructor() {
     super();
-    
+
     this.state = {
       airQuality: 0,
       cityInput: "",
+      cityList: [],
       countryInput: "",
       countryList: [],
       data: {},
       dataRequested: false,
       mainPollutant: "",
-      stateInput: ""
+      stateInput: "",
+      stateList: []
     };
-    
+
     this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
-    
+
     this.cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
     this.globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
-    
+
   }
-  
+
+  fetchCityList = () => {
+
+    fetch(`https://api.airvisual.com/v2/cities?key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(city => {
+        return this.setState({
+          cityList: [...this.state.cityList, city.city]
+        });
+      }))
+      .catch(err => console.log(err));
+
+  }
+
+  fetchStateList = () => {
+
+    fetch(`https://api.airvisual.com/v2/states?key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(state => {
+        return this.setState({
+          stateList: [...this.state.stateList, state.state]
+        });
+      }))
+      .catch(err => console.log(err));
+
+  }
+
   fetchCountryList = () => {
-    
+
     fetch(`https://api.airvisual.com/v2/countries?key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
@@ -41,10 +69,10 @@ class App extends Component {
         });
       }))
       .catch(err => console.log(err));
-      
+
   }
-        
-  
+
+
   fetchStd = () => {
 
     fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
@@ -55,11 +83,11 @@ class App extends Component {
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
         });
-          console.log(parsedJSON);  
+          console.log(parsedJSON);
         }
       )
       .catch(err => console.log('Error: ', err));
-      
+
     this.setState({
       cityInput: "",
       stateInput: "",
@@ -69,7 +97,7 @@ class App extends Component {
 
   getData = (e) => {
     e.preventDefault();
-    
+
     this.setState({
       cityInput: this.state.cityInput,
       stateinput: this.state.stateInput,
@@ -91,13 +119,13 @@ class App extends Component {
       stateInput: e.target.value
     });
   }
-  
+
   handleCountryInput = e => {
     this.setState({
       countryInput: e.target.value
     });
   }
-  
+
   componentWillMount() {
     this.fetchCountryList();
     // add city and state list
@@ -105,7 +133,7 @@ class App extends Component {
   }
 
   render() {
-    
+
     return (
 
       <div className="App">
@@ -126,7 +154,7 @@ class App extends Component {
           dataRequested={this.state.dataRequested}
           airQuality={this.state.airQuality}
           mainPollutant={this.state.mainPollutant}
-          
+
         />
 
         <Footer />
