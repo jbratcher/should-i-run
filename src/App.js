@@ -22,7 +22,7 @@ class App extends Component {
       dataRequested: false,
       mainPollutant: "",
       stateInput: "",
-      stateList: []
+      stateList: [""]
     };
 
     this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
@@ -37,18 +37,19 @@ class App extends Component {
 
     fetch(`https://api.airvisual.com/v2/cities?key=${apiKey}`)
       .then(res => res.json())
-      .then(parsedJSON => parsedJSON.data.map(city => {
-        return this.setState({
-          cityList: [...this.state.cityList, city.city]
-        });
-      }))
+      .then(parsedJSON => console.log(parsedJSON))
+      //   parsedJSON.data.map(city => {
+      //   return this.setState({
+      //     cityList: [...this.state.cityList, city.city]
+      //   });
+      // }))
       .catch(err => console.log(err));
 
   }
 
-  fetchStateList = () => {
+  fetchStateList = (e) => {
 
-    fetch(`https://api.airvisual.com/v2/states?key=${apiKey}`)
+    fetch(`https://api.airvisual.com/v2/states?country=${e.target.value}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(state => {
         return this.setState({
@@ -69,7 +70,6 @@ class App extends Component {
         });
       }))
       .catch(err => console.log(err));
-
   }
 
 
@@ -88,11 +88,6 @@ class App extends Component {
       )
       .catch(err => console.log('Error: ', err));
 
-    this.setState({
-      cityInput: "",
-      stateInput: "",
-      countryInput: ""
-    });
   }
 
   getData = (e) => {
@@ -124,11 +119,11 @@ class App extends Component {
     this.setState({
       countryInput: e.target.value
     });
+    this.fetchStateList(e);
   }
 
   componentWillMount() {
     this.fetchCountryList();
-    // add city and state list
     // how to handle conditional rendering for city => state => country cascade
   }
 
@@ -144,6 +139,7 @@ class App extends Component {
 
           cityInput={this.state.cityInput}
           stateInput={this.state.stateInput}
+          stateList={this.state.stateList}
           countryInput={this.state.countryInput}
           countryList={this.state.countryList}
           getData={this.getData}
