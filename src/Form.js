@@ -13,12 +13,15 @@ class Form extends Component {
 
     let listOfCountries = this.props.countryList;
     let listOfStates = this.props.stateList;
+    let listOfCities = this.props.cityList;
 
     return(
 
       <form>
         <label htmlFor="city">City</label>
-        <input onChange={this.props.handleCityInput} value={this.props.cityInput} type="text" id="cityInput" name="city"></input>
+        <select onChange={this.props.handleCityInput}>
+          {listOfCities.map((city, i) => <option key={i} value={city}>{city}</option> )}
+        </select>
         <label htmlFor="state">State</label>
         <select onChange={this.props.handleStateInput}>
           {listOfStates.map((state, i) => <option key={i} value={state}>{state}</option> )}
@@ -40,6 +43,7 @@ class Form extends Component {
     handleStateInput: PropTypes.func.isRequired,
     handleCountryInput: PropTypes.func.isRequired,
     cityInput: PropTypes.string,
+    cityList: PropTypes.array,
     stateInput:  PropTypes.string,
     stateList: PropTypes.array,
     countryInput: PropTypes.string,

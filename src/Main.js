@@ -28,6 +28,7 @@ class Main extends Component {
 
           <Form
             cityInput={this.props.cityInput}
+            cityList={this.props.cityList}
             handleCityInput={this.props.handleCityInput}
             stateInput={this.props.stateInput}
             stateList={this.props.stateList}
@@ -62,6 +63,7 @@ class Main extends Component {
     handleStateInput: PropTypes.func.isRequired,
     handleCountryInput: PropTypes.func.isRequired,
     cityInput: PropTypes.string,
+    cityList: PropTypes.array,
     stateInput:  PropTypes.string,
     stateList: PropTypes.array,
     countryInput: PropTypes.string,

@@ -33,9 +33,9 @@ class App extends Component {
 
   }
 
-  fetchCityList = () => {
+  fetchCityList = (e) => {
 
-    fetch(`https://api.airvisual.com/v2/cities?key=${apiKey}`)
+    fetch(`api.airvisual.com/v2/cities?state=${e.target.value}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => console.log(parsedJSON))
       //   parsedJSON.data.map(city => {
@@ -113,6 +113,7 @@ class App extends Component {
     this.setState({
       stateInput: e.target.value
     });
+    this.fetchCityList(e);
   }
 
   handleCountryInput = e => {
@@ -138,6 +139,7 @@ class App extends Component {
         <Main
 
           cityInput={this.state.cityInput}
+          cityList={this.state.cityList}
           stateInput={this.state.stateInput}
           stateList={this.state.stateList}
           countryInput={this.state.countryInput}
