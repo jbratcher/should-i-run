@@ -7,6 +7,7 @@ class Form extends Component {
     super(props);
 
     this.state = {};
+    
   }
 
   render() {
@@ -20,17 +21,17 @@ class Form extends Component {
       <form>
       
         <label htmlFor="country">Country</label>
-        <select defaultValue="USA" onChange={this.props.handleCountryInput}>
+        <select value={this.props.countryInput} onChange={this.props.handleCountryInput}>
           {listOfCountries.map((country, i) => <option key={i} value={country}>{country}</option> )}
         </select>
       
         <label htmlFor="state">State</label>
-        <select onChange={this.props.handleStateInput}>
+        <select value={this.props.stateInput} onChange={this.props.handleStateInput}>
           {listOfStates.map((state, i) => <option key={i} value={state}>{state}</option> )}
         </select>
         
         <label htmlFor="city">City</label>
-        <select onChange={this.props.handleCityInput}>
+        <select value={this.props.cityInput} onChange={this.props.handleCityInput}>
           {listOfCities.map((city, i) => <option key={i} value={city}>{city}</option> )}
         </select>
         

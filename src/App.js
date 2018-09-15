@@ -14,15 +14,15 @@ class App extends Component {
 
     this.state = {
       airQuality: 0,
-      cityInput: "",
-      cityList: [],
-      countryInput: "",
-      countryList: [],
+      cityInput: "Louisville",
+      cityList: ["Louisville"],
+      countryInput: "USA",
+      countryList: ["USA"],
       data: {},
       dataRequested: false,
       mainPollutant: "",
-      stateInput: "",
-      stateList: []
+      stateInput: "Kentucky",
+      stateList: ["Kentucky"]
     };
 
   }
@@ -128,20 +128,29 @@ class App extends Component {
 
   handleStateInput = e => {
     this.setState({
-      stateInput: e.target.value
+      stateInput: e.target.value,
+      cityInput: "",
+      cityList: []
     });
     this.fetchCityList(e);
+    this.setState({
+      cityInput: this.state.cityList[0]
+    });
   }
 
   handleCountryInput = e => {
     this.setState({
-      countryInput: e.target.value
+      countryInput: e.target.value,
+      stateInput: "",
+      stateList: []
     });
     this.fetchStateList(e);
   }
-
-  componentWillMount() {
+  
+  componentDidMount() {
+    
     this.fetchCountryList();
+    
   }
 
   render() {
