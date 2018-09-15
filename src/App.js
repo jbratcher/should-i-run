@@ -65,6 +65,25 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  fetchLocation = () => {
+
+    fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}
+`)
+    .then(res => res.json())
+    .then(parsedJSON => {
+      this.setState({
+        data: parsedJSON.data,
+        cityInput: parsedJSON.data.city,
+        stateInput: parsedJSON.data.state,
+        countryInput: parsedJSON.data.country,
+        airQuality : parsedJSON.data.current.pollution.aqius,
+        mainPollutant: parsedJSON.data.current.pollution.mainus
+      })
+      console.log(parsedJSON);
+    })
+    .catch(err => console.log('Error: ', err));
+
+  }
 
   fetchStd = () => {
 
@@ -91,6 +110,16 @@ class App extends Component {
     });
 
     this.fetchStd();
+  }
+
+  getLocationData = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      dataRequested: true
+    })
+
+    this.fetchLocation();
   }
 
   handleCityInput = e => {
@@ -134,6 +163,7 @@ class App extends Component {
           countryInput={this.state.countryInput}
           countryList={this.state.countryList}
           getData={this.getData}
+          getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
           handleCountryInput={this.handleCountryInput}

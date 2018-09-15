@@ -26,6 +26,8 @@ class Main extends Component {
 
           <h2>Enter a Location</h2>
 
+          <button onClick={this.props.getLocationData}>Use my location</button>
+
           <Form
             cityInput={this.props.cityInput}
             cityList={this.props.cityList}
@@ -59,6 +61,7 @@ class Main extends Component {
     data: PropTypes.object,
     dataRequested: PropTypes.bool.isRequired,
     getData: PropTypes.func.isRequired,
+    getLocationData: PropTypes.func.isRequired,
     handleCityInput: PropTypes.func.isRequired,
     handleStateInput: PropTypes.func.isRequired,
     handleCountryInput: PropTypes.func.isRequired,
