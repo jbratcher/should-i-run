@@ -20,7 +20,7 @@ class Form extends Component {
       <form>
       
         <label htmlFor="country">Country</label>
-        <select onChange={this.props.handleCountryInput}>
+        <select defaultValue="USA" onChange={this.props.handleCountryInput}>
           {listOfCountries.map((country, i) => <option key={i} value={country}>{country}</option> )}
         </select>
       
@@ -58,6 +58,4 @@ class Form extends Component {
 
 }
 
-  export default Form;
-
-// <input onChange={this.props.handleCountryInput} value={this.props.countryInput} type="text" id="countryInput" name="country"></input>
+export default Form;

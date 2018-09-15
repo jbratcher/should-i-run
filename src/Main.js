@@ -26,19 +26,21 @@ class Main extends Component {
 
           <h2>Enter a Location</h2>
 
-          <button onClick={this.props.getLocationData}>Use my location</button>
+          <button id="getLocation" onClick={this.props.getLocationData}>Use my location</button>
 
           <Form
+          
             cityInput={this.props.cityInput}
             cityList={this.props.cityList}
-            handleCityInput={this.props.handleCityInput}
-            stateInput={this.props.stateInput}
-            stateList={this.props.stateList}
-            handleStateInput={this.props.handleStateInput}
             countryInput={this.props.countryInput}
             countryList={this.props.countryList}
+            handleCityInput={this.props.handleCityInput}
             handleCountryInput={this.props.handleCountryInput}
+            handleStateInput={this.props.handleStateInput}
             getData={this.props.getData}
+            stateInput={this.props.stateInput}
+            stateList={this.props.stateList}
+            
           />
 
         </section>
@@ -58,6 +60,10 @@ class Main extends Component {
 
   static propTypes = {
     airQuality: PropTypes.number,
+    cityInput: PropTypes.string,
+    cityList: PropTypes.array,
+    countryInput: PropTypes.string,
+    countryList: PropTypes.array.isRequired,
     data: PropTypes.object,
     dataRequested: PropTypes.bool.isRequired,
     getData: PropTypes.func.isRequired,
@@ -65,13 +71,9 @@ class Main extends Component {
     handleCityInput: PropTypes.func.isRequired,
     handleStateInput: PropTypes.func.isRequired,
     handleCountryInput: PropTypes.func.isRequired,
-    cityInput: PropTypes.string,
-    cityList: PropTypes.array,
+    mainPollutant: PropTypes.string,
     stateInput:  PropTypes.string,
-    stateList: PropTypes.array,
-    countryInput: PropTypes.string,
-    countryList: PropTypes.array.isRequired,
-    mainPollutant: PropTypes.string
+    stateList: PropTypes.array
   };
 
 

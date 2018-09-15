@@ -9,7 +9,7 @@ Using React, Fetch and airvisual API to get air quality data for cities around t
 
 ### Version
 
-0.0.2
+0.0.3
 
 
 ## Install Dependencies
@@ -28,6 +28,7 @@ npm start
 
 * Utilizing React, Fetch, Promises, stateful components
 * Real-world air quality data from locations around the globe
+* Dynamic fetch of weather stations by location
 
 ## Future Features:
 
@@ -38,6 +39,10 @@ npm start
 * ???
 
 #### Change Log
+
+###### 0.0.3
+
+* Feature: Dynamic fetch and display of weather stations by location
 
 ###### 0.0.2
 

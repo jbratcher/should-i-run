@@ -78,9 +78,7 @@ class App extends Component {
         countryInput: parsedJSON.data.country,
         airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus
-      })
-      console.log(parsedJSON);
-    })
+      })})
     .catch(err => console.log('Error: ', err));
 
   }
@@ -99,7 +97,7 @@ class App extends Component {
 
   }
 
-  getData = (e) => {
+  getData = e => {
     e.preventDefault();
 
     this.setState({
@@ -112,12 +110,12 @@ class App extends Component {
     this.fetchStd();
   }
 
-  getLocationData = (e) => {
+  getLocationData = e => {
     e.preventDefault();
 
     this.setState({
       dataRequested: true
-    })
+    });
 
     this.fetchLocation();
   }
@@ -156,21 +154,21 @@ class App extends Component {
 
         <Main
 
+          airQuality={this.state.airQuality}
           cityInput={this.state.cityInput}
           cityList={this.state.cityList}
-          stateInput={this.state.stateInput}
-          stateList={this.state.stateList}
           countryInput={this.state.countryInput}
           countryList={this.state.countryList}
+          data={this.state.data}
+          dataRequested={this.state.dataRequested}
           getData={this.getData}
           getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
           handleCountryInput={this.handleCountryInput}
-          data={this.state.data}
-          dataRequested={this.state.dataRequested}
-          airQuality={this.state.airQuality}
           mainPollutant={this.state.mainPollutant}
+          stateInput={this.state.stateInput}
+          stateList={this.state.stateList}
 
         />
 

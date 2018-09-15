@@ -142,12 +142,12 @@ footer {
     transition: all 0.5s ease-in-out;
     width: 7.5vw;
     height: 100%; }
-    #formSection h2, #formSection form {
+    #formSection h2, #formSection #getLocation, #formSection form {
       opacity: 0;
       z-index: -1; }
     #formSection:target {
       width: 60vw; }
-      #formSection:target h2, #formSection:target form {
+      #formSection:target h2, #formSection:target #getLocation, #formSection:target form {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease; }
