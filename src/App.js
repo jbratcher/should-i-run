@@ -8,32 +8,54 @@ import './App.css';
 // App Component Main
 
 class App extends Component {
-  
+
   constructor() {
     super();
-    
+
     this.state = {
       airQuality: 0,
       cityInput: "",
+      cityList: [],
       countryInput: "",
       countryList: [],
       data: {},
       dataRequested: false,
+      mainPollutant: "",
       stateInput: "",
-      mainPollutant: ""
+      stateList: []
     };
-    
-    this.stdRequest = `https://api.airvisual.com/v2/nearest_city?${apiKey}`;
-    
-    this.cityStateRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=USA&key=${apiKey}`;
 
-    this.globalRequest = `https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`;
-    
   }
-  
+
+  fetchCityList = (e) => {
+
+    fetch(`https://api.airvisual.com/v2/cities?state=${e.target.value}&country=${this.state.countryInput}&key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(city => {
+        return this.setState({
+          cityList: [...this.state.cityList, city.city]
+        });
+      }))
+      .catch(err => console.log(err));
+
+  }
+
+  fetchStateList = (e) => {
+
+    fetch(`https://api.airvisual.com/v2/states?country=${e.target.value}&key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(state => {
+        return this.setState({
+          stateList: [...this.state.stateList, state.state]
+        });
+      }))
+      .catch(err => console.log(err));
+
+  }
+
   fetchCountryList = () => {
-    
-    fetch(`http://api.airvisual.com/v2/countries?key=${apiKey}`)
+
+    fetch(`https://api.airvisual.com/v2/countries?key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
@@ -41,10 +63,28 @@ class App extends Component {
         });
       }))
       .catch(err => console.log(err));
-      
   }
-        
-  
+
+  fetchLocation = () => {
+
+    fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}
+`)
+    .then(res => res.json())
+    .then(parsedJSON => {
+      this.setState({
+        data: parsedJSON.data,
+        cityInput: parsedJSON.data.city,
+        stateInput: parsedJSON.data.state,
+        countryInput: parsedJSON.data.country,
+        airQuality : parsedJSON.data.current.pollution.aqius,
+        mainPollutant: parsedJSON.data.current.pollution.mainus
+      })
+      console.log(parsedJSON);
+    })
+    .catch(err => console.log('Error: ', err));
+
+  }
+
   fetchStd = () => {
 
     fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
@@ -54,22 +94,14 @@ class App extends Component {
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
-        });
-          console.log(parsedJSON);  
-        }
-      )
+        })})
       .catch(err => console.log('Error: ', err));
-      
-    this.setState({
-      cityInput: "",
-      stateInput: "",
-      countryInput: ""
-    });
+
   }
 
   getData = (e) => {
     e.preventDefault();
-    
+
     this.setState({
       cityInput: this.state.cityInput,
       stateinput: this.state.stateInput,
@@ -78,6 +110,16 @@ class App extends Component {
     });
 
     this.fetchStd();
+  }
+
+  getLocationData = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      dataRequested: true
+    })
+
+    this.fetchLocation();
   }
 
   handleCityInput = e => {
@@ -90,20 +132,22 @@ class App extends Component {
     this.setState({
       stateInput: e.target.value
     });
+    this.fetchCityList(e);
   }
-  
+
   handleCountryInput = e => {
     this.setState({
       countryInput: e.target.value
     });
+    this.fetchStateList(e);
   }
-  
+
   componentWillMount() {
     this.fetchCountryList();
   }
 
   render() {
-    
+
     return (
 
       <div className="App">
@@ -113,10 +157,13 @@ class App extends Component {
         <Main
 
           cityInput={this.state.cityInput}
+          cityList={this.state.cityList}
           stateInput={this.state.stateInput}
+          stateList={this.state.stateList}
           countryInput={this.state.countryInput}
           countryList={this.state.countryList}
           getData={this.getData}
+          getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
           handleCountryInput={this.handleCountryInput}
@@ -124,7 +171,7 @@ class App extends Component {
           dataRequested={this.state.dataRequested}
           airQuality={this.state.airQuality}
           mainPollutant={this.state.mainPollutant}
-          
+
         />
 
         <Footer />

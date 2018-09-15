@@ -54,6 +54,15 @@ main {
   transition: all 0.5s ease-in-out;
 }
 
+button {
+  background: #ccc;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+
 #formSection {
   background: #eee;
   display: flex;
@@ -102,21 +111,12 @@ main form {
     margin: 0.5rem 0;
     padding: 0.5rem;
   }
-  
+
   select {
     border-radius: 1rem;
     margin: 0.5rem 0;
     padding: 0.5rem;
     width: 100%;
-  }
-
-  button[type='submit'] {
-    background: #ccc;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    margin: 1rem 0;
   }
 
 }
@@ -151,7 +151,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   padding: 2rem;
-  
+
   span a {
     color: #eee;
     text-decoration: none;
