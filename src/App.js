@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import apiKey from './secrets';
+import { apiKey, gmapsApiKey } from './secrets';
 import './App.css';
 
 // App Component Main
@@ -14,17 +14,29 @@ class App extends Component {
 
     this.state = {
       airQuality: 0,
-      cityInput: "Louisville",
-      cityList: ["Louisville"],
-      countryInput: "USA",
-      countryList: ["USA"],
+      cityInput: "",
+      cityList: [],
+      countryInput: "",
+      countryList: [],
+      currentLat: null,
+      currentLong: null,
       data: {},
       dataRequested: false,
       mainPollutant: "",
-      stateInput: "Kentucky",
-      stateList: ["Kentucky"]
+      stateInput: "",
+      stateList: []
     };
 
+  }
+  
+  fetchGeoLocation = () => {
+    
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
+      .then(response => response.json())
+      .then(parsedJSON => console.log(parsedJSON));
+      
+      console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
+      
   }
 
   fetchCityList = (e) => {
@@ -36,6 +48,11 @@ class App extends Component {
           cityList: [...this.state.cityList, city.city]
         });
       }))
+      .then(() => {
+        return this.setState({
+          cityInput: this.state.cityList[0]
+        });
+      })
       .catch(err => console.log(err));
 
   }
@@ -49,6 +66,11 @@ class App extends Component {
           stateList: [...this.state.stateList, state.state]
         });
       }))
+      .then(() => {
+        return this.setState({
+          stateInput: this.state.stateList[0]
+        });
+      })
       .catch(err => console.log(err));
 
   }
@@ -62,13 +84,17 @@ class App extends Component {
           countryList: [...this.state.countryList, country.country]
         });
       }))
+      .then(data => {
+        return this.setState({
+          countryInput: this.state.countryList[77]
+        });
+      })
       .catch(err => console.log(err));
   }
 
   fetchLocation = () => {
 
-    fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}
-`)
+    fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`)
     .then(res => res.json())
     .then(parsedJSON => {
       this.setState({
@@ -77,9 +103,18 @@ class App extends Component {
         stateInput: parsedJSON.data.state,
         countryInput: parsedJSON.data.country,
         airQuality : parsedJSON.data.current.pollution.aqius,
-        mainPollutant: parsedJSON.data.current.pollution.mainus
-      })})
+        mainPollutant: parsedJSON.data.current.pollution.mainus,
+        currentLat: parsedJSON.data.location.coordinates[0],
+        currentLong: parsedJSON.data.location.coordinates[1]
+      });
+      console.log(parsedJSON);
+      console.log('lat: ', this.state.currentLat);
+      console.log("long: ", this.state.currentLong);
+      this.fetchGeoLocation();
+    })
     .catch(err => console.log('Error: ', err));
+    
+    
 
   }
 
@@ -133,14 +168,13 @@ class App extends Component {
       cityList: []
     });
     this.fetchCityList(e);
-    this.setState({
-      cityInput: this.state.cityList[0]
-    });
   }
 
   handleCountryInput = e => {
     this.setState({
       countryInput: e.target.value,
+      cityInput: "",
+      cityList: [],
       stateInput: "",
       stateList: []
     });
@@ -154,6 +188,19 @@ class App extends Component {
   }
 
   render() {
+    
+    const { 
+      airQuality ,
+      cityInput,
+      cityList,
+      countryInput,
+      countryList,
+      data,
+      dataRequested,
+      mainPollutant,
+      stateInput,
+      stateList
+    } = this.state;
 
     return (
 
@@ -163,21 +210,21 @@ class App extends Component {
 
         <Main
 
-          airQuality={this.state.airQuality}
-          cityInput={this.state.cityInput}
-          cityList={this.state.cityList}
-          countryInput={this.state.countryInput}
-          countryList={this.state.countryList}
-          data={this.state.data}
-          dataRequested={this.state.dataRequested}
+          airQuality={airQuality}
+          cityInput={cityInput}
+          cityList={cityList}
+          countryInput={countryInput}
+          countryList={countryList}
+          data={data}
+          dataRequested={dataRequested}
           getData={this.getData}
           getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
           handleCountryInput={this.handleCountryInput}
-          mainPollutant={this.state.mainPollutant}
-          stateInput={this.state.stateInput}
-          stateList={this.state.stateList}
+          mainPollutant={mainPollutant}
+          stateInput={stateInput}
+          stateList={stateList}
 
         />
 

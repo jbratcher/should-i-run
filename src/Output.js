@@ -11,30 +11,32 @@ class Output extends Component {
   
   render() {
     
+    const { airQuality, data, mainPollutant } = this.props;
+    
     return(
     
       <section id="dataOutput">
         {this.props.dataRequested ?
         <React.Fragment>
           <p>
-            <b>Selected City:</b> 
-            <span id="cityOutput">{this.props.data.city}</span>
+            <b>City:</b> 
+            <span id="cityOutput">{data.city}</span>
           </p>
           <p>
             <b>Selected State:</b>
-            <span id="stateOutput">{this.props.data.state}</span>
+            <span id="stateOutput">{data.state}</span>
           </p>
           <p>
             <b>Selected Country:</b>
-            <span id="countryOutput">{this.props.data.country}</span>
+            <span id="countryOutput">{data.country}</span>
           </p>
           <p>
             <b>Current Air Quality:</b> 
-            <span id="airQualityOutput">{this.props.airQuality}</span>
+            <span id="airQualityOutput">{airQuality}</span>
           </p>
           <p>
             <b>Main Pollutant:</b> 
-            <span id="mainPollutantOutput">{this.props.mainPollutant}</span>
+            <span id="mainPollutantOutput">{mainPollutant}</span>
           </p>
         </React.Fragment>
         : null
@@ -44,8 +46,6 @@ class Output extends Component {
     );
     
   }
-      
-      
 
   static propTypes = {
     airQuality: PropTypes.number,
