@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class Form extends Component {
 
@@ -44,18 +43,6 @@ class Form extends Component {
 
   }
 
-  static propTypes = {
-    getData: PropTypes.func.isRequired,
-    handleCityInput: PropTypes.func.isRequired,
-    handleStateInput: PropTypes.func.isRequired,
-    handleCountryInput: PropTypes.func.isRequired,
-    cityInput: PropTypes.string,
-    cityList: PropTypes.array,
-    stateInput:  PropTypes.string,
-    stateList: PropTypes.array,
-    countryInput: PropTypes.string,
-    countryList: PropTypes.array.isRequired
-  };
 
 }
 

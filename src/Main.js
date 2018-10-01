@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Form from './Form';
 import Output from './Output';
 
@@ -57,24 +56,6 @@ class Main extends Component {
     )
 
   }
-
-  static propTypes = {
-    airQuality: PropTypes.number,
-    cityInput: PropTypes.string,
-    cityList: PropTypes.array,
-    countryInput: PropTypes.string,
-    countryList: PropTypes.array.isRequired,
-    data: PropTypes.object,
-    dataRequested: PropTypes.bool.isRequired,
-    getData: PropTypes.func.isRequired,
-    getLocationData: PropTypes.func.isRequired,
-    handleCityInput: PropTypes.func.isRequired,
-    handleStateInput: PropTypes.func.isRequired,
-    handleCountryInput: PropTypes.func.isRequired,
-    mainPollutant: PropTypes.string,
-    stateInput:  PropTypes.string,
-    stateList: PropTypes.array
-  };
 
 
 }

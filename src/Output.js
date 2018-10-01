@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { gmapsApiKey } from './secrets.js';
+import Map from './LocationMap';
 
 class Output extends Component {
   
@@ -41,18 +42,20 @@ class Output extends Component {
         </React.Fragment>
         : null
         }
+        
+        <Map
+          isMarkerShown
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${gmapsApiKey}`}
+          loadingElement={<div style={{ height: `100%`, width: '100%' }} />}
+          containerElement={<div style={{ height: `400px`, width: '100%' }} />}
+          mapElement={<div style={{ height: `100%`, width: '100%' }} />}
+        />
+        
       </section>
     
     );
     
   }
-
-  static propTypes = {
-    airQuality: PropTypes.number,
-    data: PropTypes.object,
-    dataRequested: PropTypes.bool.isRequired,
-    mainPollutant: PropTypes.string
-  };
   
 }
 
