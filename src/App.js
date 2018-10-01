@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Main from './Main';
+import Main from './main';
 import Footer from './Footer';
 import { apiKey, gmapsApiKey } from './secrets';
-import './App.css';
+import './css/App.css';
 
 // App Component Main
 

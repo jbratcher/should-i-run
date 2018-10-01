@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { gmapsApiKey } from './secrets.js';
+import { gmapsApiKey } from '../secrets.js';
 import Map from './LocationMap';
 
 class Output extends Component {
