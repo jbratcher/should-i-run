@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { gmapsApiKey } from '../secrets.js';
 import Map from './LocationMap';
 
 class Output extends Component {
@@ -12,7 +11,12 @@ class Output extends Component {
   
   render() {
     
-    const { airQuality, data, mainPollutant } = this.props;
+    const { 
+      airQuality,
+      currentLat,
+      currentLong,
+      data, 
+      mainPollutant } = this.props;
     
     return(
     
@@ -44,11 +48,10 @@ class Output extends Component {
         }
         
         <Map
-          isMarkerShown
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${gmapsApiKey}`}
-          loadingElement={<div style={{ height: `100%`, width: '100%' }} />}
-          containerElement={<div style={{ height: `400px`, width: '100%' }} />}
-          mapElement={<div style={{ height: `100%`, width: '100%' }} />}
+          
+          currentLat={currentLat}
+          currentLong={currentLong}
+          
         />
         
       </section>

@@ -200,6 +200,8 @@ class App extends Component {
       cityList,
       countryInput,
       countryList,
+      currentLat,
+      currentLong,
       data,
       dataRequested,
       mainPollutant,
@@ -220,6 +222,8 @@ class App extends Component {
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
+          currentLat={currentLat}
+          currentLong={currentLong}
           data={data}
           dataRequested={dataRequested}
           getData={this.getData}

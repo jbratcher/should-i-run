@@ -11,6 +11,25 @@ class Main extends Component {
   }
 
   render() {
+    
+    const { 
+      airQuality,
+      cityInput,
+      cityList,
+      countryInput,
+      countryList,
+      currentLat,
+      currentLong,
+      data,
+      dataRequested,
+      handleCityInput,
+      handleCountryInput,
+      handleStateInput,
+      getData,
+      mainPollutant,
+      stateInput,
+      stateList
+    } = this.props;
 
     return(
 
@@ -29,26 +48,30 @@ class Main extends Component {
 
           <Form
           
-            cityInput={this.props.cityInput}
-            cityList={this.props.cityList}
-            countryInput={this.props.countryInput}
-            countryList={this.props.countryList}
-            handleCityInput={this.props.handleCityInput}
-            handleCountryInput={this.props.handleCountryInput}
-            handleStateInput={this.props.handleStateInput}
-            getData={this.props.getData}
-            stateInput={this.props.stateInput}
-            stateList={this.props.stateList}
+            cityInput={cityInput}
+            cityList={cityList}
+            countryInput={countryInput}
+            countryList={countryList}
+            currentLat={currentLat}
+            currentLong={currentLong}
+            handleCityInput={handleCityInput}
+            handleCountryInput={handleCountryInput}
+            handleStateInput={handleStateInput}
+            getData={getData}
+            stateInput={stateInput}
+            stateList={stateList}
             
           />
 
         </section>
 
         <Output
-          airQuality={this.props.airQuality}
-          data={this.props.data}
-          dataRequested={this.props.dataRequested}
-          mainPollutant={this.props.mainPollutant}
+          airQuality={airQuality}
+          currentLat={currentLat}
+          currentLong={currentLong}
+          data={data}
+          dataRequested={dataRequested}
+          mainPollutant={mainPollutant}
         />
 
       </main>
