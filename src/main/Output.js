@@ -16,7 +16,8 @@ class Output extends Component {
       currentLat,
       currentLong,
       data, 
-      mainPollutant } = this.props;
+      mainPollutant 
+    } = this.props;
     
     return(
     

@@ -7,10 +7,7 @@ class Map extends Component {
   constructor(props) {
     super(props);
     
-    this.state = {
-      currentLat: null,
-      currentLng: null
-    };
+    this.state = {};
     
   }
   
@@ -18,11 +15,22 @@ class Map extends Component {
     
     const { currentLat, currentLong } = this.props;
     
+    console.log('currentLat', currentLat);
+    console.log('currentLong', currentLong);
+    
     const LocationMap = withScriptjs(withGoogleMap((props) =>
       <GoogleMap
-        defaultCenter={{ lat: currentLat, lng: currentLong }}
-        defaultZoom={13}
+        center={{ lat: currentLat, lng: currentLong}}
+        defaultCenter={{ lat: -34.397, lng: 150.644 }}
+        defaultZoom={10}
       >
+      
+        <Marker
+          position={{ lat: currentLat, lng: currentLong }}
+        >
+        
+        </Marker>
+        
       </GoogleMap>
     ));
     
