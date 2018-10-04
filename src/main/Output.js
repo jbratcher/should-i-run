@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Map from './LocationMap';
+import MapContainer from './LocationMap';
 
 class Output extends Component {
   
@@ -48,10 +48,11 @@ class Output extends Component {
         : null
         }
         
-        <Map
+        <MapContainer
           
           currentLat={currentLat}
           currentLong={currentLong}
+          style={{position: "absolute", top: 0, left: 0}}
           
         />
         
