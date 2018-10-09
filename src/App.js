@@ -28,15 +28,15 @@ class App extends Component {
     };
 
   }
-  
+
   fetchGeoLocation = () => {
-    
+
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
       .then(response => response.json())
       .then(parsedJSON => console.log(parsedJSON));
-      
+
       console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`);
-      
+
   }
 
   fetchCityList = (e) => {
@@ -112,9 +112,9 @@ class App extends Component {
       console.log("long: ", this.state.currentLong);
     })
     .catch(err => console.log('Error: ', err));
-    
-    
-    
+
+
+
 
   }
 
@@ -129,12 +129,12 @@ class App extends Component {
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
-          
+
         })})
       .catch(err => console.log('Error: ', err));
-      
+
       this.fetchGeoLocation();
-      
+
   }
 
   getData = e => {
@@ -185,16 +185,16 @@ class App extends Component {
     });
     this.fetchStateList(e);
   }
-  
+
   componentDidMount() {
-    
+
     this.fetchCountryList();
-    
+
   }
 
   render() {
-    
-    const { 
+
+    const {
       airQuality ,
       cityInput,
       cityList,

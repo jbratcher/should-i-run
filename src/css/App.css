@@ -107,6 +107,13 @@ main form {
     #dataOutput p span {
       font-size: 1.25rem; }
 
+#map {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh; }
+
 footer {
   background: #333;
   color: #eee;
