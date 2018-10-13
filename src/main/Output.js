@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapContainer from './LocationMap';
+import MapContainer from './MapContainer';
 
 class Output extends Component {
 
@@ -16,13 +16,14 @@ class Output extends Component {
       currentLat,
       currentLong,
       data,
+      dataRequested,
       mainPollutant
     } = this.props;
 
     return(
 
       <section id="dataOutput">
-        {this.props.dataRequested ?
+        {dataRequested ?
         <React.Fragment>
           <p>
             <b>City:</b>
@@ -52,10 +53,6 @@ class Output extends Component {
 
           currentLat={currentLat}
           currentLong={currentLong}
-          initialCenter={{
-            lat: 38.2527,
-            lng: -85.7585
-          }}
           style={{position: "absolute", top: 0, left: 0}}
 
         />

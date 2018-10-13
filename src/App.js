@@ -29,15 +29,7 @@ class App extends Component {
 
   }
 
-  fetchGeoLocation = () => {
-
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
-      .then(response => response.json())
-      .then(parsedJSON => console.log(parsedJSON));
-
-      console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`);
-
-  }
+  // Populate city, state and county select lists
 
   fetchCityList = (e) => {
 
@@ -92,6 +84,18 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  // fetch location data functions
+
+  fetchGeoLocation = () => {
+
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
+      .then(response => response.json())
+      .then(parsedJSON => console.log(parsedJSON));
+
+      console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`);
+
+  }
+
   fetchLocation = () => {
 
     fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`)
@@ -104,17 +108,15 @@ class App extends Component {
         countryInput: parsedJSON.data.country,
         airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus,
-        currentLat: parsedJSON.data.location.coordinates[0],
-        currentLong: parsedJSON.data.location.coordinates[1]
+        currentLat: parsedJSON.data.location.coordinates[1],
+        currentLong: parsedJSON.data.location.coordinates[0]
       });
       console.log(parsedJSON);
       console.log('lat: ', this.state.currentLat);
       console.log("long: ", this.state.currentLong);
+      this.fetchGeoLocation();
     })
     .catch(err => console.log('Error: ', err));
-
-
-
 
   }
 
@@ -124,16 +126,15 @@ class App extends Component {
       .then(res => res.json())
       .then(parsedJSON => {
         this.setState({
-          currentLat: parsedJSON.data.location.coordinates[0],
-          currentLong: parsedJSON.data.location.coordinates[1],
+          currentLat: parsedJSON.data.location.coordinates[1],
+          currentLong: parsedJSON.data.location.coordinates[0],
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
-
-        })})
+        })
+        this.fetchGeoLocation();
+      })
       .catch(err => console.log('Error: ', err));
-
-      this.fetchGeoLocation();
 
   }
 
