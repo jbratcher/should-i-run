@@ -51,7 +51,9 @@ export class MapContainer extends Component {
           google={this.props.google}
           zoom={10}>
 
-          <Marker />
+          <Marker
+            position={{lat: currentLat, lng: currentLong}}
+           />
 
         </Map>
 
