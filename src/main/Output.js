@@ -14,7 +14,7 @@ class Output extends Component {
     const {
       airQuality,
       currentLat,
-      currentLong,
+      currentLng,
       data,
       dataRequested,
       mainPollutant
@@ -52,7 +52,7 @@ class Output extends Component {
         <MapContainer
 
           currentLat={currentLat}
-          currentLong={currentLong}
+          currentLng={currentLng}
           style={{position: "absolute", top: 0, left: 0}}
 
         />

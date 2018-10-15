@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './main';
 import Footer from './Footer';
-import { apiKey, gmapsApiKey } from './secrets';
+import { apiKey } from './secrets';
 import './css/App.css';
 
 // App Component Main
@@ -19,7 +19,7 @@ class App extends Component {
       countryInput: "",
       countryList: [],
       currentLat: 38.2527,
-      currentLong: -85.7585,
+      currentLng: -85.7585,
       data: {},
       dataRequested: false,
       mainPollutant: "",
@@ -40,11 +40,6 @@ class App extends Component {
           cityList: [...this.state.cityList, city.city]
         });
       }))
-      .then(() => {
-        return this.setState({
-          cityInput: this.state.cityList[0]
-        });
-      })
       .catch(err => console.log(err));
 
   }
@@ -58,11 +53,6 @@ class App extends Component {
           stateList: [...this.state.stateList, state.state]
         });
       }))
-      .then(() => {
-        return this.setState({
-          stateInput: this.state.stateList[0]
-        });
-      })
       .catch(err => console.log(err));
 
   }
@@ -73,27 +63,10 @@ class App extends Component {
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
-          countryList: [...this.state.countryList, country.country]
+          countryList: [...this.state.countryList, country.country],
         });
       }))
-      .then(data => {
-        return this.setState({
-          countryInput: this.state.countryList[77]
-        });
-      })
       .catch(err => console.log(err));
-  }
-
-  // fetch location data functions
-
-  fetchGeoLocation = () => {
-
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`)
-      .then(response => response.json())
-      .then(parsedJSON => console.log(parsedJSON));
-
-      console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentLat},${this.state.currentLong}&key=${gmapsApiKey}`);
-
   }
 
   fetchLocation = () => {
@@ -109,12 +82,8 @@ class App extends Component {
         airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus,
         currentLat: parsedJSON.data.location.coordinates[1],
-        currentLong: parsedJSON.data.location.coordinates[0]
+        currentLng: parsedJSON.data.location.coordinates[0]
       });
-      console.log(parsedJSON);
-      console.log('lat: ', this.state.currentLat);
-      console.log("long: ", this.state.currentLong);
-      this.fetchGeoLocation();
     })
     .catch(err => console.log('Error: ', err));
 
@@ -127,12 +96,11 @@ class App extends Component {
       .then(parsedJSON => {
         this.setState({
           currentLat: parsedJSON.data.location.coordinates[1],
-          currentLong: parsedJSON.data.location.coordinates[0],
+          currentLng: parsedJSON.data.location.coordinates[0],
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
-        })
-        this.fetchGeoLocation();
+        });
       })
       .catch(err => console.log('Error: ', err));
 
@@ -186,10 +154,18 @@ class App extends Component {
     });
     this.fetchStateList(e);
   }
+  
+  // Populate selects with country, state, and city data
 
   componentDidMount() {
 
     this.fetchCountryList();
+    
+    this.setState({
+      countryInput: this.state.countryList[70]
+    });
+    
+    console.log(this.state.countryInput);
 
   }
 
@@ -202,7 +178,7 @@ class App extends Component {
       countryInput,
       countryList,
       currentLat,
-      currentLong,
+      currentLng,
       data,
       dataRequested,
       mainPollutant,
@@ -224,7 +200,7 @@ class App extends Component {
           countryInput={countryInput}
           countryList={countryList}
           currentLat={currentLat}
-          currentLong={currentLong}
+          currentLng={currentLng}
           data={data}
           dataRequested={dataRequested}
           getData={this.getData}
