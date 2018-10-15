@@ -14,12 +14,10 @@ class Main extends Component {
     
     const { 
       airQuality,
-      cityInput,
       cityList,
-      countryInput,
       countryList,
       currentLat,
-      currentLong,
+      currentLng,
       data,
       dataRequested,
       handleCityInput,
@@ -27,7 +25,6 @@ class Main extends Component {
       handleStateInput,
       getData,
       mainPollutant,
-      stateInput,
       stateList
     } = this.props;
 
@@ -48,17 +45,12 @@ class Main extends Component {
 
           <Form
           
-            cityInput={cityInput}
             cityList={cityList}
-            countryInput={countryInput}
             countryList={countryList}
-            currentLat={currentLat}
-            currentLong={currentLong}
             handleCityInput={handleCityInput}
             handleCountryInput={handleCountryInput}
             handleStateInput={handleStateInput}
             getData={getData}
-            stateInput={stateInput}
             stateList={stateList}
             
           />
@@ -68,7 +60,7 @@ class Main extends Component {
         <Output
           airQuality={airQuality}
           currentLat={currentLat}
-          currentLong={currentLong}
+          currentLng={currentLng}
           data={data}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}

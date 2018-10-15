@@ -7,12 +7,12 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
-    const { currentLat, currentLong } = this.props;
+    const { currentLat, currentLng } = this.props;
 
     this.state = {
       currentLocation: {
         lat: currentLat,
-        lng: currentLong
+        lng: currentLng
       }
     }
 
@@ -20,12 +20,12 @@ export class MapContainer extends Component {
 
   componentWillUnmount() {
 
-    const { currentLat, currentLong } = this.state;
+    const { currentLat, currentLng } = this.state;
 
     this.setState({
       currentLocation: {
         lat: currentLat,
-        lng: currentLong
+        lng: currentLng
       }
     })
   }
@@ -33,7 +33,7 @@ export class MapContainer extends Component {
 
   render() {
 
-    const { currentLat, currentLong } = this.props;
+    const { currentLat, currentLng } = this.props;
 
     return (
 
@@ -42,16 +42,21 @@ export class MapContainer extends Component {
         <Map
           center={{
             lat: currentLat,
-            lng: currentLong
+            lng: currentLng
           }}
           initialCenter={{
             lat: 38.2527,
             lng: -85.7585
           }}
           google={this.props.google}
-          zoom={10}>
+          zoom={15}>
 
-          <Marker />
+          <Marker 
+            position={{
+              lat: currentLat,
+              lng: currentLng
+            }}
+          />
 
         </Map>
 
