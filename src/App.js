@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from './header';
 import Main from './main';
 import Footer from './Footer';
 import { apiKey } from './secrets';
 import './css/App.css';
+import './css/weather-icons.min.css';
 
 // App Component Main
 
@@ -154,17 +155,17 @@ class App extends Component {
     });
     this.fetchStateList(e);
   }
-  
+
   // Populate selects with country, state, and city data
 
   componentDidMount() {
 
     this.fetchCountryList();
-    
+
     this.setState({
       countryInput: this.state.countryList[70]
     });
-    
+
     console.log(this.state.countryInput);
 
   }

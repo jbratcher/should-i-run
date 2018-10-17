@@ -6,6 +6,7 @@
 
 body {
   background: #fefefe;
+  color: #333;
   font-family: sans-serif;
   overflow-x: hidden;
 }
@@ -16,34 +17,39 @@ body {
 }
 
 header {
-  background: #ccc;
+  background: #dedede;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  width: 100vw;
+  flex-direction: column;
+  max-width: 100vw;
 }
 
-
-nav ul {
+#mainHeader {
+  border-bottom: 0.125rem solid #333;
   display: flex;
-  list-style-type: none;
-
-  li {
-    margin: 0 0.5rem;
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-  }
-
+  justify-content: space-around;
+  align-items: center;
 }
 
 #brand h1 {
   font-family: 'Righteous', cursive;
-  font-size: 3rem;
+  font-size: 1.5rem;
+}
+
+#getDataButton {
+  background: #fff;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+}
+
+#subheader {
+  padding: 0.5rem;
+
+  p {
+    color: #333;
+    font-size: 0.65rem;
+    white-space: wrap;
+  }
+
 }
 
 main {
@@ -98,7 +104,6 @@ main h2 {
 main form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 1rem 0;
   position: relative;
 
@@ -125,32 +130,36 @@ main form {
   background: #fefefe;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-size: 1rem;
   width: 100%;
 
   p {
     margin: 1rem 0;
 
     b {
-      margin-right: 1rem;
-    }
-
-    span {
-      font-size: 1.25rem;
+      margin-right: 0.5rem;
     }
 
   }
 
 }
 
+#outputScore {
+  display: flex;
+  flex-direction: column;
+  
+}
+
 #map {
 
+  display: flex;
   position: relative;
-  top: 0;
-  left: 0;
+  min-width: 200px;
+  min-height: 200px;
   width: 100vw;
-  height: 50vh;
+  height: auto;
+  max-width: 100vw;
+  max-height: 100vh;
 
 }
 
@@ -161,6 +170,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   padding: 2rem;
+  position: relative;
 
   span a {
     color: #eee;

@@ -23,6 +23,17 @@ class Output extends Component {
     return(
 
       <section id="dataOutput">
+
+        <section id="outputScore">
+          <i className="wi wi-day-sunny"></i>
+          <span id="weatherIcon">Sun</span>
+          <span id="weatherText">Sunny</span>
+          <span id="weatherScore">86 Good</span>
+          <span id="airQuality">23, smog</span>
+          <span id="temperature">56 F</span>
+        </section>
+
+
         {dataRequested ?
         <React.Fragment>
           <p>

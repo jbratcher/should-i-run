@@ -11,8 +11,8 @@ class Main extends Component {
   }
 
   render() {
-    
-    const { 
+
+    const {
       airQuality,
       cityList,
       countryList,
@@ -44,7 +44,7 @@ class Main extends Component {
           <button id="getLocation" onClick={this.props.getLocationData}>Use my location</button>
 
           <Form
-          
+
             cityList={cityList}
             countryList={countryList}
             handleCityInput={handleCityInput}
@@ -52,7 +52,7 @@ class Main extends Component {
             handleStateInput={handleStateInput}
             getData={getData}
             stateList={stateList}
-            
+
           />
 
         </section>
