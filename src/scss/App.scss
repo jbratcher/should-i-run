@@ -144,9 +144,13 @@ main form {
 
 }
 
-#outputScore {
+#scoreData {
   display: flex;
   flex-direction: column;
+  
+  #mainParticulate, #weatherScoreRating {
+    margin-left: 1rem;
+  }
 
   i, span {
     margin: 1rem 0;
@@ -173,6 +177,14 @@ main form {
 		to {
 				transform: rotate(359deg);
 		}
+}
+
+#airQuality {
+  
+}
+
+#locationData {
+  
 }
 
 #map {

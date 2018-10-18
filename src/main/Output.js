@@ -23,18 +23,35 @@ class Output extends Component {
     return(
 
       <section id="dataOutput">
+      
+        {dataRequested ?
 
-        <section id="outputScore">
+        <section id="scoreData">
           <i id="weatherIcon" className="wi wi-day-sunny"></i>
           <span id="weatherText">Sunny</span>
-          <span id="weatherScore">86 Good</span>
-          <span id="airQuality">23, smog</span>
-          <span id="temperature">56 F</span>
+          <span id="weatherScore">
+            86
+            <span id="weatherScoreRating">
+              (Good)
+            </span>
+          </span>
+          <span id="airQuality">
+            {airQuality}
+            <span id="mainParticulate">
+              ({mainPollutant})
+            </span>
+          </span>
+          <span id="temperature">56 &deg;</span>
+        
         </section>
+        
+        :null
+        }
 
 
         {dataRequested ?
-        <React.Fragment>
+        
+        <section id="locationData">
           <p>
             <b>City:</b>
             <span id="cityOutput">{data.city}</span>
@@ -47,15 +64,8 @@ class Output extends Component {
             <b>Selected Country:</b>
             <span id="countryOutput">{data.country}</span>
           </p>
-          <p>
-            <b>Current Air Quality:</b>
-            <span id="airQualityOutput">{airQuality}</span>
-          </p>
-          <p>
-            <b>Main Pollutant:</b>
-            <span id="mainPollutantOutput">{mainPollutant}</span>
-          </p>
-        </React.Fragment>
+        </section>
+
         : null
         }
 

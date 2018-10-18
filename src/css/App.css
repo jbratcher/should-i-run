@@ -111,14 +111,16 @@ main form {
     #dataOutput p b {
       margin-right: 0.5rem; }
 
-#outputScore {
+#scoreData {
   display: flex;
   flex-direction: column; }
-  #outputScore i, #outputScore span {
+  #scoreData #mainParticulate, #scoreData #weatherScoreRating {
+    margin-left: 1rem; }
+  #scoreData i, #scoreData span {
     margin: 1rem 0; }
-  #outputScore span {
+  #scoreData span {
     font-weight: bold; }
-  #outputScore i {
+  #scoreData i {
     font-size: 5rem; }
 
 .wi-day-sunny {
