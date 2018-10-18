@@ -25,8 +25,7 @@ class Output extends Component {
       <section id="dataOutput">
 
         <section id="outputScore">
-          <i className="wi wi-day-sunny"></i>
-          <span id="weatherIcon">Sun</span>
+          <i id="weatherIcon" className="wi wi-day-sunny"></i>
           <span id="weatherText">Sunny</span>
           <span id="weatherScore">86 Good</span>
           <span id="airQuality">23, smog</span>

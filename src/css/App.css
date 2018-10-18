@@ -114,6 +114,21 @@ main form {
 #outputScore {
   display: flex;
   flex-direction: column; }
+  #outputScore i, #outputScore span {
+    margin: 1rem 0; }
+  #outputScore span {
+    font-weight: bold; }
+  #outputScore i {
+    font-size: 5rem; }
+
+.wi-day-sunny {
+  animation: rotation 24s infinite linear; }
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
 
 #map {
   display: flex;
