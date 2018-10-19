@@ -195,7 +195,11 @@ class App extends Component {
 
       <div className="App">
 
-        <Header />
+        <Header 
+        
+          getLocationData={this.getLocationData}
+        
+        />
 
         <Main
 

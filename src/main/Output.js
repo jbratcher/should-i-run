@@ -20,6 +20,8 @@ class Output extends Component {
       dataRequested,
       mainPollutant
     } = this.props;
+    
+    const convertedTemp = parseInt((currentTemp * (9/5)) + 32, 10);
 
     return(
 
@@ -42,7 +44,7 @@ class Output extends Component {
               ({mainPollutant})
             </span>
           </span>
-          <span id="temperature">{currentTemp} &deg;C</span>
+          <span id="temperature">{convertedTemp} &deg;F</span>
           <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
 
         </section>

@@ -9,6 +9,8 @@ class Header extends Component {
   }
 
   render() {
+    
+    const { getLocationData } = this.props;
 
     return(
 
@@ -18,7 +20,7 @@ class Header extends Component {
           <section id="brand">
             <h1>ShouldIRun?</h1>
           </section>
-          <button id="getDataButton" onClick={this.props.getLocationData}>Should I?</button>
+          <button id="getDataButton" onClick={getLocationData}>Should I?</button>
         </section>
         <section id="subheader">
           <p>Get a rating on current weather conditions for your run</p>

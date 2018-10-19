@@ -46,8 +46,9 @@ header {
 
   p {
     color: #333;
-    font-size: 0.65rem;
-    white-space: wrap;
+    font-size: 1rem;
+    max-width: 90vw;
+    text-align: center;
   }
 
 }
