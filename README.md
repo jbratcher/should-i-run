@@ -1,15 +1,17 @@
-# AQapi
+# ShouldIRun
 
-React Fetch driven API reporting of Air Quality
+Get a rating weather conditions for outdoor activities
 
-Using React, Fetch and airvisual API to get air quality data for cities around the world.
+Using React, Fetch, Google Maps and AirVisual API to get weather data by location or input.
 
-[Demo](https://jbratcher.github.io/AQapi)
+[Demo](https://jbratcher.github.io/ShouldIRun)
 
 
 ### Version
 
 0.0.3
+
+Bootstrapped with create-react-app
 
 
 ## Install Dependencies
@@ -29,6 +31,7 @@ npm start
 * Utilizing React, Fetch, Promises, stateful components
 * Real-world air quality data from locations around the globe
 * Dynamic fetch of weather stations by location
+* Weather display of high-impact properties
 
 ## Future Features:
 
