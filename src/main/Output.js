@@ -15,6 +15,7 @@ class Output extends Component {
       airQuality,
       currentLat,
       currentLng,
+      currentTemp,
       data,
       dataRequested,
       mainPollutant
@@ -23,7 +24,7 @@ class Output extends Component {
     return(
 
       <section id="dataOutput">
-      
+
         {dataRequested ?
 
         <section id="scoreData">
@@ -41,39 +42,18 @@ class Output extends Component {
               ({mainPollutant})
             </span>
           </span>
-          <span id="temperature">56 &deg;</span>
-        
+          <span id="temperature">{currentTemp} &deg;C</span>
+          <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
+
         </section>
-        
+
         :null
-        }
-
-
-        {dataRequested ?
-        
-        <section id="locationData">
-          <p>
-            <b>City:</b>
-            <span id="cityOutput">{data.city}</span>
-          </p>
-          <p>
-            <b>Selected State:</b>
-            <span id="stateOutput">{data.state}</span>
-          </p>
-          <p>
-            <b>Selected Country:</b>
-            <span id="countryOutput">{data.country}</span>
-          </p>
-        </section>
-
-        : null
         }
 
         <MapContainer
 
           currentLat={currentLat}
           currentLng={currentLng}
-          style={{position: "absolute", top: 0, left: 0}}
 
         />
 

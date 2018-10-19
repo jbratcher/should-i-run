@@ -18,6 +18,7 @@ class Main extends Component {
       countryList,
       currentLat,
       currentLng,
+      currentTemp,
       data,
       dataRequested,
       handleCityInput,
@@ -61,6 +62,7 @@ class Main extends Component {
           airQuality={airQuality}
           currentLat={currentLat}
           currentLng={currentLng}
+          currentTemp={currentTemp}
           data={data}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}

@@ -17,7 +17,7 @@ header {
   background: #dedede;
   display: flex;
   flex-direction: column;
-  max-width: 100vw; }
+  width: 100vw; }
 
 #mainHeader {
   border-bottom: 0.125rem solid #333;
@@ -116,12 +116,12 @@ main form {
   flex-direction: column; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
-  #scoreData i, #scoreData span {
+  #scoreData i {
+    font-size: 5rem;
     margin: 1rem 0; }
   #scoreData span {
+    margin: 0.5rem 0;
     font-weight: bold; }
-  #scoreData i {
-    font-size: 5rem; }
 
 .wi-day-sunny {
   animation: rotation 24s infinite linear; }
@@ -132,15 +132,17 @@ main form {
   to {
     transform: rotate(359deg); } }
 
+#locationData p {
+  margin: 0.5rem 0; }
+
 #map {
   display: flex;
   position: relative;
   min-width: 200px;
   min-height: 200px;
-  width: 100vw;
+  width: 100%;
   height: auto;
-  max-width: 100vw;
-  max-height: 100vh; }
+  max-width: 100vw; }
 
 footer {
   background: #333;
@@ -181,8 +183,12 @@ footer {
     #formSection h2, #formSection #getLocation, #formSection form {
       opacity: 0;
       z-index: -1; }
+    #formSection #map {
+      width: 91.5vw; }
     #formSection:target {
       width: 60vw; }
+      #formSection:target #scoreData, #formSection:target #map {
+        width: 10vw; }
       #formSection:target h2, #formSection:target #getLocation, #formSection:target form {
         opacity: 1;
         z-index: 1;
@@ -190,10 +196,10 @@ footer {
       #formSection:target #mainNav a {
         right: 0.5rem;
         transition: 0.5s all 0.3s ease; }
-    #formSection:target #openNav {
-      display: none; }
-    #formSection:target #closeNav {
-      display: block; }
+      #formSection:target #openNav {
+        display: none; }
+      #formSection:target #closeNav {
+        display: block; }
   #openNav {
     display: block; }
   #closeNav {

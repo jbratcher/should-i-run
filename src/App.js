@@ -21,6 +21,7 @@ class App extends Component {
       countryList: [],
       currentLat: 38.2527,
       currentLng: -85.7585,
+      currentTemp: 0,
       data: {},
       dataRequested: false,
       mainPollutant: "",
@@ -82,9 +83,11 @@ class App extends Component {
         countryInput: parsedJSON.data.country,
         airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus,
+        currentTemp: parsedJSON.data.current.weather.tp,
         currentLat: parsedJSON.data.location.coordinates[1],
         currentLng: parsedJSON.data.location.coordinates[0]
       });
+      console.log(parsedJSON);
     })
     .catch(err => console.log('Error: ', err));
 
@@ -180,6 +183,7 @@ class App extends Component {
       countryList,
       currentLat,
       currentLng,
+      currentTemp,
       data,
       dataRequested,
       mainPollutant,
@@ -202,6 +206,7 @@ class App extends Component {
           countryList={countryList}
           currentLat={currentLat}
           currentLng={currentLng}
+          currentTemp={currentTemp}
           data={data}
           dataRequested={dataRequested}
           getData={this.getData}
