@@ -16,6 +16,7 @@ class Main extends Component {
       airQuality,
       cityList,
       countryList,
+      currentCloudCover,
       currentLat,
       currentLng,
       currentTemp,
@@ -60,6 +61,7 @@ class Main extends Component {
 
         <Output
           airQuality={airQuality}
+          currentCloudCover={currentCloudCover}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}

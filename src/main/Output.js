@@ -13,6 +13,7 @@ class Output extends Component {
 
     const {
       airQuality,
+      currentCloudCover,
       currentLat,
       currentLng,
       currentTemp,
@@ -21,8 +22,6 @@ class Output extends Component {
       mainPollutant
     } = this.props;
     
-    const convertedTemp = parseInt((currentTemp * (9/5)) + 32, 10);
-
     return(
 
       <section id="dataOutput">
@@ -30,7 +29,13 @@ class Output extends Component {
         {dataRequested ?
 
         <section id="scoreData">
-          <i id="weatherIcon" className="wi wi-day-sunny"></i>
+          <i id="weatherIcon" className={ 
+            currentCloudCover === "partly-cloudy-day" 
+              ? "wi wi-day-sunny-overcast"
+              : "wi wi-day-sunny"
+            }
+          ></i>
+          <span id="cloudCover">{currentCloudCover}</span>
           <span id="weatherText">Sunny</span>
           <span id="weatherScore">
             86
@@ -44,7 +49,7 @@ class Output extends Component {
               ({mainPollutant})
             </span>
           </span>
-          <span id="temperature">{convertedTemp} &deg;F</span>
+          <span id="temperature">{currentTemp} &deg;F</span>
           <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
 
         </section>

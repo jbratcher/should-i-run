@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './header';
 import Main from './main';
 import Footer from './Footer';
-import { apiKey } from './secrets';
+import { apiKey, darkskyApiKey } from './secrets';
 import './css/App.css';
 import './css/weather-icons.min.css';
 
@@ -19,6 +19,7 @@ class App extends Component {
       cityList: [],
       countryInput: "",
       countryList: [],
+      currentCloudCover: null,
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentTemp: 0,
@@ -29,6 +30,26 @@ class App extends Component {
       stateList: []
     };
 
+  }
+  
+  // Fetch Dark Sky current weather conditions
+  
+  fetchCurrentConditions = () => {
+    
+    const {currentLat, currentLng} = this.state;
+    
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
+      .then(res => res.json())
+      .then(parsedJSON => {
+        console.log(parsedJSON);
+        this.setState({
+          currentTemp: parsedJSON.currently.apparentTemperature,
+          currentCloudCover: parsedJSON.currently.icon
+        });
+        console.log(this.state.currentTemp);
+      })
+      .catch(error => console.log(error));
+    
   }
 
   // Populate city, state and county select lists
@@ -83,10 +104,10 @@ class App extends Component {
         countryInput: parsedJSON.data.country,
         airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus,
-        currentTemp: parsedJSON.data.current.weather.tp,
         currentLat: parsedJSON.data.location.coordinates[1],
         currentLng: parsedJSON.data.location.coordinates[0]
       });
+      this.fetchCurrentConditions();
       console.log(parsedJSON);
     })
     .catch(err => console.log('Error: ', err));
@@ -164,6 +185,8 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchCountryList();
+    
+    this.fetchCurrentConditions();
 
     this.setState({
       countryInput: this.state.countryList[70]
@@ -181,6 +204,7 @@ class App extends Component {
       cityList,
       countryInput,
       countryList,
+      currentCloudCover,
       currentLat,
       currentLng,
       currentTemp,
@@ -208,6 +232,7 @@ class App extends Component {
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
+          currentCloudCover={currentCloudCover}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
