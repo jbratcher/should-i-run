@@ -19,7 +19,7 @@ class App extends Component {
       cityList: [],
       countryInput: "",
       countryList: [],
-      currentCloudCover: null,
+      currentWeatherIcon: null,
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentTemp: 0,
@@ -27,10 +27,30 @@ class App extends Component {
       dataRequested: false,
       mainPollutant: "",
       stateInput: "",
-      stateList: []
+      stateList: [],
+      weatherScore: null
     };
 
   }
+  
+  // Calculate weather score 
+  
+  calculateWeatherScore = () => {
+    let medianTemp = 55;
+      let currentTemp = this.state.currentTemp;
+      let stdDev = 5;
+      let scale = 10;
+      let score = null;
+        
+      score = scale - ((Math.abs(medianTemp - currentTemp)) / stdDev);
+      
+      console.log(score);
+      
+      this.setState({
+        weatherScore: score
+      });
+      
+    }
   
   // Fetch Dark Sky current weather conditions
   
@@ -44,9 +64,13 @@ class App extends Component {
         console.log(parsedJSON);
         this.setState({
           currentTemp: parsedJSON.currently.apparentTemperature,
-          currentCloudCover: parsedJSON.currently.icon
+          currentWeatherIcon: parsedJSON.currently.icon,
+          currentWeatherSummary: parsedJSON.currently.summary,
+          currentLat: parsedJSON.latitude,
+          currentLng: parsedJSON.longitude
         });
-        console.log(this.state.currentTemp);
+        this.calculateWeatherScore();
+        console.log(this.state);
       })
       .catch(error => console.log(error));
     
@@ -143,6 +167,7 @@ class App extends Component {
 
     this.fetchStd();
   }
+  
 
   getLocationData = e => {
     e.preventDefault();
@@ -152,6 +177,7 @@ class App extends Component {
     });
 
     this.fetchLocation();
+    
   }
 
   handleCityInput = e => {
@@ -186,14 +212,10 @@ class App extends Component {
 
     this.fetchCountryList();
     
-    this.fetchCurrentConditions();
-
     this.setState({
       countryInput: this.state.countryList[70]
     });
-
-    console.log(this.state.countryInput);
-
+    
   }
 
   render() {
@@ -204,7 +226,8 @@ class App extends Component {
       cityList,
       countryInput,
       countryList,
-      currentCloudCover,
+      currentWeatherIcon,
+      currentWeatherSummary,
       currentLat,
       currentLng,
       currentTemp,
@@ -212,7 +235,8 @@ class App extends Component {
       dataRequested,
       mainPollutant,
       stateInput,
-      stateList
+      stateList,
+      weatherScore
     } = this.state;
 
     return (
@@ -232,7 +256,8 @@ class App extends Component {
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
-          currentCloudCover={currentCloudCover}
+          currentWeatherIcon={currentWeatherIcon}
+          currentWeatherSummary={currentWeatherSummary}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
@@ -246,6 +271,7 @@ class App extends Component {
           mainPollutant={mainPollutant}
           stateInput={stateInput}
           stateList={stateList}
+          weatherScore={weatherScore}
 
         />
 

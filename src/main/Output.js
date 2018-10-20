@@ -6,21 +6,36 @@ class Output extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      weatherScore: null
+    };
   }
+  
+  
 
   render() {
 
     const {
       airQuality,
-      currentCloudCover,
+      currentWeatherIcon,
+      currentWeatherSummary,
       currentLat,
       currentLng,
       currentTemp,
       data,
       dataRequested,
-      mainPollutant
+      mainPollutant,
+      weatherScore
     } = this.props;
+    
+    const getWeatherIcon = (currentWeatherIcon === "partly-cloudy-day")
+      ? "wi wi-day-sunny-overcast"
+      : currentWeatherIcon === "wind"
+      ? "wi wi-day-windy"
+      : currentWeatherIcon ==='sunny'
+      ? "wi wi-day-sunny"
+      : null;
+      
     
     return(
 
@@ -29,16 +44,11 @@ class Output extends Component {
         {dataRequested ?
 
         <section id="scoreData">
-          <i id="weatherIcon" className={ 
-            currentCloudCover === "partly-cloudy-day" 
-              ? "wi wi-day-sunny-overcast"
-              : "wi wi-day-sunny"
-            }
+          <i id="weatherIcon" className={getWeatherIcon}
           ></i>
-          <span id="cloudCover">{currentCloudCover}</span>
-          <span id="weatherText">Sunny</span>
+          <span id="weatherSummary">{currentWeatherSummary}</span>
           <span id="weatherScore">
-            86
+            {weatherScore}
             <span id="weatherScoreRating">
               (Good)
             </span>
@@ -49,7 +59,7 @@ class Output extends Component {
               ({mainPollutant})
             </span>
           </span>
-          <span id="temperature">{currentTemp} &deg;F</span>
+          <span id="temperature">{parseInt(currentTemp, 10)} &deg;F</span>
           <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
 
         </section>

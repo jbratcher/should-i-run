@@ -16,7 +16,8 @@ class Main extends Component {
       airQuality,
       cityList,
       countryList,
-      currentCloudCover,
+      currentWeatherIcon,
+      currentWeatherSummary,
       currentLat,
       currentLng,
       currentTemp,
@@ -26,8 +27,10 @@ class Main extends Component {
       handleCountryInput,
       handleStateInput,
       getData,
+      getLocationData,
       mainPollutant,
-      stateList
+      stateList,
+      weatherScore
     } = this.props;
 
     return(
@@ -43,7 +46,7 @@ class Main extends Component {
 
           <h2>Enter a Location</h2>
 
-          <button id="getLocation" onClick={this.props.getLocationData}>Use my location</button>
+          <button id="getLocation" onClick={getLocationData}>Use my location</button>
 
           <Form
 
@@ -61,18 +64,20 @@ class Main extends Component {
 
         <Output
           airQuality={airQuality}
-          currentCloudCover={currentCloudCover}
+          currentWeatherIcon={currentWeatherIcon}
+          currentWeatherSummary={currentWeatherSummary}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
           data={data}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}
+          weatherScore={weatherScore}
         />
 
       </main>
 
-    )
+    );
 
   }
 

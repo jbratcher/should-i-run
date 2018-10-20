@@ -133,6 +133,17 @@ main form {
   to {
     transform: rotate(359deg); } }
 
+.wi-day-sunny-overcast {
+  animation: pulse 24s infinite linear; }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }
+
 #locationData p {
   margin: 0.5rem 0; }
 

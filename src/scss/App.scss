@@ -178,6 +178,22 @@ main form {
 		}
 }
 
+.wi-day-sunny-overcast {
+  animation: pulse 24s infinite linear
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 #airQuality {
 
 }
