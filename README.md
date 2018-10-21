@@ -2,17 +2,25 @@
 
 Get a rating weather conditions for outdoor activities
 
-Using React, Fetch, Google Maps and AirVisual API to get weather data by location or input.
-
 [Demo](https://jbratcher.github.io/ShouldIRun)
 
+##### Tech used
 
-### Version
+react
+fetch
+ES6 JavaScript
 
-0.0.3
+##### APIs used
+
+* Dark Sky Weather API
+* AirVisual Air Quality API
+* Google Maps JavaScript API
 
 Bootstrapped with create-react-app
 
+### Version
+
+0.0.4
 
 ## Install Dependencies
 
@@ -28,10 +36,9 @@ npm start
 
 ## Features:
 
-* Utilizing React, Fetch, Promises, stateful components
-* Real-world air quality data from locations around the globe
-* Dynamic fetch of weather stations by location
-* Weather display of high-impact properties
+* Real time weather conditions
+* Dynamic rating of weather conditions for outdoor acivities
+* Map your location or input a city location
 
 ## Future Features:
 
@@ -43,13 +50,21 @@ npm start
 
 #### Change Log
 
+###### 0.0.4
+
+* Map of user location by IP (AirVisual API get closest station coordinates, Google Maps JavaScript API to get map)
+* Weather icons
+* Temp, Humidity, UV index, Air Quality display
+* Weather score rating calculation and display
+* Color coded weather rating
+
 ###### 0.0.3
 
-* Feature: Dynamic fetch and display of weather stations by location
+* Dynamic fetch and display of weather stations by location
 
 ###### 0.0.2
 
-* Added feature: display city, state, and air quality data on submit of form
+* Display city, state, and air quality data on submit of form
 * Cleared inputs on submit
 
 
