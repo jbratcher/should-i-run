@@ -7,7 +7,7 @@ class Output extends Component {
     super(props);
 
     this.state = {
-      weatherScore: null
+      weatherScore: 0
     };
   }
   
@@ -32,9 +32,13 @@ class Output extends Component {
       ? "wi wi-day-sunny-overcast"
       : currentWeatherIcon === "wind"
       ? "wi wi-day-windy"
-      : currentWeatherIcon ==='sunny'
+      : currentWeatherIcon ==="sunny" || currentWeatherIcon === "clear-day"
       ? "wi wi-day-sunny"
+      : currentWeatherIcon === "clear-night"
+      ? "wi wi-night-clear"
       : null;
+      
+    let covertedScore = weatherScore.toFixed(1);
       
     
     return(
@@ -48,7 +52,7 @@ class Output extends Component {
           ></i>
           <span id="weatherSummary">{currentWeatherSummary}</span>
           <span id="weatherScore">
-            {weatherScore}
+            {covertedScore}
             <span id="weatherScoreRating">
               (Good)
             </span>

@@ -28,7 +28,7 @@ class App extends Component {
       mainPollutant: "",
       stateInput: "",
       stateList: [],
-      weatherScore: null
+      weatherScore: 0
     };
 
   }
