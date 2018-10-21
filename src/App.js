@@ -242,6 +242,7 @@ class App extends Component {
       mainPollutant,
       stateInput,
       stateList,
+      currentUV,
       weatherScore
     } = this.state;
 
@@ -267,6 +268,7 @@ class App extends Component {
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
+          currentUV={currentUV}
           data={data}
           dataRequested={dataRequested}
           getData={this.getData}

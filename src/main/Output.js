@@ -10,8 +10,8 @@ class Output extends Component {
       weatherScore: 0
     };
   }
-  
-  
+
+
 
   render() {
 
@@ -25,10 +25,11 @@ class Output extends Component {
       data,
       dataRequested,
       mainPollutant,
+      currentUV,
       weatherScore
     } = this.props;
-    
-    const getWeatherIcon = (currentWeatherIcon === "partly-cloudy-day")
+
+    const getWeatherIcon = currentWeatherIcon === "partly-cloudy-day"
       ? "wi wi-day-sunny-overcast"
       : currentWeatherIcon === "wind"
       ? "wi wi-day-windy"
@@ -37,10 +38,33 @@ class Output extends Component {
       : currentWeatherIcon === "clear-night"
       ? "wi wi-night-clear"
       : null;
-      
+
     let covertedScore = weatherScore.toFixed(1);
-      
-    
+
+    const weatherScoreRating =
+
+      covertedScore >= 7.5
+        ? 'Good'
+        : covertedScore >= 5 && covertedScore < 7.5
+        ? 'Average'
+        : covertedScore >= 2.5 && covertedScore < 5
+        ? 'Poor'
+        : covertedScore >= 0 && covertedScore < 2.5
+        ? 'Miserable'
+        : null;
+
+    const getWeatherScoreRatingColor =
+
+      weatherScoreRating === 'Good'
+        ? 'green'
+        : weatherScoreRating === 'Average'
+        ? 'blue'
+        : weatherScoreRating === 'Poor'
+        ? 'yellow'
+        : weatherScoreRating === 'Miserable'
+        ? 'red'
+        : null;
+
     return(
 
       <section id="dataOutput">
@@ -51,12 +75,13 @@ class Output extends Component {
           <i id="weatherIcon" className={getWeatherIcon}
           ></i>
           <span id="weatherSummary">{currentWeatherSummary}</span>
-          <span id="weatherScore">
+          <span id="weatherScore" className={getWeatherScoreRatingColor}>
             {covertedScore}
             <span id="weatherScoreRating">
-              (Good)
+              ({weatherScoreRating})
             </span>
           </span>
+          <span id="currentUV">UV Index: {currentUV}</span>
           <span id="airQuality">
             {airQuality}
             <span id="mainParticulate">

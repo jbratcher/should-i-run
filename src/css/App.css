@@ -168,6 +168,18 @@ footer {
     color: #eee;
     text-decoration: none; }
 
+.green {
+  color: green; }
+
+.blue {
+  color: blue; }
+
+.yellow {
+  color: yellow; }
+
+.red {
+  color: red; }
+
 @media (min-width: 768px) {
   nav {
     margin-right: 1rem; }

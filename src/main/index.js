@@ -30,6 +30,7 @@ class Main extends Component {
       getLocationData,
       mainPollutant,
       stateList,
+      currentUV,
       weatherScore
     } = this.props;
 
@@ -72,6 +73,7 @@ class Main extends Component {
           data={data}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}
+          currentUV={currentUV}
           weatherScore={weatherScore}
         />
 
