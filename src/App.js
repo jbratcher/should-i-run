@@ -23,6 +23,7 @@ class App extends Component {
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentTemp: 0,
+      currentUV: 0,
       data: {},
       dataRequested: false,
       mainPollutant: "",
@@ -32,48 +33,53 @@ class App extends Component {
     };
 
   }
-  
-  // Calculate weather score 
-  
+
+  // Calculate weather score
+
   calculateWeatherScore = () => {
+
+    const { currentTemp, currentUV } = this.state;
     let medianTemp = 55;
-      let currentTemp = this.state.currentTemp;
-      let stdDev = 5;
-      let scale = 10;
-      let score = null;
-        
-      score = scale - ((Math.abs(medianTemp - currentTemp)) / stdDev);
-      
-      console.log(score);
-      
-      this.setState({
-        weatherScore: score
-      });
-      
-    }
-  
+    let stdDevTemp = 5;
+    let tempScale = 10;
+    let uvScale = 10
+
+    let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
+    let uvScore = Math.abs(uvScale - currentUV);
+
+    let totalScore = (tempScore + uvScore) / 2;
+
+    console.log(totalScore);
+    console.log(uvScore)
+    console.log(tempScore)
+
+    this.setState({
+      weatherScore: totalScore
+    });
+
+  }
+
   // Fetch Dark Sky current weather conditions
-  
+
   fetchCurrentConditions = () => {
-    
+
     const {currentLat, currentLng} = this.state;
-    
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
+
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
         console.log(parsedJSON);
         this.setState({
           currentTemp: parsedJSON.currently.apparentTemperature,
+          currentUV: parsedJSON.currently.uvIndex,
           currentWeatherIcon: parsedJSON.currently.icon,
           currentWeatherSummary: parsedJSON.currently.summary,
-          currentLat: parsedJSON.latitude,
-          currentLng: parsedJSON.longitude
         });
         this.calculateWeatherScore();
         console.log(this.state);
       })
       .catch(error => console.log(error));
-    
+
   }
 
   // Populate city, state and county select lists
@@ -167,7 +173,7 @@ class App extends Component {
 
     this.fetchStd();
   }
-  
+
 
   getLocationData = e => {
     e.preventDefault();
@@ -177,7 +183,7 @@ class App extends Component {
     });
 
     this.fetchLocation();
-    
+
   }
 
   handleCityInput = e => {
@@ -211,11 +217,11 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchCountryList();
-    
+
     this.setState({
       countryInput: this.state.countryList[70]
     });
-    
+
   }
 
   render() {
@@ -243,10 +249,10 @@ class App extends Component {
 
       <div className="App">
 
-        <Header 
-        
+        <Header
+
           getLocationData={this.getLocationData}
-        
+
         />
 
         <Main
