@@ -22,6 +22,7 @@ class App extends Component {
       currentWeatherIcon: null,
       currentLat: 38.2527,
       currentLng: -85.7585,
+      currentHumidity: 0,
       currentTemp: 0,
       currentUV: 0,
       data: {},
@@ -38,16 +39,19 @@ class App extends Component {
 
   calculateWeatherScore = () => {
 
-    const { currentTemp, currentUV } = this.state;
+    const { currentHumidity, currentTemp, currentUV } = this.state;
+
+    // let humidityScale = 1;
     let medianTemp = 55;
     let stdDevTemp = 5;
     let tempScale = 10;
     let uvScale = 10
 
+    let humidityScore = currentHumidity * 10;
     let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
     let uvScore = Math.abs(uvScale - currentUV);
 
-    let totalScore = (tempScore + uvScore) / 2;
+    let totalScore = (tempScore + uvScore + humidityScore) / 3;
 
     console.log(totalScore);
     console.log(uvScore)
@@ -70,6 +74,7 @@ class App extends Component {
       .then(parsedJSON => {
         console.log(parsedJSON);
         this.setState({
+          currentHumidity: parsedJSON.currently.humidity,
           currentTemp: parsedJSON.currently.apparentTemperature,
           currentUV: parsedJSON.currently.uvIndex,
           currentWeatherIcon: parsedJSON.currently.icon,
@@ -232,17 +237,18 @@ class App extends Component {
       cityList,
       countryInput,
       countryList,
-      currentWeatherIcon,
-      currentWeatherSummary,
+      currentHumidity,
       currentLat,
       currentLng,
       currentTemp,
+      currentUV,
+      currentWeatherIcon,
+      currentWeatherSummary,
       data,
       dataRequested,
       mainPollutant,
       stateInput,
       stateList,
-      currentUV,
       weatherScore
     } = this.state;
 
@@ -263,12 +269,13 @@ class App extends Component {
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
-          currentWeatherIcon={currentWeatherIcon}
-          currentWeatherSummary={currentWeatherSummary}
+          currentHumidity={currentHumidity}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
           currentUV={currentUV}
+          currentWeatherIcon={currentWeatherIcon}
+          currentWeatherSummary={currentWeatherSummary}
           data={data}
           dataRequested={dataRequested}
           getData={this.getData}

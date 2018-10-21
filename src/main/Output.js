@@ -17,15 +17,16 @@ class Output extends Component {
 
     const {
       airQuality,
-      currentWeatherIcon,
-      currentWeatherSummary,
+      currentHumidity,
       currentLat,
       currentLng,
       currentTemp,
+      currentUV,
+      currentWeatherIcon,
+      currentWeatherSummary,
       data,
       dataRequested,
       mainPollutant,
-      currentUV,
       weatherScore
     } = this.props;
 
@@ -40,6 +41,8 @@ class Output extends Component {
       : null;
 
     let covertedScore = weatherScore.toFixed(1);
+
+    let convertedHumidity = currentHumidity * 100;
 
     const weatherScoreRating =
 
@@ -82,6 +85,7 @@ class Output extends Component {
             </span>
           </span>
           <span id="currentUV">UV Index: {currentUV}</span>
+          <span id="currentHumidity">{convertedHumidity}% hum.</span>
           <span id="airQuality">
             {airQuality}
             <span id="mainParticulate">

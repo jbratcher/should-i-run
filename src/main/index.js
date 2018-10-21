@@ -16,11 +16,13 @@ class Main extends Component {
       airQuality,
       cityList,
       countryList,
-      currentWeatherIcon,
-      currentWeatherSummary,
+      currentHumidity,
       currentLat,
       currentLng,
       currentTemp,
+      currentUV,
+      currentWeatherIcon,
+      currentWeatherSummary,
       data,
       dataRequested,
       handleCityInput,
@@ -30,7 +32,6 @@ class Main extends Component {
       getLocationData,
       mainPollutant,
       stateList,
-      currentUV,
       weatherScore
     } = this.props;
 
@@ -65,15 +66,16 @@ class Main extends Component {
 
         <Output
           airQuality={airQuality}
-          currentWeatherIcon={currentWeatherIcon}
-          currentWeatherSummary={currentWeatherSummary}
+          currentHumidity={currentHumidity}
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
+          currentUV={currentUV}
+          currentWeatherIcon={currentWeatherIcon}
+          currentWeatherSummary={currentWeatherSummary}
           data={data}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}
-          currentUV={currentUV}
           weatherScore={weatherScore}
         />
 
