@@ -1,6 +1,6 @@
 # ShouldIRun
 
-Get a rating weather conditions for outdoor activities
+Get a rating on weather conditions for outdoor activities
 
 [Demo](https://jbratcher.github.io/ShouldIRun)
 
