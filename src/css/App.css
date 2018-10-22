@@ -101,16 +101,31 @@ main form {
     padding: 0.5rem;
     width: 100%; }
 
-#dataOutput {
+#outputContainer {
   background: #fefefe;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
   width: 100%; }
-  #dataOutput p {
+  #outputContainer p {
     margin: 1rem 0; }
-    #dataOutput p b {
+    #outputContainer p b {
       margin-right: 0.5rem; }
+
+#dataOutput {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 0.5rem; }
+
+#clothesData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  #clothesData ul {
+    list-style-type: none; }
+    #clothesData ul li {
+      margin: 1rem 0; }
 
 #scoreData {
   display: flex;
@@ -119,7 +134,7 @@ main form {
     margin-left: 1rem; }
   #scoreData i {
     font-size: 5rem;
-    margin: 1rem 0; }
+    margin: 0.5rem 0; }
   #scoreData span {
     margin: 0.5rem 0;
     font-weight: bold; }
