@@ -45,17 +45,13 @@ class App extends Component {
     let medianTemp = 55;
     let stdDevTemp = 5;
     let tempScale = 10;
-    let uvScale = 10
+    let uvScale = 10;
 
     let humidityScore = currentHumidity * 10;
     let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
     let uvScore = Math.abs(uvScale - currentUV);
 
     let totalScore = (tempScore + uvScore + humidityScore) / 3;
-
-    console.log(totalScore);
-    console.log(uvScore)
-    console.log(tempScore)
 
     this.setState({
       weatherScore: totalScore
@@ -143,7 +139,6 @@ class App extends Component {
         currentLng: parsedJSON.data.location.coordinates[0]
       });
       this.fetchCurrentConditions();
-      console.log(parsedJSON);
     })
     .catch(err => console.log('Error: ', err));
 
