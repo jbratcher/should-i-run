@@ -19,7 +19,7 @@ class App extends Component {
       cityList: [],
       countryInput: "",
       countryList: [],
-      currentWeatherIcon: null,
+      currentWeatherIcon: "",
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentHumidity: 0,
