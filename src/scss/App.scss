@@ -217,10 +217,6 @@ main form {
   }
 }
 
-#airQuality {
-
-}
-
 #locationData {
 
   p {
@@ -318,6 +314,30 @@ footer {
     h2, #getLocation, form {
       opacity: 0;
       z-index: -1;
+    }
+    
+    #clothesData {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.5rem;
+    
+      ul {
+        list-style-type: none;
+    
+        li {
+          margin: 0.5rem 0;
+        }
+    
+      }
+
+    }
+    
+    #clothing li img {
+      width: 25%;
+      height: auto;
+      min-width: 50px;
+      max-width: 15vw;
     }
 
     #map {

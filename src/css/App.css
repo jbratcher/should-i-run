@@ -228,6 +228,20 @@ footer {
     #formSection h2, #formSection #getLocation, #formSection form {
       opacity: 0;
       z-index: -1; }
+    #formSection #clothesData {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.5rem; }
+      #formSection #clothesData ul {
+        list-style-type: none; }
+        #formSection #clothesData ul li {
+          margin: 0.5rem 0; }
+    #formSection #clothing li img {
+      width: 25%;
+      height: auto;
+      min-width: 50px;
+      max-width: 15vw; }
     #formSection #map {
       width: 91.5vw; }
     #formSection:target {
