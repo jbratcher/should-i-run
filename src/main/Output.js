@@ -1,98 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
-
-const clothing = {
-        cold: {
-          head: {
-              text: "Beanie",
-              imgsrc: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1533851320-everlane-1533851313.jpg"
-          },
-          torso: {
-            text: "Long-sleeve athletic shirt",
-            imgsrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcsbsQ30ATXDyrEMidoBC4PGQvzDGqlXyehQLyjqHiTJOzxFu"
-          },
-          legs: {
-            text: "Insulated track pants" ,
-            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw6af579dc/images/hi-res/24102_BLK.jpg?sw=300&sh=300&sfrm=png"
-          },
-          feet: {
-            text: "Insulated socks",
-            imgsrc: "https://www.verywellfit.com/thmb/Wox_s1mhrS095uy3_IQCjjcK1Pw=/1001x1001/filters:no_upscale()/darntoughvermontsocks-56a83a963df78cf7729d2a76.jpg"
-          }
-        },
-        chilly: {
-          head: {
-            text: "Baseball cap",
-            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/81vqBRNIuKL._UX522_.jpg"
-          },
-          torso: {
-            text: "Short-sleeve athletic t-shirt",
-            imgsrc: "https://alltopguide.com/wp-content/uploads/2016/08/B01AQR03N0.jpg"
-          },
-          legs: {
-            text: "Athletic shorts",
-            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
-          },
-          feet: {
-            text: "Insulated socks",
-            imgsrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcsbsQ30ATXDyrEMidoBC4PGQvzDGqlXyehQLyjqHiTJOzxFu"
-          }
-        },
-        neutral: {
-          head: {
-            text: "",
-            imgsrc: "https://via.placeholder.com/1x1"
-          },
-          torso: {
-            text: "Short-sleeve athletic t-shirt",
-            imgsrc: "https://alltopguide.com/wp-content/uploads/2016/08/B01AQR03N0.jpg"
-          },
-          legs: {
-            text: "Athletic shorts",
-            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
-          },
-          feet: {
-            text: "Padded socks",
-            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
-          }
-        },
-        warm: {
-          head: {
-            text: "",
-            imgsrc: "https://via.placeholder.com/1x1"
-          },
-          torso: {
-            text: "Tank top",
-            imgsrc: "http://d3d71ba2asa5oz.cloudfront.net/62001083/images/jn305-royalwhite.jpg"
-          },
-          legs: {
-            text: "Athletic shorts",
-            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
-          },
-          feet: {
-            text: "Padded socks",
-            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
-          }
-        },
-        hot: {
-          head: {
-            text: "",
-            imgsrc: "https://via.placeholder.com/1x1"
-          },
-          torso: {
-            text: "Tank top",
-            imgsrc: "http://d3d71ba2asa5oz.cloudfront.net/62001083/images/jn305-royalwhite.jpg"
-          },
-          legs: {
-            text: "Athletic shorts",
-            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
-          },
-          feet: {
-            text: "Padded socks",
-            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
-          }
-        }
-      };
+import clothing from '../data/Clothing';
 
 class Output extends Component {
 
@@ -160,6 +68,16 @@ class Output extends Component {
     } = this.props;
 
     const { currentTempIndex } = this.state;
+    
+    // Number converstions
+    
+    let temperatureScale = `F` || `C` || `K`;
+    
+    let formattedTemperature = `${parseInt(currentTemp, 10)} ° ${temperatureScale}`;
+    
+    let covertedScore = weatherScore.toFixed(1);
+
+    let convertedHumidity = currentHumidity * 100;
 
     const getWeatherIcon =
 
@@ -172,10 +90,6 @@ class Output extends Component {
         : currentWeatherIcon === "clear-night"
         ? "wi wi-night-clear"
         : null;
-
-    let covertedScore = weatherScore.toFixed(1);
-
-    let convertedHumidity = currentHumidity * 100;
 
     const weatherScoreRating =
 
@@ -213,7 +127,6 @@ class Output extends Component {
 
             <section id="clothesData">
               <ul id="clothing">
-                {console.log(currentTempIndex)}
                 <li id="head">
                   <img alt="head" src={clothing[currentTempIndex].head.imgsrc} />
                   <p>{clothing[currentTempIndex].head.text}</p>
@@ -256,7 +169,7 @@ class Output extends Component {
                 ({mainPollutant})
               </span>
             </span>
-            <span id="temperature">{parseInt(currentTemp, 10)} &deg;F</span>
+            <span id="temperature">{formattedTemperature}</span>
             <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
 
           </section>
