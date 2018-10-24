@@ -156,16 +156,16 @@ main form {
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem;
-  
+
   ul {
     list-style-type: none;
-    
+
     li {
       margin: 1rem 0;
     }
-    
+
   }
-  
+
 }
 
 #scoreData {
@@ -273,6 +273,13 @@ footer {
 
 .red {
   color: red;
+}
+
+#clothing li img {
+  width: 50%;
+  height: auto;
+  min-width: 50px;
+  max-width: 30vw;
 }
 
 @media (min-width: 768px) {

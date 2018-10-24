@@ -3,34 +3,94 @@ import MapContainer from './MapContainer';
 
 const clothing = {
         cold: {
-          head: "Beanie",
-          torso: "Long-sleeve athletic shirt",
-          legs: "Insulated track pants",
-          feet: "Insulated socks"
+          head: {
+              text: "Beanie",
+              imgsrc: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1533851320-everlane-1533851313.jpg"
+          },
+          torso: {
+            text: "Long-sleeve athletic shirt",
+            imgsrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcsbsQ30ATXDyrEMidoBC4PGQvzDGqlXyehQLyjqHiTJOzxFu"
+          },
+          legs: {
+            text: "Insulated track pants" ,
+            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw6af579dc/images/hi-res/24102_BLK.jpg?sw=300&sh=300&sfrm=png"
+          },
+          feet: {
+            text: "Insulated socks",
+            imgsrc: "https://www.verywellfit.com/thmb/Wox_s1mhrS095uy3_IQCjjcK1Pw=/1001x1001/filters:no_upscale()/darntoughvermontsocks-56a83a963df78cf7729d2a76.jpg"
+          }
         },
         chilly: {
-          head: "Baseball cap",
-          torso: "Short-sleeve athletic t-shirt",
-          legs: "Athletic shorts",
-          feet: "Insulated socks"
+          head: {
+            text: "Baseball cap",
+            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/81vqBRNIuKL._UX522_.jpg"
+          },
+          torso: {
+            text: "Short-sleeve athletic t-shirt",
+            imgsrc: "https://alltopguide.com/wp-content/uploads/2016/08/B01AQR03N0.jpg"
+          },
+          legs: {
+            text: "Athletic shorts",
+            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+          },
+          feet: {
+            text: "Insulated socks",
+            imgsrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcsbsQ30ATXDyrEMidoBC4PGQvzDGqlXyehQLyjqHiTJOzxFu"
+          }
         },
         neutral: {
-          head: "",
-          torso: "Short-sleeve athletic t-shirt",
-          legs: "Athletic Shorts",
-          feet: "Padded socks"
+          head: {
+            text: "",
+            imgsrc: "https://via.placeholder.com/1x1"
+          },
+          torso: {
+            text: "Short-sleeve athletic t-shirt",
+            imgsrc: "https://alltopguide.com/wp-content/uploads/2016/08/B01AQR03N0.jpg"
+          },
+          legs: {
+            text: "Athletic shorts",
+            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+          },
+          feet: {
+            text: "Padded socks",
+            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
+          }
         },
         warm: {
-          head: "",
-          torso: "Tank top",
-          legs: "Athletic Shorts",
-          feet: "Padded socks"
+          head: {
+            text: "",
+            imgsrc: "https://via.placeholder.com/1x1"
+          },
+          torso: {
+            text: "Tank top",
+            imgsrc: "http://d3d71ba2asa5oz.cloudfront.net/62001083/images/jn305-royalwhite.jpg"
+          },
+          legs: {
+            text: "Athletic shorts",
+            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+          },
+          feet: {
+            text: "Padded socks",
+            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
+          }
         },
         hot: {
-          head: "",
-          torso: "Tank top",
-          legs: "Athletic Shorts",
-          feet: "Padded socks"
+          head: {
+            text: "",
+            imgsrc: "https://via.placeholder.com/1x1"
+          },
+          torso: {
+            text: "Tank top",
+            imgsrc: "http://d3d71ba2asa5oz.cloudfront.net/62001083/images/jn305-royalwhite.jpg"
+          },
+          legs: {
+            text: "Athletic shorts",
+            imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+          },
+          feet: {
+            text: "Padded socks",
+            imgsrc: "https://images-na.ssl-images-amazon.com/images/I/91KJNYH1pVL._SX355_.jpg"
+          }
         }
       };
 
@@ -41,14 +101,14 @@ class Output extends Component {
 
     this.state = {
       currentTempIndex: ""
-      
+
     };
   }
-  
+
   getCurrentTempIndex = () => {
-    
+
     const { currentTemp } = this.props;
-    
+
     currentTemp >= 85
       ? this.setState({
           currentTempIndex: "hot"
@@ -73,11 +133,11 @@ class Output extends Component {
           currentTempIndex: ""
         });
   }
-  
+
   componentDidMount() {
-    
+
     this.getCurrentTempIndex();
-    
+
   }
 
 
@@ -98,11 +158,11 @@ class Output extends Component {
       mainPollutant,
       weatherScore
     } = this.props;
-    
+
     const { currentTempIndex } = this.state;
-    
-    const getWeatherIcon = 
-    
+
+    const getWeatherIcon =
+
       currentWeatherIcon === "partly-cloudy-day"
         ? "wi wi-day-sunny-overcast"
         : currentWeatherIcon === "wind"
@@ -140,44 +200,44 @@ class Output extends Component {
         : weatherScoreRating === 'Miserable'
         ? 'red'
         : null;
-        
-      
-         
+
+
+
     return(
 
       <section id="outputContainer">
-      
+
         <section id="dataOutput">
-      
-          {dataRequested ? 
-          
+
+          {dataRequested ?
+
             <section id="clothesData">
               <ul id="clothing">
                 {console.log(currentTempIndex)}
                 <li id="head">
-                  <img alt="head" src="https://via.placeholder.com/100x50" />                
-                  <p>{clothing[currentTempIndex].head}</p>
+                  <img alt="head" src={clothing[currentTempIndex].head.imgsrc} />
+                  <p>{clothing[currentTempIndex].head.text}</p>
                 </li>
                 <li id="torso">
-                  <img alt="torso" src="https://via.placeholder.com/100x50" />
-                  <p>{clothing[currentTempIndex].torso}</p>
+                  <img alt="torso" src={clothing[currentTempIndex].torso.imgsrc} />
+                  <p>{clothing[currentTempIndex].torso.text}</p>
                 </li>
                 <li id="legs">
-                  <img alt="legs" src="https://via.placeholder.com/100x50" />
-                  <p>{clothing[currentTempIndex].legs}</p>
+                  <img alt="legs" src={clothing[currentTempIndex].legs.imgsrc} />
+                  <p>{clothing[currentTempIndex].legs.text}</p>
                 </li>
                 <li id="feet">
-                  <img alt="feet" src="https://via.placeholder.com/100x50" />
-                  <p>{clothing[currentTempIndex].feet}</p>
+                  <img alt="feet" src={clothing[currentTempIndex].feet.imgsrc} />
+                  <p>{clothing[currentTempIndex].feet.text}</p>
                 </li>
               </ul>
             </section>
-          
+
           :null
           }
-  
+
           {dataRequested ?
-  
+
           <section id="scoreData">
             <i id="weatherIcon" className={getWeatherIcon}
             ></i>
@@ -198,12 +258,12 @@ class Output extends Component {
             </span>
             <span id="temperature">{parseInt(currentTemp, 10)} &deg;F</span>
             <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
-  
+
           </section>
-  
+
           :null
           }
-          
+
         </section>
 
         <MapContainer

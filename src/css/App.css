@@ -115,13 +115,13 @@ main form {
 #dataOutput {
   display: flex;
   width: 100%;
-  justify-content: space-around;
-  padding: 0.5rem; }
+  justify-content: space-around; }
 
 #clothesData {
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  padding: 0.5rem; }
   #clothesData ul {
     list-style-type: none; }
     #clothesData ul li {
@@ -194,6 +194,12 @@ footer {
 
 .red {
   color: red; }
+
+#clothing li img {
+  width: 50%;
+  height: auto;
+  min-width: 50px;
+  max-width: 30vw; }
 
 @media (min-width: 768px) {
   nav {
