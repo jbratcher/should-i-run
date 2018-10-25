@@ -64,21 +64,32 @@ class Output extends Component {
       data,
       dataRequested,
       mainPollutant,
+      userTempScale,
       weatherScore
     } = this.props;
 
     const { currentTempIndex } = this.state;
-    
+
     // Number converstions
-    
-    let temperatureScale = `F` || `C` || `K`;
-    
-    let formattedTemperature = `${parseInt(currentTemp, 10)} ° ${temperatureScale}`;
-    
+
+    let formattedTemperatureScale = userTempScale.toUpperCase();
+
+    let convertedTemperature =
+
+      userTempScale === "f"
+        ? currentTemp
+        : userTempScale === "c"
+        ? ((currentTemp - 32) * (5/9))
+        : userTempScale === "k"
+        ? ((currentTemp - 32) *(5/9) + 273.15)
+        : ""
+
+    let formattedTemperature = `${parseInt(convertedTemperature, 10)} ° ${formattedTemperatureScale}`;
+
     let covertedScore = weatherScore.toFixed(1);
 
     let convertedHumidity = currentHumidity * 100;
-    
+
     // calculate scores
 
     const getWeatherIcon =

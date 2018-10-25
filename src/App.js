@@ -30,6 +30,7 @@ class App extends Component {
       mainPollutant: "",
       stateInput: "",
       stateList: [],
+      userTempScale: "",
       weatherScore: 0
     };
 
@@ -192,15 +193,6 @@ class App extends Component {
     });
   }
 
-  handleStateInput = e => {
-    this.setState({
-      stateInput: e.target.value,
-      cityInput: "",
-      cityList: []
-    });
-    this.fetchCityList(e);
-  }
-
   handleCountryInput = e => {
     this.setState({
       countryInput: e.target.value,
@@ -211,6 +203,23 @@ class App extends Component {
     });
     this.fetchStateList(e);
   }
+
+  handleStateInput = e => {
+    this.setState({
+      stateInput: e.target.value,
+      cityInput: "",
+      cityList: []
+    });
+    this.fetchCityList(e);
+  }
+
+  handleScaleChange = (e) => {
+    this.setState({
+      userTempScale: e.target.value
+    });
+  }
+
+
 
   // Populate selects with country, state, and city data
 
@@ -244,6 +253,7 @@ class App extends Component {
       mainPollutant,
       stateInput,
       stateList,
+      userTempScale,
       weatherScore
     } = this.state;
 
@@ -277,10 +287,12 @@ class App extends Component {
           getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
           handleStateInput={this.handleStateInput}
+          handleScaleChange={this.handleScaleChange}
           handleCountryInput={this.handleCountryInput}
           mainPollutant={mainPollutant}
           stateInput={stateInput}
           stateList={stateList}
+          userTempScale={userTempScale}
           weatherScore={weatherScore}
 
         />

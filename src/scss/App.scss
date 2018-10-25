@@ -16,6 +16,31 @@ body {
   height: 100%;
 }
 
+// Base styling
+
+select, input {
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+// Classes
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+
+    label {
+      margin: 0.5rem 0 0;
+    }
+
+}
+
+// Header
+
 header {
   background: #dedede;
   display: flex;
@@ -56,7 +81,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
   text-align: center;
   transition: all 0.5s ease-in-out;
 }
@@ -73,25 +98,28 @@ button {
 #formSection {
   background: #eee;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%;
 }
 
-main h2 {
-  padding: 1rem 0;
-  position: relative;
+#formInputSection {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#userOptions {
+  dipslay: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
 }
 
 #mainNav a {
   color: #333;
-  position: absolute;
   text-decoration: none;
-  top: 0.5rem;
-  right: 35%;
 }
 
 #openNav {
@@ -102,27 +130,28 @@ main h2 {
   display: none;
 }
 
-main form {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  position: relative;
+#formInput {
+  padding: 0 1rem;
 
-  label {
-    font-size: 1.25rem;
+  #getLocation {
+    margin-bottom: 1.5rem;
   }
 
-  input {
-    border-radius: 1rem;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
+  #formLabel {
+    white-space: pre;
+    font-weigth: 900;
   }
 
-  select {
-    border-radius: 1rem;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    width: 100%;
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    position: relative;
+
+    label {
+      font-size: 1.25rem;
+    }
+
   }
 
 }
@@ -162,7 +191,7 @@ main form {
 
     li {
       margin: 0.5rem 0 1rem;
-      
+
       img {
         width: 30%;
         height: auto;
@@ -185,23 +214,23 @@ main form {
   }
 
   i {
-    font-size: 5rem;
-    margin: 0.5rem 0;
+    font-size: 3rem;
+    margin: 1.5rem 0;
   }
 
   span {
     margin: 0.5rem 0;
     font-weight: bold;
   }
-  
+
   p {
     display: flex;
     flex-direction: column;
-    
+
     span {
       margin: 0.125rem 0;
     }
-    
+
   }
 
 }
@@ -322,7 +351,7 @@ footer {
     width: 7.5vw;
     height: 100%;
 
-    h2, #getLocation, form {
+    #formLabel, #getLocation, form, #userOptions {
       opacity: 0;
       z-index: -1;
     }
@@ -334,7 +363,7 @@ footer {
         width: 10vw;
       }
 
-      h2, #getLocation, form {
+      #formLabel, #getLocation, form, #userOptions {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease;

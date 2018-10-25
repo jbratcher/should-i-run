@@ -13,6 +13,20 @@ body {
   display: flex;
   height: 100%; }
 
+select, input {
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: 100%; }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0; }
+  .column label {
+    margin: 0.5rem 0 0; }
+
 header {
   background: #dedede;
   display: flex;
@@ -45,7 +59,7 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
   text-align: center;
   transition: all 0.5s ease-in-out; }
 
@@ -60,23 +74,25 @@ button {
 #formSection {
   background: #eee;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   position: relative;
   transition: all 0.5s ease-in-out;
   width: 100%; }
 
-main h2 {
-  padding: 1rem 0;
-  position: relative; }
+#formInputSection {
+  display: flex;
+  width: 100%;
+  justify-content: space-around; }
+
+#userOptions {
+  dipslay: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem; }
 
 #mainNav a {
   color: #333;
-  position: absolute;
-  text-decoration: none;
-  top: 0.5rem;
-  right: 35%; }
+  text-decoration: none; }
 
 #openNav {
   display: none; }
@@ -84,22 +100,20 @@ main h2 {
 #closeNav {
   display: none; }
 
-main form {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  position: relative; }
-  main form label {
-    font-size: 1.25rem; }
-  main form input {
-    border-radius: 1rem;
-    margin: 0.5rem 0;
-    padding: 0.5rem; }
-  main form select {
-    border-radius: 1rem;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    width: 100%; }
+#formInput {
+  padding: 0 1rem; }
+  #formInput #getLocation {
+    margin-bottom: 1.5rem; }
+  #formInput #formLabel {
+    white-space: pre;
+    font-weigth: 900; }
+  #formInput form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    position: relative; }
+    #formInput form label {
+      font-size: 1.25rem; }
 
 #outputContainer {
   background: #fefefe;
@@ -138,8 +152,8 @@ main form {
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
   #scoreData i {
-    font-size: 5rem;
-    margin: 0.5rem 0; }
+    font-size: 3rem;
+    margin: 1.5rem 0; }
   #scoreData span {
     margin: 0.5rem 0;
     font-weight: bold; }
@@ -229,14 +243,14 @@ footer {
     transition: all 0.5s ease-in-out;
     width: 7.5vw;
     height: 100%; }
-    #formSection h2, #formSection #getLocation, #formSection form {
+    #formSection #formLabel, #formSection #getLocation, #formSection form, #formSection #userOptions {
       opacity: 0;
       z-index: -1; }
     #formSection:target {
       width: 60vw; }
       #formSection:target #scoreData, #formSection:target #map {
         width: 10vw; }
-      #formSection:target h2, #formSection:target #getLocation, #formSection:target form {
+      #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease; }
