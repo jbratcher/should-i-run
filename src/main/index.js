@@ -46,10 +46,6 @@ class Main extends Component {
             <a href="#top"><i className="fas fa-angle-double-left fa-2x" id="closeNav"></i></a>
           </section>
 
-          <h2>Enter a Location</h2>
-
-          <button id="getLocation" onClick={getLocationData}>Use my location</button>
-
           <Form
 
             cityList={cityList}
@@ -58,6 +54,7 @@ class Main extends Component {
             handleCountryInput={handleCountryInput}
             handleStateInput={handleStateInput}
             getData={getData}
+            getLocationData={getLocationData}
             stateList={stateList}
 
           />
