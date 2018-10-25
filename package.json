@@ -21,7 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build-css": "node-sass-chokidar ./src/scss/App.scss -o ./src/css/",
-    "watch-css": "npm run build-css && node-sass-chokidar ./src/scss/App.scss -o ./src/css/ --watch --recursive",
+    "watch-css": "npm run build-css | node-sass-chokidar ./src/scss/App.scss -o ./src/css/ --watch --recursive",
     "dev": "npm run start | npm run watch-css"
   }
 }
