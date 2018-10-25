@@ -78,6 +78,8 @@ class Output extends Component {
     let covertedScore = weatherScore.toFixed(1);
 
     let convertedHumidity = currentHumidity * 100;
+    
+    // calculate scores
 
     const getWeatherIcon =
 
@@ -89,6 +91,8 @@ class Output extends Component {
         ? "wi wi-day-sunny"
         : currentWeatherIcon === "clear-night"
         ? "wi wi-night-clear"
+        : currentWeatherIcon === "partly-cloudy-night"
+        ? "wi wi-night-partly-cloudy"
         : null;
 
     const weatherScoreRating =
@@ -114,8 +118,6 @@ class Output extends Component {
         : weatherScoreRating === 'Miserable'
         ? 'red'
         : null;
-
-
 
     return(
 
@@ -170,7 +172,11 @@ class Output extends Component {
               </span>
             </span>
             <span id="temperature">{formattedTemperature}</span>
-            <span id="cityOutput">{data.city}, {data.state}, {data.country}</span>
+            <p id="locationOutput">
+              <span id="cityOutput">{data.city}</span>
+              <span id="stateOutput">{data.state}</span>
+              <span id="countryOutput">{data.country}</span>
+            </p>
 
           </section>
 

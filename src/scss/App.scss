@@ -135,7 +135,7 @@ main form {
   width: 100%;
 
   p {
-    margin: 1rem 0;
+    margin: 0;
 
     b {
       margin-right: 0.5rem;
@@ -161,7 +161,15 @@ main form {
     list-style-type: none;
 
     li {
-      margin: 1rem 0;
+      margin: 0.5rem 0 1rem;
+      
+      img {
+        width: 30%;
+        height: auto;
+        min-width: 50px;
+        max-width: 30vw;
+      }
+
     }
 
   }
@@ -184,6 +192,16 @@ main form {
   span {
     margin: 0.5rem 0;
     font-weight: bold;
+  }
+  
+  p {
+    display: flex;
+    flex-direction: column;
+    
+    span {
+      margin: 0.125rem 0;
+    }
+    
   }
 
 }
@@ -269,13 +287,6 @@ footer {
 
 .red {
   color: red;
-}
-
-#clothing li img {
-  width: 50%;
-  height: auto;
-  min-width: 50px;
-  max-width: 30vw;
 }
 
 @media (min-width: 768px) {
