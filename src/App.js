@@ -30,7 +30,8 @@ class App extends Component {
       mainPollutant: "",
       stateInput: "",
       stateList: [],
-      userTempScale: "",
+      userTempScale: "f",
+      userWarmthPreference: "neutral",
       weatherScore: 0
     };
 
@@ -219,6 +220,12 @@ class App extends Component {
     });
   }
 
+  handleWarmthPrefChange = (e) => {
+    this.setState({
+      userWarmthPreference: e.target.value
+    });
+  }
+
 
 
   // Populate selects with country, state, and city data
@@ -254,6 +261,7 @@ class App extends Component {
       stateInput,
       stateList,
       userTempScale,
+      userWarmthPreference,
       weatherScore
     } = this.state;
 
@@ -286,13 +294,15 @@ class App extends Component {
           getData={this.getData}
           getLocationData={this.getLocationData}
           handleCityInput={this.handleCityInput}
+          handleCountryInput={this.handleCountryInput}
           handleStateInput={this.handleStateInput}
           handleScaleChange={this.handleScaleChange}
-          handleCountryInput={this.handleCountryInput}
+          handleWarmthPrefChange={this.handleWarmthPrefChange}
           mainPollutant={mainPollutant}
           stateInput={stateInput}
           stateList={stateList}
           userTempScale={userTempScale}
+          userWarmthPreference={userWarmthPreference}
           weatherScore={weatherScore}
 
         />

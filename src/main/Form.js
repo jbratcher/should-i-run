@@ -18,9 +18,11 @@ class Form extends Component {
       countryList,
       handleCountryInput,
       handleScaleChange,
+      handleWarmthPrefChange,
       getLocationData,
       stateList,
-      userTempScale
+      userTempScale,
+      userWarmthPreference
     } = this.props;
 
     return(
@@ -45,7 +47,7 @@ class Form extends Component {
 
             <label>Warmth Preference</label>
 
-            <select id="userWarmthPreference">
+            <select id="userWarmthPreference" value={userWarmthPreference} onChange={handleWarmthPrefChange}>
               <option value="maxCool">Mucher Cooler</option>
               <option value="modCool">A Little Cooler</option>
               <option value="neutral">Neutral</option>

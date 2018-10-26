@@ -40,6 +40,37 @@ class Output extends Component {
       : this.setState({
           currentTempIndex: ""
         });
+      
+  }
+
+  getUserWarmthPrefernce = () => {
+
+    const { userWarmthPreference } = this.props;
+
+    userWarmthPreference === "maxCool"
+      ? this.setState({
+        currentTempIndex: "hot"
+      })
+      : userWarmthPreference === "modCool"
+      ? this.setState({
+        currentTempIndex: "warm"
+      })
+      : userWarmthPreference === "neutral"
+      ? this.setState({
+        currentTempIndex: "neutral"
+      })
+      ? userWarmthPreference === "modWarmth"
+      : this.setState({
+        currentTempIndex: "chilly"
+      })
+      ? userWarmthPreference === "maxWarmth"
+      : this.setState({
+        currentTempIndex: "cold"
+      })
+      : this.setState({
+        currentTempIndex: this.state.currentTempIndex
+      })
+
   }
 
   componentDidMount() {
@@ -88,7 +119,7 @@ class Output extends Component {
 
     let covertedScore = weatherScore.toFixed(1);
 
-    let convertedHumidity = currentHumidity * 100;
+    let convertedHumidity = parseInt((currentHumidity * 100), 10);
 
     // calculate scores
 
@@ -167,22 +198,30 @@ class Output extends Component {
           <section id="scoreData">
             <i id="weatherIcon" className={getWeatherIcon}
             ></i>
-            <span id="weatherSummary">{currentWeatherSummary}</span>
+            <span id="weatherSummary">
+              {currentWeatherSummary}
+            </span>
             <span id="weatherScore" className={getWeatherScoreRatingColor}>
               {covertedScore}
               <span id="weatherScoreRating">
                 ({weatherScoreRating})
               </span>
             </span>
-            <span id="currentUV">UV Index: {currentUV}</span>
-            <span id="currentHumidity">{convertedHumidity}% hum.</span>
+            <span id="currentUV">
+              UV Index: {currentUV}
+            </span>
+            <span id="currentHumidity">
+              {convertedHumidity}% hum.
+            </span>
             <span id="airQuality">
               {airQuality}
               <span id="mainParticulate">
                 ({mainPollutant})
               </span>
             </span>
-            <span id="temperature">{formattedTemperature}</span>
+            <span id="temperature">
+              {formattedTemperature}
+            </span>
             <p id="locationOutput">
               <span id="cityOutput">{data.city}</span>
               <span id="stateOutput">{data.state}</span>

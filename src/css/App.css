@@ -106,14 +106,14 @@ button {
     margin-bottom: 1.5rem; }
   #formInput #formLabel {
     white-space: pre;
-    font-weigth: 900; }
+    font-weight: 900;
+    margin: 0; }
   #formInput form {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0;
-    position: relative; }
+    padding: 0 0 1rem; }
     #formInput form label {
-      font-size: 1.25rem; }
+      font-size: 1rem; }
 
 #outputContainer {
   background: #fefefe;

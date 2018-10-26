@@ -29,11 +29,13 @@ class Main extends Component {
       handleCountryInput,
       handleStateInput,
       handleScaleChange,
+      handleWarmthPrefChange,
       getData,
       getLocationData,
       mainPollutant,
       stateList,
       userTempScale,
+      userWarmthPreference,
       weatherScore
     } = this.props;
 
@@ -56,9 +58,12 @@ class Main extends Component {
             handleCountryInput={handleCountryInput}
             handleScaleChange={handleScaleChange}
             handleStateInput={handleStateInput}
+            handleWarmthPrefChange={handleWarmthPrefChange}
             getData={getData}
             getLocationData={getLocationData}
             stateList={stateList}
+            userTempScale={userTempScale}
+            userWarmthPreference={userWarmthPreference}
 
           />
 
@@ -77,6 +82,7 @@ class Main extends Component {
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}
           userTempScale={userTempScale}
+          userWarmthPreference={userWarmthPreference}
           weatherScore={weatherScore}
         />
 
