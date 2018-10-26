@@ -46,6 +46,7 @@ class Output extends Component {
   getUserWarmthPrefernce = () => {
 
     const { userWarmthPreference } = this.props;
+    
 
     userWarmthPreference === "maxCool"
       ? this.setState({
@@ -59,23 +60,26 @@ class Output extends Component {
       ? this.setState({
         currentTempIndex: "neutral"
       })
-      ? userWarmthPreference === "modWarmth"
-      : this.setState({
+      : userWarmthPreference === "modWarmth"
+      ? this.setState({
         currentTempIndex: "chilly"
       })
-      ? userWarmthPreference === "maxWarmth"
-      : this.setState({
+      : userWarmthPreference === "maxWarmth"
+      ? this.setStae({
         currentTempIndex: "cold"
       })
       : this.setState({
         currentTempIndex: this.state.currentTempIndex
-      })
+      });
+
 
   }
 
   componentDidMount() {
 
     this.getCurrentTempIndex();
+    
+    this.getUserWarmthPrefernce();
 
   }
 
@@ -113,7 +117,7 @@ class Output extends Component {
         ? ((currentTemp - 32) * (5/9))
         : userTempScale === "k"
         ? ((currentTemp - 32) *(5/9) + 273.15)
-        : ""
+        : "";
 
     let formattedTemperature = `${parseInt(convertedTemperature, 10)} ° ${formattedTemperatureScale}`;
 
