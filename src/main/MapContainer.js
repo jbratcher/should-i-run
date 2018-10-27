@@ -36,7 +36,9 @@ export class MapContainer extends Component {
     const { currentLat, currentLng } = this.props;
 
     const style = {
-
+      position: 'absolute',
+      top: '5vh',
+      left: 0
     }
 
     return (

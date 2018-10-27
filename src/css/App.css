@@ -85,7 +85,7 @@ button {
   justify-content: space-around; }
 
 #userOptions {
-  dipslay: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 1rem; }
@@ -134,8 +134,7 @@ button {
 #clothesData {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0.5rem; }
+  justify-content: center; }
   #clothesData ul {
     list-style-type: none; }
     #clothesData ul li {
@@ -148,7 +147,9 @@ button {
 
 #scoreData {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center;
+  padding-right: 2rem; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
   #scoreData i {
@@ -201,8 +202,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2rem;
-  position: relative; }
+  padding: 2rem; }
   footer span a {
     color: #eee;
     text-decoration: none; }
@@ -238,11 +238,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     position: relative;
     transition: all 0.5s ease-in-out;
-    width: 7.5vw;
-    height: 100%; }
+    width: 7.5vw; }
     #formSection #formLabel, #formSection #getLocation, #formSection form, #formSection #userOptions {
       opacity: 0;
       z-index: -1; }
@@ -289,4 +287,5 @@ footer {
     width: 91.5vw;
     height: 100%; }
   footer {
-    top: 15vh; } }
+    position: relative;
+    top: 7.5vh; } }

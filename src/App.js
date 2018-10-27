@@ -27,6 +27,7 @@ class App extends Component {
       currentUV: 0,
       data: {},
       dataRequested: false,
+      isRaining: false,
       mainPollutant: "",
       stateInput: "",
       stateList: [],
@@ -52,8 +53,9 @@ class App extends Component {
     let humidityScore = currentHumidity * 10;
     let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
     let uvScore = Math.abs(uvScale - currentUV);
+    let rainScore = this.state.isRaining ? 0.7 : 1;
 
-    let totalScore = (tempScore + uvScore + humidityScore) / 3;
+    let totalScore = ((tempScore + uvScore + humidityScore) * rainScore) / 3;
 
     this.setState({
       weatherScore: totalScore
