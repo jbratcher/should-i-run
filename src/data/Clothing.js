@@ -38,7 +38,7 @@ const Clothing = {
     neutral: {
       head: {
         text: "",
-        imgsrc: "https://via.placeholder.com/1x1"
+        imgsrc: ""
       },
       torso: {
         text: "Short-sleeve athletic t-shirt",
@@ -56,7 +56,7 @@ const Clothing = {
     warm: {
       head: {
         text: "",
-        imgsrc: "https://via.placeholder.com/1x1"
+        imgsrc: ""
       },
       torso: {
         text: "Tank top",
@@ -74,7 +74,7 @@ const Clothing = {
     hot: {
       head: {
         text: "",
-        imgsrc: "https://via.placeholder.com/1x1"
+        imgsrc: ""
       },
       torso: {
         text: "Tank top",

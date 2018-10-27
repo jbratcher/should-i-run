@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
-import clothing from '../data/Clothing';
+import Clothing from '../data/Clothing';
 
 class Output extends Component {
 
@@ -139,6 +139,8 @@ class Output extends Component {
         ? "wi wi-night-clear"
         : currentWeatherIcon === "partly-cloudy-night"
         ? "wi wi-night-partly-cloudy"
+        : currentWeatherIcon === "cloudy"
+        ? "wi wi-cloudy"
         : null;
 
     const weatherScoreRating =
@@ -176,20 +178,24 @@ class Output extends Component {
             <section id="clothesData">
               <ul id="clothing">
                 <li id="head">
-                  <img alt="head" src={clothing[currentTempIndex].head.imgsrc} />
-                  <p>{clothing[currentTempIndex].head.text}</p>
+                  {Clothing[currentTempIndex].head.text ? 
+                  <React.fragement>
+                    <img alt="head" src={Clothing[currentTempIndex].head.imgsrc} />
+                    <p>{Clothing[currentTempIndex].head.text}</p>
+                  </React.fragement>
+                  : null }
                 </li>
                 <li id="torso">
-                  <img alt="torso" src={clothing[currentTempIndex].torso.imgsrc} />
-                  <p>{clothing[currentTempIndex].torso.text}</p>
+                  <img alt="torso" src={Clothing[currentTempIndex].torso.imgsrc} />
+                  <p>{Clothing[currentTempIndex].torso.text}</p>
                 </li>
                 <li id="legs">
-                  <img alt="legs" src={clothing[currentTempIndex].legs.imgsrc} />
-                  <p>{clothing[currentTempIndex].legs.text}</p>
+                  <img alt="legs" src={Clothing[currentTempIndex].legs.imgsrc} />
+                  <p>{Clothing[currentTempIndex].legs.text}</p>
                 </li>
                 <li id="feet">
-                  <img alt="feet" src={clothing[currentTempIndex].feet.imgsrc} />
-                  <p>{clothing[currentTempIndex].feet.text}</p>
+                  <img alt="feet" src={Clothing[currentTempIndex].feet.imgsrc} />
+                  <p>{Clothing[currentTempIndex].feet.text}</p>
                 </li>
               </ul>
             </section>

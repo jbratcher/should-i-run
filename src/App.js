@@ -19,7 +19,7 @@ class App extends Component {
       cityList: [],
       countryInput: "",
       countryList: [],
-      currentWeatherIcon: "",
+      currentWeatherIcon: "wi wi-sunny-day",
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentHumidity: 0,
