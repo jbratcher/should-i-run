@@ -18,6 +18,8 @@ class ClothesData extends Component {
 
             <section id="clothesData">
             
+              <p>What to wear</p>
+            
               <ul id="clothing">
                 <li id="head">
                   {Clothing[currentTempIndex].head.text ? 

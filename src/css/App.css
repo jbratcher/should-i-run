@@ -134,7 +134,13 @@ button {
 #clothesData {
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  align-items: center;
+  justify-content: space-around;
+  height: 100%; }
+  #clothesData > p {
+    font-weight: 900;
+    font-size: 1.25rem;
+    margin: 1rem 0; }
   #clothesData ul {
     list-style-type: none; }
     #clothesData ul li {
@@ -277,15 +283,17 @@ footer {
       max-height: 100%;
       width: 50%; }
       #clothesData ul li {
-        margin: 0;
+        margin: 1rem 0;
         width: 100%; }
         #clothesData ul li img {
           width: 25%;
           height: auto; }
+        #clothesData ul li p {
+          margin: 0.5rem 0; }
   #map {
     top: 15vh;
     width: 91.5vw;
     height: 100%; }
   footer {
     position: relative;
-    top: 7.5vh; } }
+    top: 15vh; } }
