@@ -337,6 +337,10 @@ footer {
   position: relative;
   bottom: 0;
   width: 100vw;
+  
+  span:first-of-type {
+    font-size: 0.75rem;
+  }
 
   span a {
     color: #eee;

@@ -233,6 +233,8 @@ footer {
   position: relative;
   bottom: 0;
   width: 100vw; }
+  footer span:first-of-type {
+    font-size: 0.75rem; }
   footer span a {
     color: #eee;
     text-decoration: none; }

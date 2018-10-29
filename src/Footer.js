@@ -14,7 +14,7 @@ class Footer extends Component {
     
       <footer>
 
-        <span>Louisville, KY</span>
+        <span><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></span>
         <span>2018</span>
         <span><a href="#top">Github</a></span>
 
