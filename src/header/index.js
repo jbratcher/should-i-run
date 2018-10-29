@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -18,9 +19,23 @@ class Header extends Component {
       <header>
         <section id ="mainHeader">
           <section id="brand">
-            <h1>ShouldIRun?</h1>
+            <Link to="/">
+              <h1>ShouldIRun?</h1>
+            </Link>
           </section>
           <button id="getDataButton" onClick={getLocationData}>Should I?</button>
+
+          <nav id="mainHeaderNav">
+            <ul>
+              <li>
+                <Link to="/scheduler">Scheduler</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link> 
+              </li>
+            </ul>
+          </nav>
+
         </section>
         <section id="subheader">
           <p>Get a rating on current weather conditions for your run</p>

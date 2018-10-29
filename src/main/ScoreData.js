@@ -51,7 +51,7 @@ class ScoreData extends Component {
         ? "wi wi-day-sunny-overcast"
         : currentWeatherIcon === "wind"
         ? "wi wi-day-windy"
-        : currentWeatherIcon ==="sunny" || currentWeatherIcon === "clear-day"
+        : currentWeatherIcon === "sunny" || currentWeatherIcon === "clear-day"
         ? "wi wi-day-sunny"
         : currentWeatherIcon === "clear-night"
         ? "wi wi-night-clear"
@@ -59,8 +59,16 @@ class ScoreData extends Component {
         ? "wi wi-night-partly-cloudy"
         : currentWeatherIcon === "cloudy"
         ? "wi wi-cloudy"
+        : currentWeatherIcon === "rain"
+        ? "wi wi-rain"
+        : currentWeatherIcon === "snow"
+        ? "wi wi-snow"
+        : currentWeatherIcon === "sleet"
+        ? "wi wi-sleet"
+        : currentWeatherIcon === "fog"
+        ? "wi wi-fog"
         : null;
-
+        
     const weatherScoreRating =
 
       covertedScore >= 7.5
