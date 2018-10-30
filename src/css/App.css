@@ -210,12 +210,13 @@ button {
   max-width: 100vw; }
 
 #about, #scheduler {
-  min-height: 70vh; }
+  min-height: 70vh;
+  text-align: center; }
   #about h2, #about p, #about a, #scheduler h2, #scheduler p, #scheduler a {
     padding: 1rem 0; }
 
 #scheduler p {
-  width: 80vw; }
+  margin: 0 2rem; }
 
 #scheduler label {
   margin: 2rem 0 0; }

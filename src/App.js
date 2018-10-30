@@ -23,11 +23,11 @@ class App extends Component {
       currentLat: 38.2527,
       currentLng: -85.7585,
       currentHumidity: 0,
+      currentPrecipProbability: 0,
       currentTemp: 0,
       currentUV: 0,
       data: {},
       dataRequested: false,
-      isRaining: false,
       mainPollutant: "",
       stateInput: "",
       stateList: [],
@@ -42,25 +42,26 @@ class App extends Component {
 
   calculateWeatherScore = () => {
 
-    const { currentHumidity, currentTemp, currentUV } = this.state;
+    const { currentHumidity, currentPrecipProbability, currentTemp, currentUV } = this.state;
 
     // let humidityScale = 1;
     let medianTemp = 55;
     let stdDevTemp = 5;
     let tempScale = 10;
     let uvScale = 10;
+    let rainScale = 10;
 
     let humidityScore = currentHumidity * 10;
     let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
-    let uvScore = Math.abs(uvScale - currentUV);
-    let rainScore = this.state.isRaining ? 0.7 : 1;
+    let uvScore = (uvScale - currentUV);
+    let rainScore = (rainScale - (currentPrecipProbability * 10));
 
-    let totalScore = ((tempScore + uvScore + humidityScore) * rainScore) / 3;
+    let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
     this.setState({
       weatherScore: totalScore
     });
-
+    
   }
 
   // Fetch Dark Sky current weather conditions
@@ -75,6 +76,7 @@ class App extends Component {
         console.log(parsedJSON);
         this.setState({
           currentHumidity: parsedJSON.currently.humidity,
+          currentPrecipProbability: parsedJSON.currently.precipProbability,
           currentTemp: parsedJSON.currently.apparentTemperature,
           currentUV: parsedJSON.currently.uvIndex,
           currentWeatherIcon: parsedJSON.currently.icon,

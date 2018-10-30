@@ -304,6 +304,7 @@ button {
 
 #about, #scheduler {
   min-height: 70vh;
+  text-align: center;
 
   h2, p, a {
     padding: 1rem 0;
@@ -314,7 +315,7 @@ button {
 #scheduler {
   
   p {
-    width: 80vw;
+    margin: 0 2rem;
   }
   
   label {

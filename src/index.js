@@ -10,8 +10,14 @@ ReactDOM.render(
                 <Router basename={process.env.PUBLIC_URL}> 
                     <Switch>
                         <Route exact path="/" component={ App }/> 
-                        <Route exact path="/scheduler" component={ Scheduler }/>
-                        <Route exact path="/about" component={ About }/>
+                        <Route
+                            exact path='/scheduler'
+                            render={(props) => <Scheduler {...props} />}
+                        />
+                        <Route
+                            exact path='/about'
+                            render={(props) => <About {...props} />}
+                        />
                     </Switch>
                 </Router>, 
                 document.getElementById('root'));
