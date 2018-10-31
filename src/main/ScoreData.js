@@ -123,11 +123,17 @@ class ScoreData extends Component {
         <span id="temperature">
           {formattedTemperature}
         </span>
+        
+        {data ?
+        
         <p id="locationOutput">
           <span id="cityOutput">{data.city}</span>
           <span id="stateOutput">{data.state}</span>
           <span id="countryOutput">{data.country}</span>
         </p>
+        
+        : null
+        }
 
       </section>
 

@@ -19,7 +19,7 @@ class Scheduler extends Component {
       "Thursday",
       "Friday",
       "Saturday"
-    ]
+    ];
 
     this.state = {
       bestDay: null,
@@ -36,7 +36,55 @@ class Scheduler extends Component {
       forcastWeatherScores: [],
       isDaySelected: false,
       selectedDayName: this.days[this.d.getDay()],
+      selectedDayAQ: 0,
+      selectedDayHumidity: 0,
+      selectedDayIsRaning: 0,
+      selectedDayTempHigh: 0,
+      selectedDayTempLow: 0,
+      selectedDayAveragedTemp: 0,
+      selectedDayUV: 0,
+      selctedDayWeatherIcon: "wi wi-na",
+      selectedDayWeatherSummary: "",
+      selectedDayData: false,
+      selectedDayMainPollutant: "",
+      selectedDayUserTempScale: "f",
+      selectedDayWeatherScore: 0
+                
     };
+  }
+  
+    // Calculate weather score
+
+  calculateWeatherScore = () => {
+
+    const { selectedDayHumidity, 
+      selectedDayPrecipProbability, 
+      selectedDayTempHigh, 
+      selectedDayTempLow, 
+      selectedDayUV } = this.state;
+
+    // let humidityScale = 1;
+    let medianTemp = 55;
+    let stdDevTemp = 5;
+    let tempScale = 10;
+    let uvScale = 10;
+    let rainScale = 10;
+
+    let humidityScore = selectedDayHumidity * 10;
+    let averagedTemp = (selectedDayTempHigh + selectedDayTempLow) / 2;
+    let tempScore = tempScale - ((Math.abs(medianTemp - averagedTemp)) / stdDevTemp);
+    let uvScore = (uvScale - selectedDayUV);
+    let rainScore = (rainScale - (selectedDayPrecipProbability * 10));
+
+    let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
+
+    this.setState({
+      selectedDayWeatherScore: totalScore,
+      selectedDayAveragedTemp: averagedTemp
+    });
+    
+    console.log(this.state);
+    
   }
 
   findBestDayToRun = () => {
@@ -153,17 +201,15 @@ class Scheduler extends Component {
       .then(parsedJSON => {
         console.log(parsedJSON);
         this.setState({
-          forcastHumidity: parsedJSON.daily.data[0].humidity,
-          forcastPrecipProbability: parsedJSON.daily.data[0].precipProbability,
-          forcastTempHigh: parsedJSON.daily.data[0].apparentTemperatureHigh,
-          forcastTempLow: parsedJSON.daily.data[0].apparentTemperatureLow,
-          forcastUV: parsedJSON.daily.data[0].uvIndex,
-          forcastIsRaning: parsedJSON.daily.data[0].precipProbability,
-          forcastTime: parsedJSON.daily.data[0].sunriseTime,
+          selectedDayHumidity: parsedJSON.daily.data[0].humidity,
+          selectedDayPrecipProbability: parsedJSON.daily.data[0].precipProbability,
+          selectedDayTempHigh: parsedJSON.daily.data[0].apparentTemperatureHigh,
+          selectedDayTempLow: parsedJSON.daily.data[0].apparentTemperatureLow,
+          selectedDayUV: parsedJSON.daily.data[0].uvIndex,
+          selectedDayIsRaning: parsedJSON.daily.data[0].precipProbability,
           isDaySelected: true
         });
-        this.calcuateWeatherScoresByDay();
-        console.log(this.state);
+        this.calculateWeatherScore();
       })
       .catch(error => console.log(error));
 
@@ -174,14 +220,14 @@ class Scheduler extends Component {
 
     this.setState({
       selectedDayName: e.target.value
-    })
+    });
 
     this.fetchForcastBySelectedDay();
 
   }
 
   componentDidMount() {
-    console.log(this.state)
+    console.log(this.state);
   }
 
   render() {
@@ -190,9 +236,19 @@ class Scheduler extends Component {
       bestDay,
       bestDayFound,
       isDaySelected,
-      selectedDayName
+      selectedDayName,
+      selectedDayAQ,
+      selectedDayHumidity,
+      selectedDayAveragedTemp,
+      selectedDayUV,
+      selectedDayWeatherIcon,
+      selectedDayWeatherSummary,
+      selectedDayData,
+      selectedDayMainPollutant,
+      selectedDayUserTempScale,
+      selectedDayWeatherScore
     } = this.state;
-
+    
     return(
 
         <section id="schedulerSection">
@@ -218,27 +274,25 @@ class Scheduler extends Component {
                   <option value="Saturday">Saturday</option>
                 </select>
 
-                {
-                  // {isDaySelected ?
-                  //
-                  //   <ScoreData
-                  //
-                  //     airQuality={airQuality}
-                  //     currentHumidity={currentHumidity}
-                  //     currentTemp={currentTemp}
-                  //     currentUV={currentUV}
-                  //     currentWeatherIcon={currentWeatherIcon}
-                  //     currentWeatherSummary={currentWeatherSummary}
-                  //     data={data}
-                  //     mainPollutant={mainPollutant}
-                  //     userTempScale={userTempScale}
-                  //     weatherScore={weatherScore}
-                  //
-                  //   />
-                  //
-                  // : null
-                  // }
-                }
+                  {isDaySelected ?
+                  
+                    <ScoreData
+                  
+                      airQuality={selectedDayAQ}
+                      currentHumidity={selectedDayHumidity}
+                      currentTemp={selectedDayAveragedTemp}
+                      currentUV={selectedDayUV}
+                      currentWeatherIcon={selectedDayWeatherIcon}
+                      currentWeatherSummary={selectedDayWeatherSummary}
+                      data={selectedDayData}
+                      mainPollutant={selectedDayMainPollutant}
+                      userTempScale={selectedDayUserTempScale}
+                      weatherScore={selectedDayWeatherScore}
+                  
+                    />
+                  
+                  : null
+                  }
 
                 <label>Find the best day of the week</label>
                 <button
