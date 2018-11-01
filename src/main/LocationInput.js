@@ -15,9 +15,14 @@ class LocationInput extends Component {
 
     const {
       cityList,
+      cityInput,
+      countryInput,
       countryList,
+      handleCityInput,
       handleCountryInput,
+      handleStateInput,
       getLocationData,
+      stateInput,
       stateList,
     } = this.props;
 
@@ -34,17 +39,17 @@ class LocationInput extends Component {
             <form>
 
               <label htmlFor="country">Country</label>
-              <select onChange={handleCountryInput}>
+              <select value={countryInput} onChange={handleCountryInput}>
                 {countryList.map((country, i) => <option key={i} value={country}>{country}</option> )}
               </select>
 
               <label htmlFor="state">State</label>
-              <select onChange={this.props.handleStateInput}>
+              <select value={stateInput} onChange={handleStateInput}>
                 {stateList.map((state, i) => <option key={i} value={state}>{state}</option> )}
               </select>
 
               <label htmlFor="city">City</label>
-              <select onChange={this.props.handleCityInput}>
+              <select value={cityInput} onChange={handleCityInput}>
                 {cityList.map((city, i) => <option key={i} value={city}>{city}</option> )}
               </select>
 

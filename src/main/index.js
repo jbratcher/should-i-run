@@ -15,6 +15,7 @@ class Main extends Component {
     const {
       airQuality,
       cityList,
+      countryInput,
       countryList,
       currentHumidity,
       currentLat,
@@ -53,6 +54,7 @@ class Main extends Component {
           <Form
 
             cityList={cityList}
+            countryInput={countryInput}
             countryList={countryList}
             handleCityInput={handleCityInput}
             handleCountryInput={handleCountryInput}

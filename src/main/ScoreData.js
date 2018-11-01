@@ -12,6 +12,7 @@ class ScoreData extends Component {
 
     const {
       airQuality,
+      bestDay,
       currentHumidity,
       currentTemp,
       currentUV,
@@ -97,6 +98,7 @@ class ScoreData extends Component {
 
       <section id="scoreData">
         
+        <span id="day">{bestDay}</span>
         <i id="weatherIcon" className={getWeatherIcon}
         ></i>
         <span id="weatherSummary">

@@ -73,7 +73,7 @@ class App extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
+        console.log(`Fetch Current Conditions: ${parsedJSON}`);
         this.setState({
           currentHumidity: parsedJSON.currently.humidity,
           currentPrecipProbability: parsedJSON.currently.precipProbability,
@@ -83,9 +83,9 @@ class App extends Component {
           currentWeatherSummary: parsedJSON.currently.summary,
         });
         this.calculateWeatherScore();
-        console.log(this.state);
+        console.log(`App state: ${this.state}`);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(`fetchCurrentConditions in App component ${error}`));
 
   }
 
@@ -100,7 +100,7 @@ class App extends Component {
           cityList: [...this.state.cityList, city.city]
         });
       }))
-      .catch(err => console.log(err));
+      .catch(error => console.log(`Fetch city list in App component ${error}`));
 
   }
 
@@ -113,7 +113,7 @@ class App extends Component {
           stateList: [...this.state.stateList, state.state]
         });
       }))
-      .catch(err => console.log(err));
+      .catch(error => console.log(`Fetch state list in App component${error}`));
 
   }
 
@@ -124,9 +124,12 @@ class App extends Component {
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
           countryList: [...this.state.countryList, country.country],
+          
         });
       }))
-      .catch(err => console.log(err));
+      .catch(error => console.log(`Fetch country list in App component ${error}`)
+    );
+  
   }
 
   fetchLocation = () => {
@@ -146,7 +149,7 @@ class App extends Component {
       });
       this.fetchCurrentConditions();
     })
-    .catch(err => console.log('Error: ', err));
+    .catch(error => console.log(`fetchLocation in App component ${error}`));
 
   }
 
@@ -163,7 +166,7 @@ class App extends Component {
           mainPollutant: parsedJSON.data.current.pollution.mainus
         });
       })
-      .catch(err => console.log('Error: ', err));
+      .catch(error => console.log(`fetchStd in App component ${error}`));
 
   }
 
@@ -199,6 +202,8 @@ class App extends Component {
   }
 
   handleCountryInput = e => {
+    e.preventDefault();
+    
     this.setState({
       countryInput: e.target.value,
       cityInput: "",
@@ -229,18 +234,14 @@ class App extends Component {
       userWarmthPreference: e.target.value
     });
   }
-
-
-
+  
   // Populate selects with country, state, and city data
 
   componentDidMount() {
-
+    
     this.fetchCountryList();
-
-    this.setState({
-      countryInput: this.state.countryList[70]
-    });
+    
+    console.log("App component mounted state:", this.state);
 
   }
 

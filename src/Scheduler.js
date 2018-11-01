@@ -23,8 +23,10 @@ class Scheduler extends Component {
 
     this.state = {
       bestDay: null,
+      bestDayIndex: null,
       bestDayFound: false,
       currentDayName: this.days[this.d.getDay()],
+      currentDayIndex: this.d.getDay(),
       currentLat: 38.2527,
       currentLng: -85.7585,
       forcastHumidity: [],
@@ -34,8 +36,11 @@ class Scheduler extends Component {
       forcastUV: [],
       forcastPrecipProbability: [],
       forcastWeatherScores: [],
+      forcastWeatherIcon: "wi wi-na",
+      forcastWeatherSummary: "",
       isDaySelected: false,
       selectedDayName: this.days[this.d.getDay()],
+      selectedDayIndex: this.d.getDay(),
       selectedDayAQ: 0,
       selectedDayHumidity: 0,
       selectedDayIsRaning: 0,
@@ -48,6 +53,7 @@ class Scheduler extends Component {
       selectedDayData: false,
       selectedDayMainPollutant: "",
       selectedDayUserTempScale: "f",
+      selectedDayWeatherIcon: "wi wi-na",
       selectedDayWeatherScore: 0
                 
     };
@@ -63,7 +69,6 @@ class Scheduler extends Component {
       selectedDayTempLow, 
       selectedDayUV } = this.state;
 
-    // let humidityScale = 1;
     let medianTemp = 55;
     let stdDevTemp = 5;
     let tempScale = 10;
@@ -122,8 +127,14 @@ class Scheduler extends Component {
 
       this.setState({
         bestDay: bestDay,
-        bestDayFound: true
+        bestDayIndex: bestDayIndex,
+        bestDayFound: true,
+        selectedDayIndex: bestDayIndex,
       });
+      
+      this.getDeltaDays();
+      
+      this.fetchForcastBySelectedDay();
 
   }
 
@@ -183,7 +194,9 @@ class Scheduler extends Component {
           forcastTempLow: parsedJSON.daily.data.map(d => d.apparentTemperatureLow),
           forcastUV: parsedJSON.daily.data.map(d => d.uvIndex),
           forcastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
-          forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime)
+          forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
+          forcastWeatherIcon: parsedJSON.daily.data.map(d => d.icon),
+          forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
         });
         this.calcuateWeatherScoresByDay();
         console.log(this.state);
@@ -194,20 +207,21 @@ class Scheduler extends Component {
 
   fetchForcastBySelectedDay = () => {
 
-    const {currentLat, currentLng} = this.state;
+    const {currentLat, currentLng, selectedDayIndex} = this.state;
 
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
         console.log(parsedJSON);
         this.setState({
-          selectedDayHumidity: parsedJSON.daily.data[0].humidity,
-          selectedDayPrecipProbability: parsedJSON.daily.data[0].precipProbability,
-          selectedDayTempHigh: parsedJSON.daily.data[0].apparentTemperatureHigh,
-          selectedDayTempLow: parsedJSON.daily.data[0].apparentTemperatureLow,
-          selectedDayUV: parsedJSON.daily.data[0].uvIndex,
-          selectedDayIsRaning: parsedJSON.daily.data[0].precipProbability,
-          isDaySelected: true
+          selectedDayHumidity: parsedJSON.daily.data[selectedDayIndex].humidity,
+          selectedDayPrecipProbability: parsedJSON.daily.data[selectedDayIndex].precipProbability,
+          selectedDayTempHigh: parsedJSON.daily.data[selectedDayIndex].apparentTemperatureHigh,
+          selectedDayTempLow: parsedJSON.daily.data[selectedDayIndex].apparentTemperatureLow,
+          selectedDayUV: parsedJSON.daily.data[selectedDayIndex].uvIndex,
+          selectedDayIsRaning: parsedJSON.daily.data[selectedDayIndex].precipProbability,
+          selectedDayWeatherIcon: parsedJSON.daily.data[selectedDayIndex].icon,
+          selectedDayWeatherSummary: parsedJSON.daily.data[selectedDayIndex].summary
         });
         this.calculateWeatherScore();
       })
@@ -225,6 +239,44 @@ class Scheduler extends Component {
     this.fetchForcastBySelectedDay();
 
   }
+  
+  getDeltaDays = () => {
+    
+    const { bestDayIndex, currentDayIndex } = this.state;
+    
+    let deltaBestDay = (bestDayIndex - currentDayIndex);
+    
+    this.setState({
+      selectedDayIndex: deltaBestDay
+    });
+    
+  }
+  
+  getSelectedDayIndex = () => {
+    
+    const { selectedDayName } = this.state;
+    
+    this.setState({
+      
+      selectedDayIndex: selectedDayName === "Sunday"
+      ? 0
+      : selectedDayName === "Monday"
+      ? 1
+      : selectedDayName === "Tuesday"
+      ? 2
+      : selectedDayName === "Wednesday"
+      ? 3
+      : selectedDayName === "Thursday"
+      ? 4
+      : selectedDayName === "Friday"
+      ? 5
+      : selectedDayName === "Saturday"
+      ? 6
+      : selectedDayName === "Sunday"
+      
+    });
+    
+  }
 
   componentDidMount() {
     console.log(this.state);
@@ -235,7 +287,6 @@ class Scheduler extends Component {
     const {
       bestDay,
       bestDayFound,
-      isDaySelected,
       selectedDayName,
       selectedDayAQ,
       selectedDayHumidity,
@@ -274,11 +325,19 @@ class Scheduler extends Component {
                   <option value="Saturday">Saturday</option>
                 </select>
 
-                  {isDaySelected ?
+                <label>Find the best day of the week</label>
+                <button
+                  onClick={this.fetchForcast}
+                >
+                  Go
+                </button>
+
+                {bestDayFound ?
                   
                     <ScoreData
                   
                       airQuality={selectedDayAQ}
+                      bestDay={bestDay}
                       currentHumidity={selectedDayHumidity}
                       currentTemp={selectedDayAveragedTemp}
                       currentUV={selectedDayUV}
@@ -288,24 +347,9 @@ class Scheduler extends Component {
                       mainPollutant={selectedDayMainPollutant}
                       userTempScale={selectedDayUserTempScale}
                       weatherScore={selectedDayWeatherScore}
-                  
                     />
                   
-                  : null
-                  }
-
-                <label>Find the best day of the week</label>
-                <button
-                  onClick={this.fetchForcast}
-                >
-                  Go
-                </button>
-
-                {bestDayFound ?
-
-                  <p>
-                    {`The best day to run is ${bestDay}`}
-                  </p>
+                  
 
                 : null
 

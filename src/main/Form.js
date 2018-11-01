@@ -17,6 +17,7 @@ class Form extends Component {
 
     const {
       cityList,
+      countryInput,
       countryList,
       handleCountryInput,
       handleScaleChange,
@@ -44,6 +45,7 @@ class Form extends Component {
         <LocationInput
         
           cityList={cityList}
+          countryInput={countryInput}
           countryList={countryList}
           handleCountryInput={handleCountryInput}
           getLocationData={getLocationData}
