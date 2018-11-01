@@ -132,7 +132,7 @@ class Scheduler extends Component {
         selectedDayIndex: bestDayIndex,
       });
       
-      this.getDeltaDays();
+      this.getDeltaBestDay();
       
       this.fetchForcastBySelectedDay();
 
@@ -229,18 +229,23 @@ class Scheduler extends Component {
 
   }
 
-  handleDayChange = (e) => {
+  handleDayChange = e => {
     e.preventDefault();
 
     this.setState({
-      selectedDayName: e.target.value
+      selectedDayName: e.target.value,
+      isDaySelected: true
     });
+    
+    this.getSelectedDayIndex();
+    
+    this.getDeltaSelectedDay();
 
     this.fetchForcastBySelectedDay();
 
   }
   
-  getDeltaDays = () => {
+  getDeltaBestDay = () => {
     
     const { bestDayIndex, currentDayIndex } = this.state;
     
@@ -248,6 +253,27 @@ class Scheduler extends Component {
     
     this.setState({
       selectedDayIndex: deltaBestDay
+    });
+    
+  }
+  
+  getDeltaSelectedDay = () => {
+    
+    const { selectedDayIndex, currentDayIndex } = this.state;
+    
+    let dayScale = 8;
+    
+    let deltaSelectedDay =
+      selectedDayIndex > currentDayIndex
+        ? selectedDayIndex - currentDayIndex
+        : selectedDayIndex < currentDayIndex
+        ? currentDayIndex - selectedDayIndex
+        : selectedDayIndex === 0
+        ? (dayScale - currentDayIndex)
+        : null;
+      
+    this.setState({
+      selectedDayIndex: deltaSelectedDay
     });
     
   }
@@ -287,6 +313,7 @@ class Scheduler extends Component {
     const {
       bestDay,
       bestDayFound,
+      isDaySelected,
       selectedDayName,
       selectedDayAQ,
       selectedDayHumidity,
@@ -324,6 +351,30 @@ class Scheduler extends Component {
                   <option value="Friday">Friday</option>
                   <option value="Saturday">Saturday</option>
                 </select>
+                
+                {isDaySelected ?
+                  
+                    <ScoreData
+                  
+                      airQuality={selectedDayAQ}
+                      bestDay={bestDay}
+                      currentHumidity={selectedDayHumidity}
+                      currentTemp={selectedDayAveragedTemp}
+                      currentUV={selectedDayUV}
+                      currentWeatherIcon={selectedDayWeatherIcon}
+                      currentWeatherSummary={selectedDayWeatherSummary}
+                      data={selectedDayData}
+                      mainPollutant={selectedDayMainPollutant}
+                      selectedDayName={selectedDayName}
+                      userTempScale={selectedDayUserTempScale}
+                      weatherScore={selectedDayWeatherScore}
+                    />
+                  
+                  
+
+                : null
+
+                }
 
                 <label>Find the best day of the week</label>
                 <button
