@@ -31,8 +31,8 @@ class Scheduler extends Component {
       currentDayName: this.days[this.d.getDay()],
       currentDayIndex: this.d.getDay(),
       selectedDayName: this.days[this.d.getDay()],
-      selectedDayIndex: null,
-      deltaSelectedDay: null,
+      selectedDayIndex: 0,
+      deltaSelectedDay: 0,
       currentLat: 38.2527,
       currentLng: -85.7585,
       forcastHumidity: [],
@@ -73,8 +73,6 @@ class Scheduler extends Component {
       selectedDayTempLow, 
       selectedDayUV 
     } = this.state;
-
-    // Set scales and defaults
 
     // Normalize data for display
 
@@ -167,6 +165,7 @@ class Scheduler extends Component {
       .then(res => res.json())
       .then(parsedJSON => {
         console.log(parsedJSON);
+        console.log(this.state);
         this.setState({
           selectedDayHumidity: parsedJSON.daily.data[selectedDayIndex].humidity,
           selectedDayPrecipProbability: parsedJSON.daily.data[selectedDayIndex].precipProbability,
@@ -175,9 +174,9 @@ class Scheduler extends Component {
           selectedDayUV: parsedJSON.daily.data[selectedDayIndex].uvIndex,
           selectedDayIsRaning: parsedJSON.daily.data[selectedDayIndex].precipProbability,
           selectedDayWeatherIcon: parsedJSON.daily.data[selectedDayIndex].icon,
-          selectedDayWeatherSummary: parsedJSON.daily.data[selectedDayIndex].summary
+          selectedDayWeatherSummary: parsedJSON.daily.data[selectedDayIndex].summary,
+          isDaySelected: true
         });
-        console.log(this.state);
         this.calculateWeatherScore();
       })
       .catch(error => console.log(error));
@@ -186,18 +185,32 @@ class Scheduler extends Component {
 
   handleDayChange = e => {
     e.preventDefault();
-
+    
+    let selectedDayIndex = e.target.value === "Sunday"
+      ? 0
+      : e.target.value === "Monday"
+      ? 1
+      : e.target.value === "Tuesday"
+      ? 2
+      : e.target.value === "Wednesday"
+      ? 3
+      : e.target.value === "Thursday"
+      ? 4
+      : e.target.value === "Friday"
+      ? 5
+      : e.target.value === "Saturday"
+      ? 6
+      : null;
+        
     this.setState({
       selectedDayName: e.target.value,
-      selectedDayIndex: this.getSelectedDayIndex(),
-      isDaySelected: true
+      selectedDayIndex: selectedDayIndex,
     });
     
     this.getDeltaSelectedDay();
 
   }
   
-
   
   // Get difference in index between selected day and current day to find index to get data
   // selected day index in data array is relative to current day of index 0
@@ -206,53 +219,45 @@ class Scheduler extends Component {
     
     const { selectedDayIndex, currentDayIndex } = this.state;
     
+    console.log(selectedDayIndex, currentDayIndex);
+    
     let dayScale = 7;
     
     this.setState({
       
       deltaSelectedDay: currentDayIndex < selectedDayIndex
-      ? this.setState({
-          deltaSelectedDay: (selectedDayIndex - currentDayIndex)
-        })
+      ? (selectedDayIndex - currentDayIndex)
       : currentDayIndex > selectedDayIndex
-      ? this.setState({
-        deltaSelectedDay: (dayScale - (currentDayIndex - selectedDayIndex))
-      })
+      ? (dayScale - (currentDayIndex - selectedDayIndex))
       : currentDayIndex === selectedDayIndex
-      ? this.setState({
-        deltaSelectedDay: 0
-      })
+      ? 0
       : null
       
-    });
-    
-    console.log(this.state);
-  
-    this.fetchForcastBySelectedDay();
+    },
+    this.fetchForcastBySelectedDay()
+    );
     
   }
   
-  getSelectedDayIndex = () => {
+  // getSelectedDayIndex = (dayName) => {
     
-    const { selectedDayName } = this.state;
+  //     return dayName === "Sunday"
+  //       ? 0
+  //       : dayName === "Monday"
+  //       ? 1
+  //       : dayName === "Tuesday"
+  //       ? 2
+  //       : dayName === "Wednesday"
+  //       ? 3
+  //       : dayName === "Thursday"
+  //       ? 4
+  //       : dayName === "Friday"
+  //       ? 5
+  //       : dayName === "Saturday"
+  //       ? 6
+  //       : null;
     
-      return selectedDayName === "Sunday"
-        ? 0
-        : selectedDayName === "Monday"
-        ? 1
-        : selectedDayName === "Tuesday"
-        ? 2
-        : selectedDayName === "Wednesday"
-        ? 3
-        : selectedDayName === "Thursday"
-        ? 4
-        : selectedDayName === "Friday"
-        ? 5
-        : selectedDayName === "Saturday"
-        ? 6
-        : null;
-    
-  }
+  // }
 
   componentDidMount() {
     console.log(this.state);
