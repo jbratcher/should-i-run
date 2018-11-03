@@ -284,37 +284,41 @@ class BestDay extends Component {
             />
 
             <section id="bestDay" className="column">
+            
+              <h2>Best Day</h2>
+
+              <p>Find the best day to run in the next 7 days</p>
 
 
-                <label>Find the best day of the week</label>
-                <button
-                  onClick={this.fetchForcast}
-                >
-                  Go
-                </button>
+              <label>Find the best day of the week</label>
+              <button
+                onClick={this.fetchForcast}
+              >
+                Go
+              </button>
 
-                {bestDayFound ?
-                  
-                    <ScoreData
-                  
-                      airQuality={selectedDayAQ}
-                      bestDay={bestDay}
-                      currentHumidity={selectedDayHumidity}
-                      currentTemp={selectedDayAveragedTemp}
-                      currentUV={selectedDayUV}
-                      currentWeatherIcon={selectedDayWeatherIcon}
-                      currentWeatherSummary={selectedDayWeatherSummary}
-                      data={selectedDayData}
-                      mainPollutant={selectedDayMainPollutant}
-                      userTempScale={selectedDayUserTempScale}
-                      weatherScore={selectedDayWeatherScore}
-                    />
-                  
-                  
+              {bestDayFound ?
+                
+                  <ScoreData
+                
+                    airQuality={selectedDayAQ}
+                    bestDay={bestDay}
+                    currentHumidity={selectedDayHumidity}
+                    currentTemp={selectedDayAveragedTemp}
+                    currentUV={selectedDayUV}
+                    currentWeatherIcon={selectedDayWeatherIcon}
+                    currentWeatherSummary={selectedDayWeatherSummary}
+                    data={selectedDayData}
+                    mainPollutant={selectedDayMainPollutant}
+                    userTempScale={selectedDayUserTempScale}
+                    weatherScore={selectedDayWeatherScore}
+                  />
+                
+                
 
-                : null
+              : null
 
-                }
+              }
 
             </section>
 

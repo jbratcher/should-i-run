@@ -238,26 +238,6 @@ class Scheduler extends Component {
     );
     
   }
-  
-  // getSelectedDayIndex = (dayName) => {
-    
-  //     return dayName === "Sunday"
-  //       ? 0
-  //       : dayName === "Monday"
-  //       ? 1
-  //       : dayName === "Tuesday"
-  //       ? 2
-  //       : dayName === "Wednesday"
-  //       ? 3
-  //       : dayName === "Thursday"
-  //       ? 4
-  //       : dayName === "Friday"
-  //       ? 5
-  //       : dayName === "Saturday"
-  //       ? 6
-  //       : null;
-    
-  // }
 
   componentDidMount() {
     console.log(this.state);

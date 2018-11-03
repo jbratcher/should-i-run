@@ -260,6 +260,9 @@ footer {
 .red {
   color: red; }
 
+#bestDay {
+  height: 60vh; }
+
 @media (min-width: 768px) {
   nav {
     margin-right: 1rem; }
