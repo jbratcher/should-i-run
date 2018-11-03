@@ -169,7 +169,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 1rem; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
@@ -307,10 +307,13 @@ footer {
   #outputContainer {
     height: 100%; }
   #clothesData {
+    border: 0.125rem solid #ccc;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0.5rem 0; }
+    padding: 1rem;
+    margin: 1rem; }
     #clothesData nav ul {
       display: flex;
       flex-flow: column wrap;
@@ -320,7 +323,7 @@ footer {
         margin: 1rem 0;
         width: 100%; }
         #clothesData nav ul li img {
-          width: 25%;
+          width: 40%;
           height: auto; }
         #clothesData nav ul li p {
           margin: 0.5rem 0; }

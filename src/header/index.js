@@ -31,6 +31,9 @@ class Header extends Component {
                 <Link to="/scheduler">Scheduler</Link>
               </li>
               <li>
+                <Link to="/bestday">Best Day</Link>
+              </li>
+              <li>
                 <Link to="/about">About</Link> 
               </li>
             </ul>

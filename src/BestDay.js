@@ -4,7 +4,7 @@ import ScoreData from './main/ScoreData';
 import Header from './header';
 import Footer from './Footer';
 
-class Scheduler extends Component {
+class BestDay extends Component {
 
   constructor(props) {
     super(props);
@@ -28,9 +28,11 @@ class Scheduler extends Component {
     this.rainScale = 10;
 
     this.state = {
+      bestDay: null,
+      bestDayIndex: null,
+      bestDayFound: false,
       currentDayName: this.days[this.d.getDay()],
       currentDayIndex: this.d.getDay(),
-      selectedDayName: this.days[this.d.getDay()],
       selectedDayIndex: null,
       deltaSelectedDay: null,
       currentLat: 38.2527,
@@ -94,6 +96,57 @@ class Scheduler extends Component {
     console.log(this.state);
     
   }
+
+  findBestDayToRun = () => {
+
+    const {
+      forcastTime,
+      forcastWeatherScores
+    } = this.state;
+    
+    // Get highest score in 7 day range from api data
+
+    let index = forcastWeatherScores.indexOf(Math.max(...forcastWeatherScores));
+    
+    // Convert millisecond time to date then to day of week index
+
+    let date = new Date(forcastTime[index] * 1000);
+
+    let convertedDate = new Date(date);
+
+    let bestDayIndex = convertedDate.getDay();
+
+    // Get day name from index
+
+    let bestDay =
+
+      bestDayIndex === 0
+      ? 'Sunday'
+      : bestDayIndex === 1
+      ? 'Monday'
+      : bestDayIndex === 2
+      ? 'Tuesday'
+      : bestDayIndex === 3
+      ? 'Wednesday'
+      : bestDayIndex === 4
+      ? 'Thursday'
+      : bestDayIndex === 5
+      ? 'Friday'
+      : bestDayIndex === 6
+      ? 'Saturday'
+      : null;
+
+      this.setState({
+        bestDay: bestDay,
+        bestDayIndex: bestDayIndex,
+        bestDayFound: true,
+      });
+      
+      this.getDeltaBestDay();
+      
+      this.fetchForcastBySelectedDay();
+
+  }
   
   // Calculate each day's weather score and push to array then find the best day to run
 
@@ -126,6 +179,8 @@ class Scheduler extends Component {
     this.setState({
         forcastWeatherScores: scoresArray
       });
+
+    this.findBestDayToRun();
 
   }
 
@@ -177,82 +232,27 @@ class Scheduler extends Component {
           selectedDayWeatherIcon: parsedJSON.daily.data[selectedDayIndex].icon,
           selectedDayWeatherSummary: parsedJSON.daily.data[selectedDayIndex].summary
         });
-        console.log(this.state);
         this.calculateWeatherScore();
       })
       .catch(error => console.log(error));
 
   }
-
-  handleDayChange = e => {
-    e.preventDefault();
-
-    this.setState({
-      selectedDayName: e.target.value,
-      selectedDayIndex: this.getSelectedDayIndex(),
-      isDaySelected: true
-    });
-    
-    this.getDeltaSelectedDay();
-
-  }
   
-
+  // Get difference in index between best day and current day to find index to get data
+  // best day index in data array is relative to current day of index 0
   
-  // Get difference in index between selected day and current day to find index to get data
-  // selected day index in data array is relative to current day of index 0
-  
-  getDeltaSelectedDay = () => {
+  getDeltaBestDay = () => {
     
-    const { selectedDayIndex, currentDayIndex } = this.state;
+    const { bestDayIndex, currentDayIndex } = this.state;
     
-    let dayScale = 7;
+    let deltaBestDay = (bestDayIndex - currentDayIndex);
     
     this.setState({
-      
-      deltaSelectedDay: currentDayIndex < selectedDayIndex
-      ? this.setState({
-          deltaSelectedDay: (selectedDayIndex - currentDayIndex)
-        })
-      : currentDayIndex > selectedDayIndex
-      ? this.setState({
-        deltaSelectedDay: (dayScale - (currentDayIndex - selectedDayIndex))
-      })
-      : currentDayIndex === selectedDayIndex
-      ? this.setState({
-        deltaSelectedDay: 0
-      })
-      : null
-      
+      selectedDayIndex: deltaBestDay
     });
     
-    console.log(this.state);
-  
-    this.fetchForcastBySelectedDay();
-    
   }
-  
-  getSelectedDayIndex = () => {
-    
-    const { selectedDayName } = this.state;
-    
-      return selectedDayName === "Sunday"
-        ? 0
-        : selectedDayName === "Monday"
-        ? 1
-        : selectedDayName === "Tuesday"
-        ? 2
-        : selectedDayName === "Wednesday"
-        ? 3
-        : selectedDayName === "Thursday"
-        ? 4
-        : selectedDayName === "Friday"
-        ? 5
-        : selectedDayName === "Saturday"
-        ? 6
-        : null;
-    
-  }
+
 
   componentDidMount() {
     console.log(this.state);
@@ -261,8 +261,8 @@ class Scheduler extends Component {
   render() {
 
     const {
-      isDaySelected,
-      selectedDayName,
+      bestDay,
+      bestDayFound,
       selectedDayAQ,
       selectedDayHumidity,
       selectedDayAveragedTemp,
@@ -283,28 +283,22 @@ class Scheduler extends Component {
                 getLocationData={this.getLocationData}
             />
 
-            <section id="scheduler" className="column">
+            <section id="bestDay" className="column">
 
-                <h2>Scheduler</h2>
 
-                <p>Pick a day to get information or find the best day in the next week</p>
+                <label>Find the best day of the week</label>
+                <button
+                  onClick={this.fetchForcast}
+                >
+                  Go
+                </button>
 
-                <label>Pick a day of the week</label>
-                <select value={selectedDayName} onChange={this.handleDayChange}>
-                  <option value="Sunday">Sunday</option>
-                  <option value="Monday">Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
-                  <option value="Saturday">Saturday</option>
-                </select>
-                
-                {isDaySelected ?
+                {bestDayFound ?
                   
                     <ScoreData
                   
                       airQuality={selectedDayAQ}
+                      bestDay={bestDay}
                       currentHumidity={selectedDayHumidity}
                       currentTemp={selectedDayAveragedTemp}
                       currentUV={selectedDayUV}
@@ -312,7 +306,6 @@ class Scheduler extends Component {
                       currentWeatherSummary={selectedDayWeatherSummary}
                       data={selectedDayData}
                       mainPollutant={selectedDayMainPollutant}
-                      selectedDayName={selectedDayName}
                       userTempScale={selectedDayUserTempScale}
                       weatherScore={selectedDayWeatherScore}
                     />
@@ -335,4 +328,4 @@ class Scheduler extends Component {
 
 }
 
-  export default Scheduler;
+  export default BestDay;

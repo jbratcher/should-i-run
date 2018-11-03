@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Scheduler from './Scheduler';
-import About from './About'
+import BestDay from './BestDay';
+import About from './About';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -13,6 +14,10 @@ ReactDOM.render(
                         <Route
                             exact path='/scheduler'
                             render={(props) => <Scheduler {...props} />}
+                        />
+                        <Route
+                            exact path='/bestday'
+                            render={(props) => <BestDay {...props} />}
                         />
                         <Route
                             exact path='/about'
