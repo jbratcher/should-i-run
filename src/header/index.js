@@ -24,9 +24,21 @@ class Header extends Component {
             </Link>
           </section>
           <button id="getDataButton" onClick={getLocationData}>Should I?</button>
+          
+          <a href="#mainHeaderNav" id="menu-toggle" className="toggle">
+            <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
+          </a>
 
           <nav id="mainHeaderNav">
             <ul>
+              <li>
+                <a id="nav-close" className="toggle" href="#top">
+                  <i className="fa fa-times fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
               <li>
                 <Link to="/scheduler">Scheduler</Link>
               </li>

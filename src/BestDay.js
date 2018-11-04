@@ -93,8 +93,6 @@ class BestDay extends Component {
       selectedDayAveragedTemp: averagedTemp
     });
     
-    console.log(this.state);
-    
   }
 
   findBestDayToRun = () => {
@@ -193,7 +191,6 @@ class BestDay extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
         this.setState({
           forcastHumidity: parsedJSON.daily.data.map(d => d.humidity),
           forcastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
@@ -206,9 +203,8 @@ class BestDay extends Component {
           forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
         });
         this.calcuateWeatherScoresByDay();
-        console.log(this.state);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(`fetchForcas error in Best Day: ${error}`));
 
   }
   
@@ -221,7 +217,6 @@ class BestDay extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
         this.setState({
           selectedDayHumidity: parsedJSON.daily.data[selectedDayIndex].humidity,
           selectedDayPrecipProbability: parsedJSON.daily.data[selectedDayIndex].precipProbability,
@@ -234,7 +229,7 @@ class BestDay extends Component {
         });
         this.calculateWeatherScore();
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(`fetchForcastBySelectedDay error in Best Day: ${error}`));
 
   }
   
@@ -255,7 +250,7 @@ class BestDay extends Component {
 
 
   componentDidMount() {
-    console.log(this.state);
+    console.log("Best Day mounted state: ", this.state);
   }
 
   render() {

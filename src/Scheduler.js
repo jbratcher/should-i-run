@@ -89,8 +89,6 @@ class Scheduler extends Component {
       selectedDayAveragedTemp: averagedTemp
     });
     
-    console.log(this.state);
-    
   }
   
   // Calculate each day's weather score and push to array then find the best day to run
@@ -136,7 +134,6 @@ class Scheduler extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
         this.setState({
           forcastHumidity: parsedJSON.daily.data.map(d => d.humidity),
           forcastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
@@ -149,9 +146,8 @@ class Scheduler extends Component {
           forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
         });
         this.calcuateWeatherScoresByDay();
-        console.log(this.state);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(`fetchForcast error in Scheduler: ${error}`));
 
   }
   
@@ -164,8 +160,6 @@ class Scheduler extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
-        console.log(this.state);
         this.setState({
           selectedDayHumidity: parsedJSON.daily.data[selectedDayIndex].humidity,
           selectedDayPrecipProbability: parsedJSON.daily.data[selectedDayIndex].precipProbability,
@@ -179,7 +173,7 @@ class Scheduler extends Component {
         });
         this.calculateWeatherScore();
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(`fetchForcastBySelectedDay error in Scheduler: ${error}`));
 
   }
 
@@ -219,8 +213,6 @@ class Scheduler extends Component {
     
     const { selectedDayIndex, currentDayIndex } = this.state;
     
-    console.log(selectedDayIndex, currentDayIndex);
-    
     let dayScale = 7;
     
     this.setState({
@@ -240,7 +232,7 @@ class Scheduler extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state);
+    console.log("Scheduler component mount state: ", this.state);
   }
 
   render() {

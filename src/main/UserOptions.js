@@ -25,6 +25,8 @@ class UserOptions extends Component {
         <section id="userOptions">
 
           <section className="column">
+          
+            <h3>Options</h3>
 
             <label>Temperature scale</label>
 
