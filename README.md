@@ -6,9 +6,9 @@ Get a rating on weather conditions for outdoor activities
 
 ##### Tech used
 
-react
-fetch
-ES6 JavaScript
+React
+ES2015 JavaScript Features (Fetch,promises, Array.map)
+SCSS
 
 ##### APIs used
 
@@ -49,6 +49,15 @@ npm start
 * ???
 
 #### Change Log
+
+###### 0.0.5
+
+* Weather score calculation
+* 7 Day Forcast Data
+* Find best day page
+* Scheduler page
+* About page
+* 
 
 ###### 0.0.4
 

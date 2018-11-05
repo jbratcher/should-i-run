@@ -46,6 +46,9 @@ class Header extends Component {
                 <Link to="/bestday">Best Day</Link>
               </li>
               <li>
+                <Link to="/forcast">7 Day Forcast</Link>
+              </li>
+              <li>
                 <Link to="/about">About</Link> 
               </li>
             </ul>

@@ -268,10 +268,10 @@ button {
   height: auto;
   max-width: 100vw; }
 
-#about, #scheduler, #bestDay {
+#about, #scheduler, #bestDay, #sevenDayForcast {
   min-height: 70vh;
   text-align: center; }
-  #about h2, #about p, #about a, #scheduler h2, #scheduler p, #scheduler a, #bestDay h2, #bestDay p, #bestDay a {
+  #about h2, #about p, #about a, #scheduler h2, #scheduler p, #scheduler a, #bestDay h2, #bestDay p, #bestDay a, #sevenDayForcast h2, #sevenDayForcast p, #sevenDayForcast a {
     padding: 1rem 0; }
 
 #scheduler p {
