@@ -9,15 +9,15 @@ class Output extends Component {
     super(props);
 
     this.state = {
-      currentTempIndex: ""
-
+      currentTempIndex: "neutral",
+      tempIndexCalculated: false
     };
   }
-
+  
   getCurrentTempIndex = () => {
 
     const { currentTemp } = this.props;
-
+  
     currentTemp >= 85
       ? this.setState({
           currentTempIndex: "hot"
@@ -40,15 +40,16 @@ class Output extends Component {
         })
       : this.setState({
           currentTempIndex: ""
-        });
+      });
       
+      this.getUserWarmthPrefernce();
+    
   }
 
   getUserWarmthPrefernce = () => {
 
     const { userWarmthPreference } = this.props;
     
-
     userWarmthPreference === "maxCool"
       ? this.setState({
         currentTempIndex: "hot"
@@ -72,19 +73,23 @@ class Output extends Component {
       : this.setState({
         currentTempIndex: this.state.currentTempIndex
       });
+      
+      this.setState({
+        tempIndexCalculated: true
+      });
 
 
   }
-
+  
   componentDidMount() {
 
     this.getCurrentTempIndex();
     
-    this.getUserWarmthPrefernce();
+    console.log("Output component mounted", this.state);
 
   }
-
-
+  
+  
 
   render() {
 
@@ -101,10 +106,11 @@ class Output extends Component {
       dataRequested,
       mainPollutant,
       userTempScale,
+      userWarmthPreference,
       weatherScore
     } = this.props;
-
-    const { currentTempIndex } = this.state;
+    
+    const { currentTempIndex, tempIndexCalculated } = this.state;
 
     return(
 
@@ -115,9 +121,11 @@ class Output extends Component {
           {dataRequested ?
           
             <ClothesData
-              
+            
               currentTempIndex={currentTempIndex}
-              
+              tempIndexCalculated={tempIndexCalculated}
+              userWarmthPreference={userWarmthPreference}
+
             />
 
 

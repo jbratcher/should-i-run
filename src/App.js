@@ -25,6 +25,7 @@ class App extends Component {
       currentHumidity: 0,
       currentPrecipProbability: 0,
       currentTemp: 0,
+      currentTempIndex: "",
       currentUV: 0,
       data: {},
       dataRequested: false,
@@ -59,7 +60,8 @@ class App extends Component {
     let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
     this.setState({
-      weatherScore: totalScore
+      weatherScore: totalScore,
+      dataRequested: true
     });
     
   }
@@ -73,7 +75,7 @@ class App extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(`Fetch Current Conditions: ${parsedJSON}`);
+        console.log("Fetch Current Conditions: ", parsedJSON);
         this.setState({
           currentHumidity: parsedJSON.currently.humidity,
           currentPrecipProbability: parsedJSON.currently.precipProbability,
@@ -83,9 +85,9 @@ class App extends Component {
           currentWeatherSummary: parsedJSON.currently.summary,
         });
         this.calculateWeatherScore();
-        console.log(`App state: ${this.state}`);
+        console.log("App state: ", this.state);
       })
-      .catch(error => console.log(`fetchCurrentConditions in App component ${error}`));
+      .catch(error => console.log("fetchCurrentConditions in App component", error));
 
   }
 
@@ -100,7 +102,7 @@ class App extends Component {
           cityList: [...this.state.cityList, city.city]
         });
       }))
-      .catch(error => console.log(`Fetch city list in App component ${error}`));
+      .catch(error => console.log("Fetch city list in App component", error));
 
   }
 
@@ -113,7 +115,7 @@ class App extends Component {
           stateList: [...this.state.stateList, state.state]
         });
       }))
-      .catch(error => console.log(`Fetch state list in App component${error}`));
+      .catch(error => console.log("Fetch state list in App component", error));
 
   }
 
@@ -127,7 +129,7 @@ class App extends Component {
           
         });
       }))
-      .catch(error => console.log(`Fetch country list in App component ${error}`)
+      .catch(error => console.log("Fetch country list in App component", error)
     );
   
   }
@@ -149,7 +151,7 @@ class App extends Component {
       });
       this.fetchCurrentConditions();
     })
-    .catch(error => console.log(`fetchLocation in App component ${error}`));
+    .catch(error => console.log("fetchLocation in App component", error));
 
   }
 
@@ -166,7 +168,7 @@ class App extends Component {
           mainPollutant: parsedJSON.data.current.pollution.mainus
         });
       })
-      .catch(error => console.log(`fetchStd in App component ${error}`));
+      .catch(error => console.log("fetchStd in App component", error));
 
   }
 
@@ -186,10 +188,6 @@ class App extends Component {
 
   getLocationData = e => {
     e.preventDefault();
-
-    this.setState({
-      dataRequested: true
-    });
 
     this.fetchLocation();
 
@@ -223,13 +221,13 @@ class App extends Component {
     this.fetchCityList(e);
   }
 
-  handleScaleChange = (e) => {
+  handleScaleChange = e => {
     this.setState({
       userTempScale: e.target.value
     });
   }
 
-  handleWarmthPrefChange = (e) => {
+  handleWarmthPrefChange = e => {
     this.setState({
       userWarmthPreference: e.target.value
     });
@@ -257,6 +255,7 @@ class App extends Component {
       currentLat,
       currentLng,
       currentTemp,
+      currentTempIndex,
       currentUV,
       currentWeatherIcon,
       currentWeatherSummary,
@@ -291,6 +290,7 @@ class App extends Component {
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
+          currentTempIndex={currentTempIndex}
           currentUV={currentUV}
           currentWeatherIcon={currentWeatherIcon}
           currentWeatherSummary={currentWeatherSummary}

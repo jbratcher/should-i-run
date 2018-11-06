@@ -115,8 +115,6 @@ class Forcast extends Component {
 
     const {
       isDataReceived,
-      data,
-      userTempScale
     } = this.state;
     
     return(
@@ -133,7 +131,11 @@ class Forcast extends Component {
                 
                 <ul>
                 
+                {isDataReceived ?
+                
+                  <ScoreData />
                   
+                : null}
                 
                 </ul>
                 
