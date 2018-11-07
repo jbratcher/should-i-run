@@ -490,11 +490,14 @@ footer {
     position: relative;
     transition: all 0.5s ease-in-out;
     width: 7.5vw;
-    // height: 100%;
 
-    #formLabel, #getLocation, form, #userOptions {
+    #formLabel, #getLocation, form, #userOptions, #formInput {
       opacity: 0;
       z-index: -1;
+    }
+    
+    #clothingData, #scoreData {
+      height: 100%;
     }
 
     &:target {
@@ -504,7 +507,7 @@ footer {
         width: 10vw;
       }
 
-      #formLabel, #getLocation, form, #userOptions {
+      #formLabel, #getLocation, form, #userOptions, #formInput {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease;
@@ -571,6 +574,26 @@ footer {
 
     }
 
+  }
+  
+  #clothesData {
+  
+    &>p {
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+  
+    ul li {
+
+      img {
+        width: 30%;
+        height: auto;
+        min-width: 50px;
+        max-width: 30vw;
+      }
+  
+    }
+  
   }
 
   #map {

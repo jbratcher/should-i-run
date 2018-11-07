@@ -333,14 +333,16 @@ footer {
     position: relative;
     transition: all 0.5s ease-in-out;
     width: 7.5vw; }
-    #formSection #formLabel, #formSection #getLocation, #formSection form, #formSection #userOptions {
+    #formSection #formLabel, #formSection #getLocation, #formSection form, #formSection #userOptions, #formSection #formInput {
       opacity: 0;
       z-index: -1; }
+    #formSection #clothingData, #formSection #scoreData {
+      height: 100%; }
     #formSection:target {
       width: 60vw; }
       #formSection:target #scoreData, #formSection:target #map {
         width: 10vw; }
-      #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions {
+      #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions, #formSection:target #formInput {
         opacity: 1;
         z-index: 1;
         transition: 0.5s all 0.3s ease; }
@@ -378,6 +380,14 @@ footer {
           height: auto; }
         #clothesData nav ul li p {
           margin: 0.5rem 0; }
+  #clothesData > p {
+    font-weight: 900;
+    font-size: 1.25rem; }
+  #clothesData ul li img {
+    width: 30%;
+    height: auto;
+    min-width: 50px;
+    max-width: 30vw; }
   #map {
     top: 15vh;
     width: 91.5vw;

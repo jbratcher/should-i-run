@@ -52,11 +52,11 @@ class UserOptions extends Component {
               onChange={handleWarmthPrefChange}
             >
             
-              <option value="maxCool">Mucher Cooler</option>
-              <option value="modCool">A Little Cooler</option>
+              <option value="hot">Mucher Cooler</option>
+              <option value="warm">A Little Cooler</option>
               <option value="neutral">Neutral</option>
-              <option value="modWarmth">A Little Warmer</option>
-              <option value="maxWarmth">Much Warmer</option>
+              <option value="chilly">A Little Warmer</option>
+              <option value="cold">Much Warmer</option>
               
             </select>
 

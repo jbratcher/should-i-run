@@ -52,11 +52,11 @@ class Output extends Component {
 
     const { userWarmthPreference } = this.props;
     
-    userWarmthPreference === "maxCool"
+    userWarmthPreference === "hot"
       ? this.setState({
         currentTempIndex: "hot"
       })
-      : userWarmthPreference === "modCool"
+      : userWarmthPreference === "warm"
       ? this.setState({
         currentTempIndex: "warm"
       })
@@ -64,11 +64,11 @@ class Output extends Component {
       ? this.setState({
         currentTempIndex: "neutral"
       })
-      : userWarmthPreference === "modWarmth"
+      : userWarmthPreference === "chilly"
       ? this.setState({
         currentTempIndex: "chilly"
       })
-      : userWarmthPreference === "maxWarmth"
+      : userWarmthPreference === "cold"
       ? this.setStae({
         currentTempIndex: "cold"
       })
