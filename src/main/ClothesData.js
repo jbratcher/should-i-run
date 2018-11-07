@@ -6,17 +6,12 @@ class ClothesData extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      
-    };
-    
+    this.state = {};
   }
-    
-  
 
   render() {
 
-    const { currentTempIndex, tempIndexCalculated } = this.props;
+    const { currentTempIndex } = this.props;
 
 
     return(
@@ -26,11 +21,8 @@ class ClothesData extends Component {
               <p>What to wear</p>
               
               <nav className="column">
-              
-              {tempIndexCalculated ?
-              
+            
                 <ul id="clothing">
-                
                   <li id="head">
                     {Clothing[currentTempIndex].head.text ? 
                     <React.fragement>
@@ -51,11 +43,8 @@ class ClothesData extends Component {
                     <img alt="feet" src={Clothing[currentTempIndex].feet.imgsrc} />
                     <p>{Clothing[currentTempIndex].feet.text}</p>
                   </li>
-                  
                 </ul>
-                
-                :null }
-
+              
               </nav>
               
             </section>

@@ -231,6 +231,7 @@ class App extends Component {
     this.setState({
       userWarmthPreference: e.target.value
     });
+    
   }
   
   // Populate selects with country, state, and city data

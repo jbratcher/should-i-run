@@ -42,6 +42,8 @@ class Output extends Component {
           currentTempIndex: ""
       });
       
+      console.log(this.state.currentTempIndex);
+      
       this.getUserWarmthPrefernce();
     
   }
@@ -77,6 +79,8 @@ class Output extends Component {
       this.setState({
         tempIndexCalculated: true
       });
+      
+      console.log(this.state.currentTempIndex);
 
 
   }
@@ -106,7 +110,6 @@ class Output extends Component {
       dataRequested,
       mainPollutant,
       userTempScale,
-      userWarmthPreference,
       weatherScore
     } = this.props;
     
@@ -124,7 +127,6 @@ class Output extends Component {
             
               currentTempIndex={currentTempIndex}
               tempIndexCalculated={tempIndexCalculated}
-              userWarmthPreference={userWarmthPreference}
 
             />
 
