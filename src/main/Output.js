@@ -110,6 +110,7 @@ class Output extends Component {
       dataRequested,
       mainPollutant,
       userTempScale,
+      userWarmthPreference,
       weatherScore
     } = this.props;
     
@@ -127,6 +128,7 @@ class Output extends Component {
             
               currentTempIndex={currentTempIndex}
               tempIndexCalculated={tempIndexCalculated}
+              userWarmthPreference={userWarmthPreference}
 
             />
 

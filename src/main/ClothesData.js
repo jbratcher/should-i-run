@@ -23,14 +23,14 @@ class ClothesData extends Component {
               <nav className="column">
             
                 <ul id="clothing">
-                  <li id="head">
-                    {Clothing[currentTempIndex].head.text ? 
-                    <React.fragement>
-                      <img alt="head" src={Clothing[currentTempIndex].head.imgsrc} />
-                      <p>{Clothing[currentTempIndex].head.text}</p>
+                  {Clothing[currentTempIndex].head.text ? 
+                    <React.fragement>            
+                      <li id="head">
+                        <img alt="head" src={Clothing[currentTempIndex].head.imgsrc} />
+                        <p>{Clothing[currentTempIndex].head.text}</p>
+                      </li>
                     </React.fragement>
-                    : null }
-                  </li>
+                  : null }
                   <li id="torso">
                     <img alt="torso" src={Clothing[currentTempIndex].torso.imgsrc} />
                     <p>{Clothing[currentTempIndex].torso.text}</p>
