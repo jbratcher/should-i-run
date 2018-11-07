@@ -312,10 +312,20 @@ footer {
   color: red; }
 
 @media (min-width: 768px) {
-  nav {
-    margin-right: 1rem; }
-    nav ul li {
-      padding: 0 1rem; }
+  header {
+    width: 100%; }
+    header #mainHeaderNav {
+      margin-right: 1rem;
+      background: inherit;
+      position: static; }
+      header #mainHeaderNav #nav-close {
+        display: none; }
+      header #mainHeaderNav #menu-toggle {
+        display: none; }
+      header #mainHeaderNav ul {
+        flex-direction: row; }
+        header #mainHeaderNav ul li {
+          padding: 0 1rem; }
   main {
     display: flex;
     flex-direction: row;
@@ -340,8 +350,10 @@ footer {
       height: 100%; }
     #formSection:target {
       width: 60vw; }
-      #formSection:target #scoreData, #formSection:target #map {
-        width: 10vw; }
+      #formSection:target #map {
+        width: 40vw; }
+        #formSection:target #map > * {
+          width: 10vw; }
       #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions, #formSection:target #formInput {
         opacity: 1;
         z-index: 1;
@@ -353,6 +365,8 @@ footer {
         display: none; }
       #formSection:target #closeNav {
         display: block; }
+  #dataOutput {
+    max-width: 50vw; }
   #openNav {
     display: block; }
   #closeNav {
@@ -364,30 +378,29 @@ footer {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-    margin: 1rem; }
+    margin: 1rem;
+    max-width: 20vw; }
+    #clothesData > p {
+      font-size: 1rem; }
     #clothesData nav ul {
       display: flex;
       flex-flow: column wrap;
-      max-height: 100%;
       width: 50%; }
       #clothesData nav ul li {
-        margin: 1rem 0;
-        width: 100%; }
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0; }
         #clothesData nav ul li img {
-          width: 40%;
-          height: auto; }
+          width: 30%;
+          height: auto;
+          min-width: 50px;
+          max-width: 30vw; }
         #clothesData nav ul li p {
-          margin: 0.5rem 0; }
-  #clothesData > p {
-    font-weight: 900;
-    font-size: 1.25rem; }
-  #clothesData ul li img {
-    width: 30%;
-    height: auto;
-    min-width: 50px;
-    max-width: 30vw; }
+          font-size: 1rem;
+          padding: 0.125rem 0;
+          margin: 0.5rem 0 0; }
+  #scoreData {
+    min-height: 80vh; }
   #map {
     top: 15vh;
     width: 91.5vw;

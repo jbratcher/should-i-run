@@ -25,7 +25,7 @@ h2 {
 
 nav ul {
   list-style-type: none;
-  
+
   li a {
     color: #333;
     text-decoration: none;
@@ -206,13 +206,13 @@ button {
   flex-direction: column;
   align-items: center;
   padding: 0 1rem;
-  
+
   h3 {
-    
+
     margin: 1rem 0;
-    
+
   }
-  
+
 }
 
 #mainNav a {
@@ -230,7 +230,7 @@ button {
 
 #formInput {
   padding: 0 1rem;
-  
+
   h3 {
     margin: 2rem 0;
   }
@@ -288,7 +288,7 @@ button {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  
+
   &>p {
     font-weight: 900;
     font-size: 1.25rem;
@@ -401,23 +401,23 @@ button {
   h2, p, a {
     padding: 1rem 0;
   }
-  
+
 }
 
 #scheduler {
-  
+
   p {
     margin: 0 2rem;
   }
-  
+
   label {
     margin: 2rem 0 0.5rem;
   }
-  
+
   select {
     width: 50vw;
   }
-  
+
 }
 
 footer {
@@ -430,7 +430,7 @@ footer {
   position: relative;
   bottom: 0;
   width: 100vw;
-  
+
   span:first-of-type {
     font-size: 0.75rem;
   }
@@ -462,11 +462,32 @@ footer {
 
 @media (min-width: 768px) {
 
-  nav {
-    margin-right: 1rem;
+  header {
 
-    ul li {
-      padding: 0 1rem;
+    width: 100%;
+
+    #mainHeaderNav {
+      margin-right: 1rem;
+      background: inherit;
+      position: static;
+
+      #nav-close {
+        display: none;
+      }
+
+      #menu-toggle{
+        display: none;
+      }
+
+      ul {
+        flex-direction: row;
+
+        li {
+          padding: 0 1rem;
+        }
+
+      }
+
     }
 
   }
@@ -495,7 +516,7 @@ footer {
       opacity: 0;
       z-index: -1;
     }
-    
+
     #clothingData, #scoreData {
       height: 100%;
     }
@@ -503,8 +524,13 @@ footer {
     &:target {
       width: 60vw;
 
-      #scoreData, #map {
-        width: 10vw;
+      #map {
+        width: 40vw;
+
+        &>* {
+          width: 10vw;
+        }
+        
       }
 
       #formLabel, #getLocation, form, #userOptions, #formInput {
@@ -530,6 +556,12 @@ footer {
 
   }
 
+  #dataOutput {
+    max-width: 50vw;
+  }
+
+
+
   #openNav {
     display: block;
   }
@@ -547,27 +579,34 @@ footer {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
     margin: 1rem;
+    max-width: 20vw;
+
+    &>p {
+      font-size: 1rem;
+    }
 
     nav ul {
       display: flex;
       flex-flow: column wrap;
-      max-height: 100%;
       width: 50%;
 
       li {
-        margin: 1rem 0;
         width: 100%;
+        margin: 0.5rem 0;
+        padding: 0;
 
         img {
-          width: 40%;
+          width: 30%;
           height: auto;
+          min-width: 50px;
+          max-width: 30vw;
         }
-        
+
         p {
-          margin: 0.5rem 0;
+          font-size: 1rem;
+          padding: 0.125rem 0;
+          margin: 0.5rem 0 0;
         }
 
       }
@@ -575,25 +614,9 @@ footer {
     }
 
   }
-  
-  #clothesData {
-  
-    &>p {
-      font-weight: 900;
-      font-size: 1.25rem;
-    }
-  
-    ul li {
 
-      img {
-        width: 30%;
-        height: auto;
-        min-width: 50px;
-        max-width: 30vw;
-      }
-  
-    }
-  
+  #scoreData {
+    min-height: 80vh;
   }
 
   #map {
