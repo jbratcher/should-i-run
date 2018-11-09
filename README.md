@@ -1,13 +1,23 @@
 # ShouldIRun
 
-Get a rating on weather conditions for outdoor activities
+Weather conditions rated for activities fetched from location-based data.
+
+ShouldIRun rates the current and daily weather conditions and determines how favorable they are for running.
 
 [Demo](https://jbratcher.github.io/ShouldIRun)
 
-##### Tech used
+#### Features include:
+
+* IP localization as well as user input localities,
+* Temperature scale 
+* Warmth preference 
+* schedule a day to run
+* Find the best day to run in the next 7 days
+
+##### Technologies used
 
 React
-ES2015 JavaScript Features (Fetch,promises, Array.map)
+ES2015 JavaScript
 SCSS
 
 ##### APIs used
@@ -20,7 +30,7 @@ Bootstrapped with create-react-app
 
 ### Version
 
-0.0.4
+0.0.6
 
 ## Install Dependencies
 
@@ -42,22 +52,36 @@ npm start
 
 ## Future Features:
 
-* ???
+* 7 Day Forcast
 
 ## Known "bugs"
 
-* ???
+* Map display on tablet and larger isn't consistent
+* Warmth preference mimics temperature index
 
 #### Change Log
+
+###### 0.0.6
+
+* Find best day of week in next 7 days
+* Pick a day of the week to run and get a rating
+* More conditional rendering
 
 ###### 0.0.5
 
 * Weather score calculation
-* 7 Day Forcast Data
+* 7 Day Forcast Data (Under development)
 * Find best day page
 * Scheduler page
 * About page
-* 
+
+###### 0.0.5
+
+* Weather score calculation
+* 7 Day Forcast Data (Under development)
+* Find best day page
+* Scheduler page
+* About page
 
 ###### 0.0.4
 
