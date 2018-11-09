@@ -87,6 +87,7 @@ class Output extends Component {
       currentWeatherIcon,
       currentWeatherSummary,
       data,
+      dataReceived,
       dataRequested,
       mainPollutant,
       userTempScale,
@@ -102,7 +103,11 @@ class Output extends Component {
 
         <section id="dataOutput">
 
-          {dataRequested ?
+          { dataRequested ?
+          
+            <h2>Loading</h2>
+            
+          : dataReceived ?
 
             <ClothesData
 
@@ -112,12 +117,13 @@ class Output extends Component {
 
             />
 
+          :null}
 
-          :null
-          }
-
-          {dataRequested ?
-
+          { dataRequested ?
+          
+            <h2>Loading</h2>
+          
+          : dataReceived ?
 
             <ScoreData
 
@@ -134,19 +140,22 @@ class Output extends Component {
 
             />
 
-
           :null}
 
         </section>
 
-        {dataRequested ?
+        { dataRequested ?
+        
+          <h2>Loading</h2>
 
-        <MapContainer
-
-          currentLat={currentLat}
-          currentLng={currentLng}
-
-        />
+        : dataReceived ?
+        
+          <MapContainer
+  
+            currentLat={currentLat}
+            currentLng={currentLng}
+  
+          />
 
         :null}
 

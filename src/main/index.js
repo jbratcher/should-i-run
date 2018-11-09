@@ -26,6 +26,7 @@ class Main extends Component {
       currentWeatherIcon,
       currentWeatherSummary,
       data,
+      dataReceived,
       dataRequested,
       handleCityInput,
       handleCountryInput,
@@ -84,6 +85,7 @@ class Main extends Component {
           currentWeatherIcon={currentWeatherIcon}
           currentWeatherSummary={currentWeatherSummary}
           data={data}
+          dataReceived={dataReceived}
           dataRequested={dataRequested}
           mainPollutant={mainPollutant}
           userTempScale={userTempScale}

@@ -28,6 +28,7 @@ class App extends Component {
       currentTempIndex: "",
       currentUV: 0,
       data: {},
+      dataReceived: false,
       dataRequested: false,
       mainPollutant: "",
       stateInput: "",
@@ -61,7 +62,8 @@ class App extends Component {
 
     this.setState({
       weatherScore: totalScore,
-      dataRequested: true
+      dataReceived: true,
+      dataRequested: false
     });
 
   }
@@ -141,6 +143,7 @@ class App extends Component {
     .then(parsedJSON => {
       this.setState({
         data: parsedJSON.data,
+        dataRequested: true,
         cityInput: parsedJSON.data.city,
         stateInput: parsedJSON.data.state,
         countryInput: parsedJSON.data.country,
@@ -268,6 +271,7 @@ class App extends Component {
       currentWeatherIcon,
       currentWeatherSummary,
       data,
+      dataReceived,
       dataRequested,
       mainPollutant,
       stateInput,
@@ -303,6 +307,7 @@ class App extends Component {
           currentWeatherIcon={currentWeatherIcon}
           currentWeatherSummary={currentWeatherSummary}
           data={data}
+          dataReceived={dataReceived}
           dataRequested={dataRequested}
           getData={this.getData}
           getLocationData={this.getLocationData}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { darkskyApiKey } from './secrets';
-import ScoreData from './main/ScoreData';
+// import ScoreData from './main/ScoreData';
 import Header from './header';
 import Footer from './Footer';
 
@@ -112,10 +112,6 @@ class Forcast extends Component {
   }
 
   render() {
-
-    const {
-      isDataReceived,
-    } = this.state;
 
     return(
 

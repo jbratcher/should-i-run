@@ -8,7 +8,7 @@ ShouldIRun rates the current and daily weather conditions and determines how fav
 
 #### Features include:
 
-* IP localization as well as user input localities,
+* IP localization as well as user input localities
 * Temperature scale 
 * Warmth preference 
 * schedule a day to run
