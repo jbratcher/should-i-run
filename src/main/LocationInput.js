@@ -18,6 +18,7 @@ class LocationInput extends Component {
       cityInput,
       countryInput,
       countryList,
+      getData,
       handleCityInput,
       handleCountryInput,
       handleStateInput,
@@ -29,7 +30,7 @@ class LocationInput extends Component {
     return(
 
         <section id="formInput">
-        
+
           <h3>Location</h3>
 
           <button id="getLocation" onClick={getLocationData}>Use my location</button>
@@ -55,7 +56,7 @@ class LocationInput extends Component {
                 {cityList.map((city, i) => <option key={i} value={city}>{city}</option> )}
               </select>
 
-              <button onClick={this.props.getData} type="submit" value="submit" name="submit">Get Data</button>
+              <button onClick={getData} type="submit" value="submit" name="submit">Get Data</button>
 
             </form>
 

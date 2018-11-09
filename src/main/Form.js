@@ -19,9 +19,12 @@ class Form extends Component {
       cityList,
       countryInput,
       countryList,
+      handleCityInput,
       handleCountryInput,
+      handleStateInput,
       handleScaleChange,
       handleWarmthPrefChange,
+      getData,
       getLocationData,
       stateList,
       userTempScale,
@@ -32,25 +35,28 @@ class Form extends Component {
 
       <section id="formInputSection">
 
-        <UserOptions 
-        
+        <UserOptions
+
           handleScaleChange={handleScaleChange}
           handleWarmthPrefChange={handleWarmthPrefChange}
           userTempScale={userTempScale}
           userWarmthPreference={userWarmthPreference}
-          
+
         />
 
-        
+
         <LocationInput
-        
+
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
           handleCountryInput={handleCountryInput}
+          handleStateInput={handleStateInput}
+          handleCityInput={handleCityInput}
+          getData={getData}
           getLocationData={getLocationData}
           stateList={stateList}
-          
+
         />
 
       </section>

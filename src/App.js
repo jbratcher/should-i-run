@@ -63,7 +63,7 @@ class App extends Component {
       weatherScore: totalScore,
       dataRequested: true
     });
-    
+
   }
 
   // Fetch Dark Sky current weather conditions
@@ -126,12 +126,12 @@ class App extends Component {
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
           countryList: [...this.state.countryList, country.country],
-          
+
         });
       }))
       .catch(error => console.log("Fetch country list in App component", error)
     );
-  
+
   }
 
   fetchLocation = () => {
@@ -163,10 +163,12 @@ class App extends Component {
         this.setState({
           currentLat: parsedJSON.data.location.coordinates[1],
           currentLng: parsedJSON.data.location.coordinates[0],
+          dataRequested: true,
           data: parsedJSON.data,
           airQuality : parsedJSON.data.current.pollution.aqius,
           mainPollutant: parsedJSON.data.current.pollution.mainus
         });
+        this.fetchCurrentConditions();
       })
       .catch(error => console.log("fetchStd in App component", error));
 
@@ -179,7 +181,6 @@ class App extends Component {
       cityInput: this.state.cityInput,
       stateinput: this.state.stateInput,
       countryInput: this.state.countryInput,
-      dataRequested: true
     });
 
     this.fetchStd();
@@ -194,14 +195,17 @@ class App extends Component {
   }
 
   handleCityInput = e => {
+    e.preventDefault();
+
     this.setState({
       cityInput: e.target.value
     });
+
   }
 
   handleCountryInput = e => {
     e.preventDefault();
-    
+
     this.setState({
       countryInput: e.target.value,
       cityInput: "",
@@ -213,12 +217,15 @@ class App extends Component {
   }
 
   handleStateInput = e => {
+    e.preventDefault();
+
     this.setState({
       stateInput: e.target.value,
       cityInput: "",
       cityList: []
     });
     this.fetchCityList(e);
+
   }
 
   handleScaleChange = e => {
@@ -231,15 +238,15 @@ class App extends Component {
     this.setState({
       userWarmthPreference: e.target.value
     });
-    
+
   }
-  
+
   // Populate selects with country, state, and city data
 
   componentDidMount() {
-    
+
     this.fetchCountryList();
-    
+
     console.log("App component mounted state:", this.state);
 
   }

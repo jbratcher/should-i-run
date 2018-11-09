@@ -20,7 +20,7 @@ class Forcast extends Component {
       "Friday",
       "Saturday"
     ];
-    
+
     this.medianTemp = 55;
     this.stdDevTemp = 5;
     this.tempScale = 10;
@@ -44,10 +44,10 @@ class Forcast extends Component {
       forcastWeatherSummary: [],
       isDataReceived: false,
       userTempScale: 'f'
-                
+
     };
   }
-  
+
   // Calculate each day's weather score and push to array then find the best day to run
 
   calcuateWeatherScoresByDay = () => {
@@ -72,7 +72,8 @@ class Forcast extends Component {
 
     this.setState({
         forcastWeatherScores: scoresArray,
-        forcastAveragedTemp: this.averagedTemp
+        forcastAveragedTemp: this.averagedTemp,
+        isDataReceived: true
     });
 
   }
@@ -98,7 +99,6 @@ class Forcast extends Component {
             forcastWeatherIcon: parsedJSON.daily.data.map(d => d.icon),
             forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
           },
-          isDataReceived: true
         });
         this.calcuateWeatherScoresByDay();
       })
@@ -116,7 +116,7 @@ class Forcast extends Component {
     const {
       isDataReceived,
     } = this.state;
-    
+
     return(
 
         <section id="forcastSection">
@@ -128,17 +128,13 @@ class Forcast extends Component {
             <section id="sevenDayForcast" className="column">
 
                 <h2>7 Day Forcast</h2>
-                
+
                 <ul>
-                
-                {isDataReceived ?
-                
-                  <ScoreData />
-                  
-                : null}
-                
+
+
+
                 </ul>
-                
+
             </section>
 
             <Footer / >

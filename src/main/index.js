@@ -73,7 +73,7 @@ class Main extends Component {
         </section>
 
         <Output
-        
+
           airQuality={airQuality}
           currentHumidity={currentHumidity}
           currentLat={currentLat}
@@ -89,7 +89,7 @@ class Main extends Component {
           userTempScale={userTempScale}
           userWarmthPreference={userWarmthPreference}
           weatherScore={weatherScore}
-          
+
         />
 
       </main>

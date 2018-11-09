@@ -70,7 +70,7 @@ class ScoreData extends Component {
         : currentWeatherIcon === "fog"
         ? "wi wi-fog"
         : null;
-        
+
     const weatherScoreRating =
 
       covertedScore >= 7.5
@@ -98,7 +98,7 @@ class ScoreData extends Component {
     return(
 
       <section id="scoreData">
-        
+
         <span id="day">{bestDay || selectedDayName}</span>
         <i id="weatherIcon" className={getWeatherIcon}
         ></i>
@@ -117,24 +117,26 @@ class ScoreData extends Component {
         <span id="currentHumidity">
           {convertedHumidity}% hum.
         </span>
-        <span id="airQuality">
-          {airQuality}
-          <span id="mainParticulate">
-            ({mainPollutant})
+        {airQuality ?
+          <span id="airQuality">
+            {airQuality}
+            <span id="mainParticulate">
+              ({mainPollutant})
+            </span>
           </span>
-        </span>
+        : null}
         <span id="temperature">
           {formattedTemperature}
         </span>
-        
+
         {data ?
-        
+
         <p id="locationOutput">
           <span id="cityOutput">{data.city}</span>
           <span id="stateOutput">{data.state}</span>
           <span id="countryOutput">{data.country}</span>
         </p>
-        
+
         : null
         }
 

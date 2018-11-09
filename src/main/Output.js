@@ -9,15 +9,15 @@ class Output extends Component {
     super(props);
 
     this.state = {
-      currentTempIndex: "neutral",
+      currentTempIndex: "",
       tempIndexCalculated: false
     };
   }
-  
+
   getCurrentTempIndex = () => {
 
     const { currentTemp } = this.props;
-  
+
     currentTemp >= 85
       ? this.setState({
           currentTempIndex: "hot"
@@ -41,59 +41,39 @@ class Output extends Component {
       : this.setState({
           currentTempIndex: ""
       });
-      
+
       console.log(this.state.currentTempIndex);
-      
+
       this.getUserWarmthPrefernce();
-    
+
   }
 
   getUserWarmthPrefernce = () => {
 
     const { userWarmthPreference } = this.props;
-    
-    userWarmthPreference === "hot"
-      ? this.setState({
-        currentTempIndex: "hot"
-      })
-      : userWarmthPreference === "warm"
-      ? this.setState({
-        currentTempIndex: "warm"
-      })
-      : userWarmthPreference === "neutral"
-      ? this.setState({
-        currentTempIndex: "neutral"
-      })
-      : userWarmthPreference === "chilly"
-      ? this.setState({
-        currentTempIndex: "chilly"
-      })
-      : userWarmthPreference === "cold"
-      ? this.setStae({
-        currentTempIndex: "cold"
-      })
-      : this.setState({
-        currentTempIndex: this.state.currentTempIndex
-      });
-      
-      this.setState({
-        tempIndexCalculated: true
-      });
-      
-      console.log(this.state.currentTempIndex);
+
+    this.setState({
+      currentTempIndex: userWarmthPreference
+    })
+
+    this.setState({
+      tempIndexCalculated: true
+    });
+
+    console.log(this.state.currentTempIndex);
 
 
   }
-  
+
   componentDidMount() {
 
     this.getCurrentTempIndex();
-    
+
     console.log("Output component mounted", this.state);
 
   }
-  
-  
+
+
 
   render() {
 
@@ -113,7 +93,7 @@ class Output extends Component {
       userWarmthPreference,
       weatherScore
     } = this.props;
-    
+
     const { currentTempIndex, tempIndexCalculated } = this.state;
 
     return(
@@ -121,11 +101,11 @@ class Output extends Component {
       <section id="outputContainer">
 
         <section id="dataOutput">
-          
+
           {dataRequested ?
-          
+
             <ClothesData
-            
+
               currentTempIndex={currentTempIndex}
               tempIndexCalculated={tempIndexCalculated}
               userWarmthPreference={userWarmthPreference}
@@ -138,9 +118,9 @@ class Output extends Component {
 
           {dataRequested ?
 
-          
+
             <ScoreData
-            
+
               airQuality={airQuality}
               currentHumidity={currentHumidity}
               currentTemp={currentTemp}
@@ -151,23 +131,23 @@ class Output extends Component {
               mainPollutant={mainPollutant}
               userTempScale={userTempScale}
               weatherScore={weatherScore}
-            
+
             />
-          
-          
+
+
           :null}
-          
+
         </section>
 
         {dataRequested ?
-        
+
         <MapContainer
 
           currentLat={currentLat}
           currentLng={currentLng}
 
         />
-        
+
         :null}
 
       </section>

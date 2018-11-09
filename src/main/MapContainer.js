@@ -35,12 +35,6 @@ export class MapContainer extends Component {
 
     const { currentLat, currentLng } = this.props;
 
-    const style = {
-      position: 'absolute',
-      top: '5vh',
-      left: 0
-    }
-
     return (
 
       <section id="map">
@@ -55,8 +49,7 @@ export class MapContainer extends Component {
             lng: -85.7585
           }}
           google={this.props.google}
-          style={style}
-          zoom={13}>
+          zoom={12}>
 
           <Marker
             position={{

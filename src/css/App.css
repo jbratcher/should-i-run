@@ -84,6 +84,8 @@ header {
   z-index: 99; }
   #mainHeaderNav:target {
     transform: translateX(-100vw); }
+  #mainHeaderNav ul li {
+    padding: 0.5rem 0; }
 
 ul {
   display: flex;
@@ -113,7 +115,7 @@ ul {
   #subheader p {
     color: #333;
     font-size: 1rem;
-    margin-left: 10rem;
+    margin: 0 2rem;
     max-width: 90vw; }
 
 main {
@@ -266,7 +268,7 @@ button {
   min-width: 200px;
   min-height: 200px;
   width: 100%;
-  height: 30vh;
+  height: auto;
   top: 15vh; }
 
 #about, #scheduler, #bestDay, #sevenDayForcast {
@@ -292,8 +294,7 @@ footer {
   align-items: center;
   padding: 2rem;
   position: relative;
-  bottom: 0;
-  width: 100vw; }
+  top: 15vh; }
   footer span:first-of-type {
     font-size: 0.75rem; }
   footer span a {
@@ -327,6 +328,8 @@ footer {
         flex-direction: row; }
         header #mainHeaderNav ul li {
           padding: 0 0.5rem; }
+    header #subheader {
+      margin-left: 10rem; }
   #menu-toggle {
     display: none; }
   #openNav {
@@ -353,7 +356,7 @@ footer {
     #formSection #formLabel, #formSection #getLocation, #formSection form, #formSection #userOptions, #formSection #formInput {
       opacity: 0;
       z-index: -1; }
-    #formSection #clothingData, #formSection #scoreData {
+    #formSection #clothesData, #formSection #scoreData {
       height: 100%; }
     #formSection:target {
       width: 60vw; }
@@ -402,7 +405,7 @@ footer {
           padding: 0.125rem 0;
           margin: 0.5rem 0 0; }
   #scoreData {
-    min-height: 80vh; }
+    min-height: 70vh; }
   footer {
     position: relative;
     top: 15vh; } }
