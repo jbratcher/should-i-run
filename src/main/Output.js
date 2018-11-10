@@ -8,37 +8,8 @@ class Output extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = {};
   }
-
-  
-
-  // getUserWarmthPrefernce = () => {
-
-  //   const { userWarmthPreference } = this.props;
-
-  //   this.setState({
-  //     currentTempIndex: userWarmthPreference
-  //   })
-
-  //   this.setState({
-  //     tempIndexCalculated: true
-  //   });
-
-  //   console.log(this.state.currentTempIndex);
-
-
-  // }
-
-  componentDidMount() {
-
-    console.log("Output component mounted", this.state);
-
-  }
-
-
 
   render() {
 
@@ -131,4 +102,4 @@ class Output extends Component {
 
 }
 
-  export default Output;
+export default Output;

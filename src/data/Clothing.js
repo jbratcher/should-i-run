@@ -32,7 +32,7 @@ const Clothing = {
       },
       feet: {
         text: "Insulated socks",
-        imgsrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcsbsQ30ATXDyrEMidoBC4PGQvzDGqlXyehQLyjqHiTJOzxFu"
+        imgsrc: "https://www.verywellfit.com/thmb/Wox_s1mhrS095uy3_IQCjjcK1Pw=/1001x1001/filters:no_upscale()/darntoughvermontsocks-56a83a963df78cf7729d2a76.jpg"
       }
     },
     neutral: {

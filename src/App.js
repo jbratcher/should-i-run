@@ -154,15 +154,15 @@ class App extends Component {
     .then(res => res.json())
     .then(parsedJSON => {
       this.setState({
+        airQuality : parsedJSON.data.current.pollution.aqius,
+        cityInput: parsedJSON.data.city,
+        countryInput: parsedJSON.data.country,
+        currentLat: parsedJSON.data.location.coordinates[1],
+        currentLng: parsedJSON.data.location.coordinates[0],
         data: parsedJSON.data,
         dataRequested: true,
-        cityInput: parsedJSON.data.city,
-        stateInput: parsedJSON.data.state,
-        countryInput: parsedJSON.data.country,
-        airQuality : parsedJSON.data.current.pollution.aqius,
         mainPollutant: parsedJSON.data.current.pollution.mainus,
-        currentLat: parsedJSON.data.location.coordinates[1],
-        currentLng: parsedJSON.data.location.coordinates[0]
+        stateInput: parsedJSON.data.state
       });
       this.fetchCurrentConditions();
     })

@@ -14,7 +14,7 @@ export class MapContainer extends Component {
         lat: currentLat,
         lng: currentLng
       }
-    }
+    };
 
   }
 
@@ -27,7 +27,7 @@ export class MapContainer extends Component {
         lat: currentLat,
         lng: currentLng
       }
-    })
+    });
   }
 
 
