@@ -86,7 +86,7 @@ class Output extends Component {
         : dataReceived ?
         
           <MapContainer
-  
+
             currentLat={currentLat}
             currentLng={currentLng}
   

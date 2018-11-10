@@ -68,6 +68,6 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
   (props) => ({
-    apiKey: gmapsApiKey
+    apiKey: gmapsApiKey,
   }
-))(MapContainer)
+))(MapContainer);
