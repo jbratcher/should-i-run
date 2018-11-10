@@ -12,6 +12,14 @@ class App extends Component {
 
   constructor() {
     super();
+    
+    // Set scales for calculations
+
+    this.medianTemp = 55;
+    this.stdDevTemp = 5;
+    this.tempScale = 10;
+    this.uvScale = 10;
+    this.rainScale = 10;
 
     this.state = {
       airQuality: 0,
@@ -25,7 +33,7 @@ class App extends Component {
       currentHumidity: 0,
       currentPrecipProbability: 0,
       currentTemp: 0,
-      currentTempIndex: "",
+      currentTempIndex: "neutral",
       currentUV: 0,
       data: {},
       dataReceived: false,
@@ -44,26 +52,29 @@ class App extends Component {
 
   calculateWeatherScore = () => {
 
-    const { currentHumidity, currentPrecipProbability, currentTemp, currentUV } = this.state;
-
-    // let humidityScale = 1;
-    let medianTemp = 55;
-    let stdDevTemp = 5;
-    let tempScale = 10;
-    let uvScale = 10;
-    let rainScale = 10;
+    const { 
+      currentHumidity, 
+      currentPrecipProbability, 
+      currentTemp, 
+      currentUV 
+    } = this.state;
+    
+    // Calculate scores
 
     let humidityScore = currentHumidity * 10;
-    let tempScore = tempScale - ((Math.abs(medianTemp - currentTemp)) / stdDevTemp);
-    let uvScore = (uvScale - currentUV);
-    let rainScore = (rainScale - (currentPrecipProbability * 10));
+    // Get score based on standard deviation from median
+    let tempScore = this.tempScale - ((Math.abs(this.medianTemp - currentTemp)) / this.stdDevTemp);
+    let uvScore = (this.uvScale - currentUV);
+    let rainScore = (this.rainScale - (currentPrecipProbability * 10));
+    
+    // Combine scores and average
 
     let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
     this.setState({
       weatherScore: totalScore,
-      dataReceived: true,
-      dataRequested: false
+      dataRequested: false,
+      dataReceived: true
     });
 
   }
@@ -87,10 +98,9 @@ class App extends Component {
           currentWeatherSummary: parsedJSON.currently.summary,
         });
         this.calculateWeatherScore();
-        console.log("App state: ", this.state);
       })
       .catch(error => console.log("fetchCurrentConditions in App component", error));
-
+    
   }
 
   // Populate city, state and county select lists
@@ -135,6 +145,8 @@ class App extends Component {
     );
 
   }
+  
+  // Get IP based user location from AirVisual API
 
   fetchLocation = () => {
 
@@ -157,6 +169,8 @@ class App extends Component {
     .catch(error => console.log("fetchLocation in App component", error));
 
   }
+  
+  // Fetch user input location weather data fro AirVisual API
 
   fetchStd = () => {
 
@@ -176,6 +190,8 @@ class App extends Component {
       .catch(error => console.log("fetchStd in App component", error));
 
   }
+  
+  // Handle user input location form submission
 
   getData = e => {
     e.preventDefault();
@@ -187,8 +203,10 @@ class App extends Component {
     });
 
     this.fetchStd();
+    
   }
 
+  // Handle button click for IP based user location
 
   getLocationData = e => {
     e.preventDefault();
@@ -244,6 +262,7 @@ class App extends Component {
 
   }
 
+
   // Populate selects with country, state, and city data
 
   componentDidMount() {
@@ -257,7 +276,7 @@ class App extends Component {
   render() {
 
     const {
-      airQuality ,
+      airQuality,
       cityInput,
       cityList,
       countryInput,
