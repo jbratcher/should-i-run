@@ -74,7 +74,8 @@ class Output extends Component {
           : dataReceived ?
 
             <ClothesData
-
+              
+              currentTemp={currentTemp}
               currentTempIndex={currentTempIndex}
               userWarmthPreference={userWarmthPreference}
 

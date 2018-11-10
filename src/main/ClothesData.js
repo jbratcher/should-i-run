@@ -38,7 +38,7 @@ class ClothesData extends Component {
           currentTempIndex: "cold"
         })
       : this.setState({
-          currentTempIndex: "cold"
+          currentTempIndex: "neutral"
       });
       
 
