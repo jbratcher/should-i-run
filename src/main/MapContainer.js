@@ -18,7 +18,7 @@ export class MapContainer extends Component {
 
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
 
     const { currentLat, currentLng } = this.state;
 
@@ -28,16 +28,19 @@ export class MapContainer extends Component {
         lng: currentLng
       }
     });
+    
   }
 
 
   render() {
 
-    const { currentLat, currentLng } = this.props;
+    const { currentLat, currentLng, loaded } = this.props;
 
     return (
 
       <section id="map">
+      
+        {loaded ?
 
         <Map
           center={{
@@ -59,6 +62,8 @@ export class MapContainer extends Component {
           />
 
         </Map>
+        
+        : null }
 
       </section>
 
