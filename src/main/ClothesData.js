@@ -105,7 +105,7 @@ class ClothesData extends Component {
       
         <p>What to wear</p>
         
-        <nav className="column">
+        <nav>
         
           { tempIndexCalculated ? 
       

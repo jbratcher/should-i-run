@@ -302,11 +302,7 @@ class App extends Component {
 
       <div className="App">
 
-        <Header
-
-          getLocationData={this.getLocationData}
-
-        />
+        <Header/>
 
         <Main
 

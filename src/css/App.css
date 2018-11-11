@@ -46,8 +46,9 @@ header {
 #mainHeader {
   border-bottom: 0.125rem solid #333;
   display: flex;
-  justify-content: space-around;
-  align-items: center; }
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem; }
 
 #brand a {
   color: #333;
@@ -56,17 +57,8 @@ header {
   font-weight: 900;
   text-decoration: none; }
 
-#getDataButton {
-  background: #fff;
-  font-size: 0.75rem;
-  padding: 0.5rem;
-  margin-right: 2rem; }
-
 #menu-toggle {
-  color: #333;
-  position: absolute;
-  top: 1rem;
-  right: 1rem; }
+  color: #333; }
   #menu-toggle:hover {
     opacity: 0.5;
     transition: all 0.5s ease-in-out; }
@@ -185,6 +177,7 @@ button {
   background: #fefefe;
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: 1rem;
   width: 100%; }
   #outputContainer p {
@@ -194,7 +187,7 @@ button {
 
 #dataOutput {
   display: flex;
-  width: 100%;
+  min-height: 65vh;
   justify-content: space-around; }
 
 #clothesData {
@@ -205,7 +198,8 @@ button {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  margin: 1rem; }
+  margin: 1rem;
+  overflow-y: scroll; }
   #clothesData > p {
     font-weight: 900;
     font-size: 1.25rem;
@@ -223,8 +217,10 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 2rem;
-  margin: 1rem; }
+  margin: 1rem;
+  width: 100%;
+  max-width: 30vw;
+  overflow-y: scroll; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
   #scoreData i {
@@ -267,13 +263,15 @@ button {
   position: relative;
   min-width: 200px;
   min-height: 200px;
-  width: 100%;
+  width: 100vw;
   height: auto;
   top: 15vh; }
 
 #about, #scheduler, #bestDay, #sevenDayForcast {
   min-height: 70vh;
-  text-align: center; }
+  text-align: center;
+  width: 100vw;
+  overflow-x: hidden; }
   #about h2, #about p, #about a, #scheduler h2, #scheduler p, #scheduler a, #bestDay h2, #bestDay p, #bestDay a, #sevenDayForcast h2, #sevenDayForcast p, #sevenDayForcast a {
     padding: 1rem 0; }
 
@@ -314,6 +312,8 @@ footer {
   color: red; }
 
 @media (min-width: 768px) {
+  #scheduler select {
+    max-width: 25vw; }
   header {
     width: 100%; }
     header #brand {
@@ -329,7 +329,7 @@ footer {
         header #mainHeaderNav ul li {
           padding: 0 0.5rem; }
     header #subheader {
-      margin-left: 10rem; }
+      margin-left: 1rem; }
   #menu-toggle {
     display: none; }
   #openNav {
@@ -357,7 +357,8 @@ footer {
       opacity: 0;
       z-index: -1; }
     #formSection #clothesData, #formSection #scoreData {
-      height: 100%; }
+      height: 100%;
+      min-height: 65vh; }
     #formSection:target {
       width: 60vw; }
       #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions, #formSection:target #formInput {
@@ -371,32 +372,35 @@ footer {
         display: none; }
       #formSection:target #closeNav {
         display: block; }
-      #formSection:target #map {
-        width: 10vw; }
-  #dataOutput {
-    max-width: 50vw; }
+  #formSection:target + #outputContainer > div > #map {
+    width: 60vw; }
   #openNav {
     display: block; }
   #closeNav {
     display: none; }
   #outputContainer {
-    height: 100%; }
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start; }
   #clothesData {
     display: flex;
-    flex-direction: column;
-    max-width: 20vw; }
+    flex-direction: column; }
     #clothesData > p {
-      font-size: 1rem; }
+      font-size: 1rem;
+      margin: 1rem 0 0; }
     #clothesData nav ul {
       display: flex;
-      flex-flow: column wrap;
-      width: 50%; }
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 30vw;
+      max-height: 65vh; }
       #clothesData nav ul li {
         width: 100%;
-        margin: 0.5rem 0;
-        padding: 0; }
+        margin-bottom: 0.25rem;
+        padding: 0;
+        height: inherit; }
         #clothesData nav ul li img {
-          width: 30%;
+          width: 20%;
           height: auto;
           min-width: 50px;
           max-width: 30vw; }
@@ -405,7 +409,9 @@ footer {
           padding: 0.125rem 0;
           margin: 0.5rem 0 0; }
   #scoreData {
-    min-height: 70vh; }
+    min-height: 75vh; }
+  #map {
+    width: 94vw; }
   footer {
     position: relative;
     top: 15vh; } }

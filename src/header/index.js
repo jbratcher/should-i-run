@@ -11,8 +11,6 @@ class Header extends Component {
 
   render() {
     
-    const { getLocationData } = this.props;
-
     return(
 
 
@@ -23,8 +21,7 @@ class Header extends Component {
               <h1>ShouldIRun?</h1>
             </Link>
           </section>
-          <button id="getDataButton" onClick={getLocationData}>Should I?</button>
-          
+    
           <a href="#mainHeaderNav" id="menu-toggle" className="toggle">
             <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
           </a>
