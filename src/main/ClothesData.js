@@ -39,10 +39,7 @@ class ClothesData extends Component {
       : this.setState({
           currentTempIndex: "neutral"
       });
-      
-      this.setState({
-      tempIndexCalculated: true
-    });
+
       
   }
   
@@ -52,42 +49,48 @@ class ClothesData extends Component {
     
     const { currentTempIndex } = this.state;
     
-    console.log(userWarmthPreference)
-
-    this.setState({
-      
-      currentTempIndex: 
-      
-        userWarmthPreference === currentTempIndex
-          ? currentTempIndex
-          : userWarmthPreference === 'neutral'
-          ? currentTempIndex
-          : userWarmthPreference === 'cold'
-          ? "cold"
-          : userWarmthPreference === 'chilly'
-          ? "chilly"
-          : userWarmthPreference === 'warm'
-          ? "warm"
-          : userWarmthPreference === 'hot'
-          ? "hot"
-          : currentTempIndex
-        
-    });
-
+    userWarmthPreference === currentTempIndex
+      ? this.setState({
+          currentTempIndex: userWarmthPreference
+        })
+      : userWarmthPreference === 'neutral'
+      ? this.setState({
+          currentTempIndex: currentTempIndex
+        })
+      : userWarmthPreference === 'cold'
+      ? this.setState({
+          currentTempIndex: "cold"
+        })
+      : userWarmthPreference === 'chilly'
+      ? this.setState({
+          currentTempIndex: "chilly"
+        })
+      : userWarmthPreference === 'warm'
+      ? this.setState({
+          currentTempIndex: "warm"
+        })
+      : userWarmthPreference === 'hot'
+      ? this.setState({
+          currentTempIndex: "hot"
+        })
+      : this.setState({
+        currentTempIndex: currentTempIndex
+      });
     
-
-    console.log(this.state.currentTempIndex);
-
+    this.setState({
+      tempIndexCalculated: true
+    });
 
   }
   
   componentDidMount() {
     
     this.getCurrentTempIndex();
-    
-    // this.calculateWarmthPrefernce();
+
+    this.calculateWarmthPrefernce();
     
   }
+  
 
   render() {
 

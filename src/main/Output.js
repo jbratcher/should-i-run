@@ -19,7 +19,6 @@ class Output extends Component {
       currentLat,
       currentLng,
       currentTemp,
-      currentTempIndex,
       currentUV,
       currentWeatherIcon,
       currentWeatherSummary,
@@ -47,7 +46,6 @@ class Output extends Component {
             <ClothesData
               
               currentTemp={currentTemp}
-              currentTempIndex={currentTempIndex}
               userWarmthPreference={userWarmthPreference}
 
             />

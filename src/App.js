@@ -33,7 +33,6 @@ class App extends Component {
       currentHumidity: 0,
       currentPrecipProbability: 0,
       currentTemp: 0,
-      currentTempIndex: "neutral",
       currentUV: 0,
       data: {},
       dataReceived: false,
@@ -285,7 +284,6 @@ class App extends Component {
       currentLat,
       currentLng,
       currentTemp,
-      currentTempIndex,
       currentUV,
       currentWeatherIcon,
       currentWeatherSummary,
@@ -321,7 +319,6 @@ class App extends Component {
           currentLat={currentLat}
           currentLng={currentLng}
           currentTemp={currentTemp}
-          currentTempIndex={currentTempIndex}
           currentUV={currentUV}
           currentWeatherIcon={currentWeatherIcon}
           currentWeatherSummary={currentWeatherSummary}
