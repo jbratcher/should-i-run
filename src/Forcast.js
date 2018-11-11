@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { darkskyApiKey } from './secrets';
-// import ScoreData from './main/ScoreData';
+import ScoreData from './main/ScoreData';
 import Header from './header';
 import Footer from './Footer';
 
@@ -32,11 +32,12 @@ class Forcast extends Component {
       currentDayIndex: this.d.getDay(),
       currentLat: 38.2527,
       currentLng: -85.7585,
+      forcastAveragedTemp: [],
+      forcastDayNames: [],
       forcastHumidity: [],
       forcastPrecipProbability: [],
       forcastTempHigh: [],
       forcastTempLow: [],
-      forcastAveragedTemp: [],
       forcastTime: [],
       forcastUV: [],
       forcastWeatherIcons: [],
@@ -61,8 +62,10 @@ class Forcast extends Component {
     } = this.state;
 
     const scoresArray = [];
+    
+    const averagedTempArray = [];
 
-    for(let i=0; i <=7; i++) {
+    for(let i = 0; i <= 7; i++) {
 
       let humidityScore = forcastHumidity[i] * 10;
       let averagedTemp = (forcastTempHigh[i] + forcastTempLow[i]) / 2;
@@ -72,15 +75,22 @@ class Forcast extends Component {
 
       let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
+      averagedTempArray.push(averagedTemp);
+
       scoresArray.push(totalScore);
 
     }
 
     this.setState({
         forcastWeatherScores: scoresArray,
-        forcastAveragedTemp: this.averagedTemp,
-        isDataReceived: true
+        forcastAveragedTemp: averagedTempArray,
     });
+    
+    this.setState({
+      isDataReceived: true
+    });
+    
+    console.log(this.state);
 
   }
 
@@ -102,20 +112,45 @@ class Forcast extends Component {
           forcastUV: parsedJSON.daily.data.map(d => d.uvIndex),
           forcastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
           forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
-          forcastWeatherIcon: parsedJSON.daily.data.map(d => d.icon),
+          forcastWeatherIcons: parsedJSON.daily.data.map(d => d.icon),
           forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
         });
+        this.getForcastDayNames();
         this.calcuateWeatherScoresByDay();
       })
       .catch(error => console.log(`fetchForcast error in Scheduler: ${error}`));
 
   }
-  componentDidMount() {
-    console.log("Forcast component mount state: ", this.state);
+  
+  getForcastDayNames = () => {
+    
+    const { forcastDayNames } = this.state;
+    
+    for(let i = 0; i < 7 ; i++) {
+      forcastDayNames[i] = this.days[(this.d.getDay() + i)];
+    }
+    
+  }
+  
+  componentWillMount() {
+    
     this.fetchForcast();
+
   }
 
   render() {
+    
+    const {
+      forcastAveragedTemp,
+      forcastDayNames,
+      forcastHumidity,
+      forcastWeatherIcons,
+      forcastWeatherScores,
+      forcastWeatherSummary,
+      forcastUV,
+      isDataReceived,
+      userTempScale
+    } = this.state;
 
     return(
 
@@ -133,14 +168,94 @@ class Forcast extends Component {
 
                 <ul>
 
-                  <scoreData
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[0]}
+                    currentTemp={forcastAveragedTemp[0]}
+                    currentUV={forcastUV[0]}
+                    currentWeatherIcon={forcastWeatherIcons[0]}
+                    currentWeatherSummary={forcastWeatherSummary[0]}
+                    forcastDayName={forcastDayNames[0]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[0]}
+
+                  />
+                  
+                  <ScoreData
 
                     currentHumidity={forcastHumidity[1]}
                     currentTemp={forcastAveragedTemp[1]}
                     currentUV={forcastUV[1]}
                     currentWeatherIcon={forcastWeatherIcons[1]}
                     currentWeatherSummary={forcastWeatherSummary[1]}
+                    forcastDayName={forcastDayNames[1]}
+                    userTempScale={userTempScale}
                     weatherScore={forcastWeatherScores[1]}
+
+                  />
+                  
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[2]}
+                    currentTemp={forcastAveragedTemp[2]}
+                    currentUV={forcastUV[2]}
+                    currentWeatherIcon={forcastWeatherIcons[2]}
+                    currentWeatherSummary={forcastWeatherSummary[2]}
+                    forcastDayName={forcastDayNames[2]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[2]}
+
+                  />
+                  
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[3]}
+                    currentTemp={forcastAveragedTemp[3]}
+                    currentUV={forcastUV[3]}
+                    currentWeatherIcon={forcastWeatherIcons[3]}
+                    currentWeatherSummary={forcastWeatherSummary[3]}
+                    forcastDayName={forcastDayNames[3]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[3]}
+
+                  />
+                  
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[4]}
+                    currentTemp={forcastAveragedTemp[4]}
+                    currentUV={forcastUV[4]}
+                    currentWeatherIcon={forcastWeatherIcons[4]}
+                    currentWeatherSummary={forcastWeatherSummary[4]}
+                    forcastDayName={forcastDayNames[4]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[4]}
+
+                  />
+                  
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[5]}
+                    currentTemp={forcastAveragedTemp[5]}
+                    currentUV={forcastUV[5]}
+                    currentWeatherIcon={forcastWeatherIcons[5]}
+                    currentWeatherSummary={forcastWeatherSummary[5]}
+                    forcastDayName={forcastDayNames[5]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[5]}
+
+                  />
+                  
+                  <ScoreData
+
+                    currentHumidity={forcastHumidity[6]}
+                    currentTemp={forcastAveragedTemp[6]}
+                    currentUV={forcastUV[6]}
+                    currentWeatherIcon={forcastWeatherIcons[6]}
+                    currentWeatherSummary={forcastWeatherSummary[6]}
+                    forcastDayName={forcastDayNames[6]}
+                    userTempScale={userTempScale}
+                    weatherScore={forcastWeatherScores[6]}
 
                   />
 
