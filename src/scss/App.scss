@@ -222,6 +222,8 @@ button {
   display: none;
 }
 
+// Form
+
 #formInput {
   padding: 0 1rem;
 
@@ -251,6 +253,8 @@ button {
   }
 
 }
+
+// Output
 
 #outputContainer {
   background: #fefefe;
@@ -345,6 +349,8 @@ button {
 
 }
 
+// animations for weather icon classes
+
 .wi-day-sunny {
   animation: rotation 24s infinite linear;
 }
@@ -382,6 +388,8 @@ button {
 
 }
 
+// Google map
+
 #map {
 
   display: flex;
@@ -393,6 +401,8 @@ button {
   top: 15vh;
 
 }
+
+// Top level pages
 
 #about, #scheduler, #bestDay, #sevenDayForcast {
   min-height: 70vh;
@@ -421,6 +431,8 @@ button {
   }
 
 }
+
+// Footer
 
 footer {
   background: #333;
@@ -460,6 +472,8 @@ footer {
 .red {
   color: red;
 }
+
+// Media query breakpoint for tablets and larger screens
 
 @media (min-width: 768px) {
   

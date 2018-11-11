@@ -205,7 +205,6 @@ class Scheduler extends Component {
 
   }
   
-  
   // Get difference in index between selected day and current day to find index to get data
   // selected day index in data array is relative to current day of index 0
   
@@ -293,8 +292,6 @@ class Scheduler extends Component {
                       userTempScale={selectedDayUserTempScale}
                       weatherScore={selectedDayWeatherScore}
                     />
-                  
-                  
 
                 : null
 

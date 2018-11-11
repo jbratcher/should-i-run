@@ -7,20 +7,15 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
-    const { currentLat, currentLng } = this.props;
-
-    this.state = {
-      currentLocation: {
-        lat: currentLat,
-        lng: currentLng
-      }
-    };
+    this.state = {};
 
   }
 
   componentDidMount() {
+    
+    // On render, re-center map by changing state of lat and lng
 
-    const { currentLat, currentLng } = this.state;
+    const { currentLat, currentLng } = this.props;
 
     this.setState({
       currentLocation: {

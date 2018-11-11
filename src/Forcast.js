@@ -44,6 +44,7 @@ class Forcast extends Component {
       forcastWeatherScores: [],
       forcastWeatherSummary: [],
       isDataReceived: false,
+      isDataRequested: false,
       userTempScale: 'f'
 
     };
@@ -87,14 +88,13 @@ class Forcast extends Component {
     });
     
     this.setState({
-      isDataReceived: true
+      isDataReceived: true,
+      isDataRequested: false
     });
     
-    console.log(this.state);
-
   }
 
-  // Fetch forcast data and call weather score calculator
+  // Fetch forcast data, set day names array, and calculate weather scores
 
   fetchForcast = () => {
 
@@ -113,7 +113,8 @@ class Forcast extends Component {
           forcastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
           forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
           forcastWeatherIcons: parsedJSON.daily.data.map(d => d.icon),
-          forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
+          forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary),
+          isDataRequested: true
         });
         this.getForcastDayNames();
         this.calcuateWeatherScoresByDay();
@@ -121,6 +122,8 @@ class Forcast extends Component {
       .catch(error => console.log(`fetchForcast error in Scheduler: ${error}`));
 
   }
+  
+  // Create array of day names starting with the current day of the week
   
   getForcastDayNames = () => {
     
@@ -148,6 +151,7 @@ class Forcast extends Component {
       forcastWeatherScores,
       forcastWeatherSummary,
       forcastUV,
+      isDataRequested,
       isDataReceived,
       userTempScale
     } = this.state;
@@ -156,15 +160,19 @@ class Forcast extends Component {
 
         <section id="forcastSection">
 
-            <Header
-                getLocationData={this.getLocationData}
-            />
+            <Header/>
 
             <section id="sevenDayForcast" className="column">
 
                 <h2>7 Day Forcast</h2>
+                
+                {/* Render ul once data is received */}
 
-                {isDataReceived ?
+                { isDataRequested ?
+                
+                  <h3>Loading...</h3>
+                
+                : isDataReceived ?
 
                 <ul>
 

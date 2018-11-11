@@ -1,3 +1,5 @@
+// Clothing data object to get clothes list based on temperature index and user warmth preference
+
 const Clothing = {
     cold: {
       head: {

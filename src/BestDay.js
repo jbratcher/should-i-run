@@ -308,8 +308,6 @@ class BestDay extends Component {
                     userTempScale={selectedDayUserTempScale}
                     weatherScore={selectedDayWeatherScore}
                   />
-                
-                
 
               : null
 

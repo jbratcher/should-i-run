@@ -105,11 +105,14 @@ class ClothesData extends Component {
       
         <p>What to wear</p>
         
+        {/* Render nav once temperature index is calculated */}
+        
         <nav>
         
           { tempIndexCalculated ? 
       
             <ul id="clothing">
+              {/* If not head wear is needed don't render head list item */}
               {Clothing[currentTempIndex].head.text ? 
                   <li id="head">
                     <img alt="head" src={Clothing[currentTempIndex].head.imgsrc} />

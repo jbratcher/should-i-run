@@ -12,6 +12,9 @@ ReactDOM.render(
                 <Router basename={process.env.PUBLIC_URL}> 
                     <Switch>
                         <Route exact path="/" component={ App }/> 
+                        
+                        {/* props passed to top level routes */ }
+                        
                         <Route
                             exact path='/scheduler'
                             render={(props) => <Scheduler {...props} />}

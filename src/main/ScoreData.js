@@ -99,7 +99,7 @@ class ScoreData extends Component {
     return(
 
       <section id="scoreData">
-
+        
         <span id="day">{bestDay || selectedDayName  || forcastDayName}</span>
         <i id="weatherIcon" className={getWeatherIcon}
         ></i>

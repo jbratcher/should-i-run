@@ -34,6 +34,9 @@ class Output extends Component {
     return(
 
       <section id="outputContainer">
+      
+      {/* Output section is rendered as loading once data is requested */}
+      {/* then renders the clothing list, weather score, and map once data is received */}
 
         <section id="dataOutput">
 

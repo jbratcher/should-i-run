@@ -4,6 +4,8 @@ Weather conditions rated for activities fetched from location-based data.
 
 ShouldIRun rates the current and daily weather conditions and determines how favorable they are for running.
 
+To view the live app demo, visit the link below:
+
 [Demo](https://jbratcher.github.io/ShouldIRun)
 
 #### Features include:

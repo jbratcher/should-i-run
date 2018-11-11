@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     
-    // Set scales for calculations
+    // Set scales for weather score calculations
 
     this.medianTemp = 55;
     this.stdDevTemp = 5;
@@ -61,7 +61,6 @@ class App extends Component {
     // Calculate scores
 
     let humidityScore = currentHumidity * 10;
-    // Get score based on standard deviation from median
     let tempScore = this.tempScale - ((Math.abs(this.medianTemp - currentTemp)) / this.stdDevTemp);
     let uvScore = (this.uvScale - currentUV);
     let rainScore = (this.rainScale - (currentPrecipProbability * 10));
@@ -78,7 +77,7 @@ class App extends Component {
 
   }
 
-  // Fetch Dark Sky current weather conditions
+  // Fetch Dark Sky current weather conditions and calculate weather score
 
   fetchCurrentConditions = () => {
 
@@ -104,7 +103,7 @@ class App extends Component {
 
   // Populate city, state and county select lists
 
-  fetchCityList = (e) => {
+  fetchCityList = e => {
 
     fetch(`https://api.airvisual.com/v2/cities?state=${e.target.value}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
@@ -117,7 +116,7 @@ class App extends Component {
 
   }
 
-  fetchStateList = (e) => {
+  fetchStateList = e => {
 
     fetch(`https://api.airvisual.com/v2/states?country=${e.target.value}&key=${apiKey}`)
       .then(res => res.json())
@@ -145,7 +144,7 @@ class App extends Component {
 
   }
   
-  // Get IP based user location from AirVisual API
+  // Get IP based user location data from AirVisual API then fetch current weather conditions
 
   fetchLocation = () => {
 
@@ -169,7 +168,7 @@ class App extends Component {
 
   }
   
-  // Fetch user input location weather data fro AirVisual API
+  // Fetch user input location weather data fro AirVisual API then fetch current weather condiditons
 
   fetchStd = () => {
 
@@ -213,6 +212,8 @@ class App extends Component {
     this.fetchLocation();
 
   }
+  
+  // Handle change in county, state, city select options and populate select options
 
   handleCityInput = e => {
     e.preventDefault();

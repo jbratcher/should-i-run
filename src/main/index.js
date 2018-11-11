@@ -51,6 +51,8 @@ class Main extends Component {
             <a href="#formSection"><i className="fas fa-angle-double-right fa-2x" id="openNav"></i></a>
             <a href="#top"><i className="fas fa-angle-double-left fa-2x" id="closeNav"></i></a>
           </section>
+          
+          {/* User form for options and location input */}
 
           <Form
 
@@ -71,6 +73,8 @@ class Main extends Component {
           />
 
         </section>
+        
+        {/* Output of clothing and weather data */}
 
         <Output
 

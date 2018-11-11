@@ -32,12 +32,16 @@ class LocationInput extends Component {
         <section id="formInput">
 
           <h3>Location</h3>
+          
+          {/* Get localized weather data data from closest weather station to your IP */}
 
           <button id="getLocation" onClick={getLocationData}>Use my location</button>
 
           <section className="column">
 
             <label id="formLabel">Enter a Location</label>
+            
+            {/* Select country, state, and city for user location input */}
 
             <form>
 
