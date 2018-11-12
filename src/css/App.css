@@ -219,7 +219,7 @@ button {
   align-items: center;
   margin: 1rem;
   width: 100%;
-  max-width: 30vw;
+  max-width: 40vw;
   overflow-y: scroll; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
