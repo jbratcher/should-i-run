@@ -58,7 +58,7 @@ npm start
 
 ## Known "bugs"
 
-* Map display on tablet and larger isn't consistent
+* No default selection on page load, must select option (if default must select something else, then re-select choice)
 * Warmth preference mimics temperature index
 
 #### Change Log
