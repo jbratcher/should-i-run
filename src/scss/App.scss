@@ -333,8 +333,8 @@ button {
   }
 
   span {
-    margin: 0.5rem 0;
     font-weight: bold;
+    margin: 0.5rem 0;
   }
 
   p {
@@ -479,6 +479,15 @@ footer {
   
   #scheduler select {
     max-width: 25vw;
+  }
+  
+  #sevenDayForcast {
+    
+    ul {
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+    
   }
 
   header {

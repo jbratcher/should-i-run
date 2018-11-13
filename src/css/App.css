@@ -227,8 +227,8 @@ button {
     font-size: 3rem;
     margin: 1.5rem 0; }
   #scoreData span {
-    margin: 0.5rem 0;
-    font-weight: bold; }
+    font-weight: bold;
+    margin: 0.5rem 0; }
   #scoreData p {
     display: flex;
     flex-direction: column; }
@@ -314,6 +314,9 @@ footer {
 @media (min-width: 768px) {
   #scheduler select {
     max-width: 25vw; }
+  #sevenDayForcast ul {
+    flex-flow: row wrap;
+    justify-content: center; }
   header {
     width: 100%; }
     header #brand {
