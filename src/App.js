@@ -23,9 +23,9 @@ class App extends Component {
 
     this.state = {
       airQuality: 0,
-      cityInput: "",
+      cityInput: "Louisville",
       cityList: [],
-      countryInput: "",
+      countryInput: "USA",
       countryList: [],
       currentWeatherIcon: "wi wi-sunny-day",
       currentLat: 38.2527,
@@ -38,7 +38,7 @@ class App extends Component {
       dataReceived: false,
       dataRequested: false,
       mainPollutant: "",
-      stateInput: "",
+      stateInput: "Kentucky",
       stateList: [],
       userTempScale: "f",
       userWarmthPreference: "neutral",
@@ -115,6 +115,21 @@ class App extends Component {
       .catch(error => console.log("Fetch city list in App component", error));
 
   }
+  
+  fetchDefaultCityList = (state, country) => {
+
+    fetch(`https://api.airvisual.com/v2/cities?state=${state}&country=${country}&key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(city => {
+        return this.setState({
+          cityList: [...this.state.cityList, city.city],
+          cityInput: "Louisville"
+        });
+      }))
+      .catch(error => console.log("Fetch city list in App component", error));
+
+  }
+
 
   fetchStateList = e => {
 
@@ -128,6 +143,20 @@ class App extends Component {
       .catch(error => console.log("Fetch state list in App component", error));
 
   }
+  
+  fetchDefaultStateList = (country) => {
+    
+    fetch(`https://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`)
+      .then(res => res.json())
+      .then(parsedJSON => parsedJSON.data.map(state => {
+        return this.setState({
+          stateList: [...this.state.stateList, state.state],
+          stateInput: "Kentucky"
+        });
+      }))
+      .catch(error => console.log("Fetch state list in App component", error));
+    
+  }
 
   fetchCountryList = () => {
 
@@ -135,8 +164,7 @@ class App extends Component {
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
-          countryList: [...this.state.countryList, country.country],
-
+          countryList: [...this.state.countryList, country.country]
         });
       }))
       .catch(error => console.log("Fetch country list in App component", error)
@@ -223,6 +251,36 @@ class App extends Component {
     });
 
   }
+  
+  loadDefaultCountry = () => {
+    
+    this.setState({
+      countryInput: "USA",
+    });
+    this.fetchDefaultStateList("USA");
+    this.loadDefaultState();
+    
+  }
+  
+  loadDefaultState = () => {
+    
+    this.setState({
+      stateInput: "Kentucky"
+    });
+    
+    this.fetchDefaultCityList("Kentucky", "USA");
+    
+    this.loadDefaultCity();
+    
+  }
+  
+  loadDefaultCity = () => {
+    
+    this.setState({
+      cityInput: "Louisville"
+    });
+    
+  }
 
   handleCountryInput = e => {
     e.preventDefault();
@@ -235,6 +293,7 @@ class App extends Component {
       stateList: []
     });
     this.fetchStateList(e);
+    
   }
 
   handleStateInput = e => {
@@ -268,6 +327,8 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchCountryList();
+    
+    this.loadDefaultCountry();
 
     console.log("App component mounted state:", this.state);
 

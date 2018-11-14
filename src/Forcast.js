@@ -111,7 +111,6 @@ class Forcast extends Component {
     fetch(`https://calm-refuge-25215.herokuapp.com/https://api.darksky.net/forecast/${darkskyApiKey}/${currentLat},${currentLng}`)
       .then(res => res.json())
       .then(parsedJSON => {
-        console.log(parsedJSON);
         this.setState({
           forcastHumidity: parsedJSON.daily.data.map(d => d.humidity),
           forcastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
@@ -165,6 +164,7 @@ class Forcast extends Component {
       scoreData.push(
         
           <ScoreData
+            key={i}
             currentHumidity={forcastHumidity[i]}
             currentTemp={forcastAveragedTemp[i]}
             currentUV={forcastUV[i]}
