@@ -16,6 +16,7 @@ class Form extends Component {
   render() {
 
     const {
+      cityInput,
       cityList,
       countryInput,
       countryList,
@@ -26,6 +27,7 @@ class Form extends Component {
       handleWarmthPrefChange,
       getData,
       getLocationData,
+      stateInput,
       stateList,
       userTempScale,
       userWarmthPreference
@@ -46,7 +48,8 @@ class Form extends Component {
 
 
         <LocationInput
-
+        
+          cityInput={cityInput}
           cityList={cityList}
           countryInput={countryInput}
           countryList={countryList}
@@ -55,6 +58,7 @@ class Form extends Component {
           handleCityInput={handleCityInput}
           getData={getData}
           getLocationData={getLocationData}
+          stateInput={stateInput}
           stateList={stateList}
 
         />

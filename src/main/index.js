@@ -14,6 +14,7 @@ class Main extends Component {
 
     const {
       airQuality,
+      cityInput,
       cityList,
       countryInput,
       countryList,
@@ -35,6 +36,7 @@ class Main extends Component {
       getData,
       getLocationData,
       mainPollutant,
+      stateInput,
       stateList,
       userTempScale,
       userWarmthPreference,
@@ -56,6 +58,7 @@ class Main extends Component {
 
           <Form
 
+            cityInput={cityInput}
             cityList={cityList}
             countryInput={countryInput}
             countryList={countryList}
@@ -66,6 +69,7 @@ class Main extends Component {
             handleWarmthPrefChange={handleWarmthPrefChange}
             getData={getData}
             getLocationData={getLocationData}
+            stateInput={stateInput}
             stateList={stateList}
             userTempScale={userTempScale}
             userWarmthPreference={userWarmthPreference}
