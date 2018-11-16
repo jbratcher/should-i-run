@@ -11,11 +11,11 @@ class ClothesData extends Component {
       tempIndexCalculated: false
     };
   }
-  
+
   getCurrentTempIndex = () => {
 
     const { currentTemp } = this.props;
-    
+
     currentTemp >= 85
       ? this.setState({
           currentTempIndex: "hot"
@@ -37,27 +37,16 @@ class ClothesData extends Component {
           currentTempIndex: "cold"
         })
       : this.setState({
-          currentTempIndex: "neutral"
+          currentTempIndex: this.state.currentTempIndex
       });
 
-      
   }
-  
+
   calculateWarmthPrefernce = () => {
 
     const { userWarmthPreference } = this.props;
-    
-    const { currentTempIndex } = this.state;
-    
-    userWarmthPreference === currentTempIndex
-      ? this.setState({
-          currentTempIndex: userWarmthPreference
-        })
-      : userWarmthPreference === 'neutral'
-      ? this.setState({
-          currentTempIndex: currentTempIndex
-        })
-      : userWarmthPreference === 'cold'
+
+     userWarmthPreference === 'cold'
       ? this.setState({
           currentTempIndex: "cold"
         })
@@ -73,28 +62,27 @@ class ClothesData extends Component {
       ? this.setState({
           currentTempIndex: "hot"
         })
-      : this.setState({
-        currentTempIndex: currentTempIndex
-      });
-    
+      // This line produces a warning due to eslint
+      : null
+
     this.setState({
       tempIndexCalculated: true
     });
 
   }
-  
+
   componentDidMount() {
-    
+
     this.getCurrentTempIndex();
 
     this.calculateWarmthPrefernce();
-    
+
   }
-  
+
 
   render() {
 
-    const { 
+    const {
       currentTempIndex,
       tempIndexCalculated
     } = this.state;
@@ -102,18 +90,20 @@ class ClothesData extends Component {
     return(
 
       <section id="clothesData">
-      
+
         <p>What to wear</p>
-        
+
         {/* Render nav once temperature index is calculated */}
-        
+
         <nav>
-        
-          { tempIndexCalculated ? 
-      
+
+          { tempIndexCalculated ?
+
             <ul id="clothing">
+
               {/* If not head wear is needed don't render head list item */}
-              {Clothing[currentTempIndex].head.text ? 
+
+              {Clothing[currentTempIndex].head.text ?
                   <li id="head">
                     <img alt="head" src={Clothing[currentTempIndex].head.imgsrc} />
                     <p>{Clothing[currentTempIndex].head.text}</p>
@@ -132,11 +122,11 @@ class ClothesData extends Component {
                 <p>{Clothing[currentTempIndex].feet.text}</p>
               </li>
             </ul>
-            
+
           : null }
-        
+
         </nav>
-        
+
       </section>
     );
 
