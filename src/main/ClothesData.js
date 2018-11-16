@@ -7,7 +7,7 @@ class ClothesData extends Component {
     super(props);
 
     this.state = {
-      currentTempIndex: "neutral",
+      currentTempIndex: "",
       tempIndexCalculated: false
     };
   }
@@ -46,7 +46,7 @@ class ClothesData extends Component {
 
     const { userWarmthPreference } = this.props;
 
-     userWarmthPreference === 'cold'
+    userWarmthPreference === 'cold'
       ? this.setState({
           currentTempIndex: "cold"
         })
@@ -62,8 +62,7 @@ class ClothesData extends Component {
       ? this.setState({
           currentTempIndex: "hot"
         })
-      // This line produces a warning due to eslint
-      : null
+      : this.getCurrentTempIndex();
 
     this.setState({
       tempIndexCalculated: true
