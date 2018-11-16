@@ -12,7 +12,7 @@ class App extends Component {
 
   constructor() {
     super();
-    
+
     // Set scales for weather score calculations
 
     this.medianTemp = 55;
@@ -51,20 +51,20 @@ class App extends Component {
 
   calculateWeatherScore = () => {
 
-    const { 
-      currentHumidity, 
-      currentPrecipProbability, 
-      currentTemp, 
-      currentUV 
+    const {
+      currentHumidity,
+      currentPrecipProbability,
+      currentTemp,
+      currentUV
     } = this.state;
-    
+
     // Calculate scores
 
     let humidityScore = currentHumidity * 10;
     let tempScore = this.tempScale - ((Math.abs(this.medianTemp - currentTemp)) / this.stdDevTemp);
     let uvScore = (this.uvScale - currentUV);
     let rainScore = (this.rainScale - (currentPrecipProbability * 10));
-    
+
     // Combine scores and average
 
     let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
@@ -98,7 +98,7 @@ class App extends Component {
         this.calculateWeatherScore();
       })
       .catch(error => console.log("fetchCurrentConditions in App component", error));
-    
+
   }
 
   // Populate city, state and county select lists
@@ -109,13 +109,14 @@ class App extends Component {
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(city => {
         return this.setState({
-          cityList: [...this.state.cityList, city.city]
+          cityList: [...this.state.cityList, city.city],
+          cityInput: this.state.cityList[0]
         });
       }))
       .catch(error => console.log("Fetch city list in App component", error));
 
   }
-  
+
   fetchDefaultCityList = (state, country) => {
 
     fetch(`https://api.airvisual.com/v2/cities?state=${state}&country=${country}&key=${apiKey}`)
@@ -143,9 +144,9 @@ class App extends Component {
       .catch(error => console.log("Fetch state list in App component", error));
 
   }
-  
+
   fetchDefaultStateList = (country) => {
-    
+
     fetch(`https://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(state => {
@@ -155,7 +156,7 @@ class App extends Component {
         });
       }))
       .catch(error => console.log("Fetch state list in App component", error));
-    
+
   }
 
   fetchCountryList = () => {
@@ -171,7 +172,7 @@ class App extends Component {
     );
 
   }
-  
+
   // Get IP based user location data from AirVisual API then fetch current weather conditions
 
   fetchLocation = () => {
@@ -195,7 +196,7 @@ class App extends Component {
     .catch(error => console.log("fetchLocation in App component", error));
 
   }
-  
+
   // Fetch user input location weather data fro AirVisual API then fetch current weather condiditons
 
   fetchStd = () => {
@@ -216,7 +217,7 @@ class App extends Component {
       .catch(error => console.log("fetchStd in App component", error));
 
   }
-  
+
   // Handle user input location form submission
 
   getData = e => {
@@ -229,7 +230,7 @@ class App extends Component {
     });
 
     this.fetchStd();
-    
+
   }
 
   // Handle button click for IP based user location
@@ -240,7 +241,7 @@ class App extends Component {
     this.fetchLocation();
 
   }
-  
+
   // Handle change in county, state, city select options and populate select options
 
   handleCityInput = e => {
@@ -251,35 +252,35 @@ class App extends Component {
     });
 
   }
-  
+
   loadDefaultCountry = () => {
-    
+
     this.setState({
       countryInput: "USA",
     });
     this.fetchDefaultStateList("USA");
     this.loadDefaultState();
-    
+
   }
-  
+
   loadDefaultState = () => {
-    
+
     this.setState({
       stateInput: "Kentucky"
     });
-    
+
     this.fetchDefaultCityList("Kentucky", "USA");
-    
+
     this.loadDefaultCity();
-    
+
   }
-  
+
   loadDefaultCity = () => {
-    
+
     this.setState({
       cityInput: "Louisville"
     });
-    
+
   }
 
   handleCountryInput = e => {
@@ -293,7 +294,7 @@ class App extends Component {
       stateList: []
     });
     this.fetchStateList(e);
-    
+
   }
 
   handleStateInput = e => {
@@ -327,7 +328,7 @@ class App extends Component {
   componentDidMount() {
 
     this.fetchCountryList();
-    
+
     this.loadDefaultCountry();
 
     console.log("App component mounted state:", this.state);
