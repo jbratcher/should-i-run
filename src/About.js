@@ -11,29 +11,27 @@ class About extends Component {
   }
 
   render() {
-      
+
     return(
-    
+
         <section id="aboutSection">
-        
-            <Header 
-                getLocationData={this.getLocationData}
-            />
-            
+
+            <Header />
+
             <section id="about" className="column">
-            
+
                 <h2>About</h2>
-                
+
                 <p>Get a rating on weather conditions for outdoor activities</p>
-                
+
                 <a href="https://jbratcher.github.io/ShouldIRun/">Demo page</a>
-            
+
             </section>
-            
+
             <Footer / >
-        
+
         </section>
-          
+
     )
 
   }

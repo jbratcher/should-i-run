@@ -78,7 +78,6 @@ class ClothesData extends Component {
 
   }
 
-
   render() {
 
     const {

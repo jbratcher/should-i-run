@@ -20,7 +20,7 @@ class BestDay extends Component {
       "Friday",
       "Saturday"
     ];
-    
+
     this.medianTemp = 55;
     this.stdDevTemp = 5;
     this.tempScale = 10;
@@ -60,20 +60,20 @@ class BestDay extends Component {
       selectedDayUserTempScale: "f",
       selectedDayWeatherIcon: "wi wi-na",
       selectedDayWeatherScore: 0
-                
+
     };
   }
-  
+
   // Calculate weather score
 
   calculateWeatherScore = () => {
 
-    const { 
-      selectedDayHumidity, 
-      selectedDayPrecipProbability, 
-      selectedDayTempHigh, 
-      selectedDayTempLow, 
-      selectedDayUV 
+    const {
+      selectedDayHumidity,
+      selectedDayPrecipProbability,
+      selectedDayTempHigh,
+      selectedDayTempLow,
+      selectedDayUV
     } = this.state;
 
     // Set scales and defaults
@@ -92,7 +92,7 @@ class BestDay extends Component {
       selectedDayWeatherScore: totalScore,
       selectedDayAveragedTemp: averagedTemp
     });
-    
+
   }
 
   findBestDayToRun = () => {
@@ -101,11 +101,11 @@ class BestDay extends Component {
       forcastTime,
       forcastWeatherScores
     } = this.state;
-    
+
     // Get highest score in 7 day range from api data
 
     let index = forcastWeatherScores.indexOf(Math.max(...forcastWeatherScores));
-    
+
     // Convert millisecond time to date then to day of week index
 
     let date = new Date(forcastTime[index] * 1000);
@@ -139,13 +139,13 @@ class BestDay extends Component {
         bestDayIndex: bestDayIndex,
         bestDayFound: true,
       });
-      
+
       this.getDeltaBestDay();
-      
+
       this.fetchForcastBySelectedDay();
 
   }
-  
+
   // Calculate each day's weather score and push to array then find the best day to run
 
   calcuateWeatherScoresByDay = () => {
@@ -207,7 +207,7 @@ class BestDay extends Component {
       .catch(error => console.log(`fetchForcas error in Best Day: ${error}`));
 
   }
-  
+
   // Fetch day data and then call weather score calculator
 
   fetchForcastBySelectedDay = () => {
@@ -232,20 +232,20 @@ class BestDay extends Component {
       .catch(error => console.log(`fetchForcastBySelectedDay error in Best Day: ${error}`));
 
   }
-  
+
   // Get difference in index between best day and current day to find index to get data
   // best day index in data array is relative to current day of index 0
-  
+
   getDeltaBestDay = () => {
-    
+
     const { bestDayIndex, currentDayIndex } = this.state;
-    
+
     let deltaBestDay = (bestDayIndex - currentDayIndex);
-    
+
     this.setState({
       selectedDayIndex: deltaBestDay
     });
-    
+
   }
 
 
@@ -269,17 +269,15 @@ class BestDay extends Component {
       selectedDayUserTempScale,
       selectedDayWeatherScore
     } = this.state;
-    
+
     return(
 
         <section id="schedulerSection">
 
-            <Header
-                getLocationData={this.getLocationData}
-            />
+            <Header />
 
             <section id="bestDay" className="column">
-            
+
               <h2>Best Day</h2>
 
               <p>Find the best day to run in the next 7 days</p>
@@ -293,9 +291,9 @@ class BestDay extends Component {
               </button>
 
               {bestDayFound ?
-                
+
                   <ScoreData
-                
+
                     airQuality={selectedDayAQ}
                     bestDay={bestDay}
                     currentHumidity={selectedDayHumidity}

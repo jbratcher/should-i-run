@@ -20,7 +20,7 @@ class Scheduler extends Component {
       "Friday",
       "Saturday"
     ];
-    
+
     this.medianTemp = 55;
     this.stdDevTemp = 5;
     this.tempScale = 10;
@@ -58,20 +58,20 @@ class Scheduler extends Component {
       selectedDayUserTempScale: "f",
       selectedDayWeatherIcon: "wi wi-na",
       selectedDayWeatherScore: 0
-                
+
     };
   }
-  
+
   // Calculate weather score
 
   calculateWeatherScore = () => {
 
-    const { 
-      selectedDayHumidity, 
-      selectedDayPrecipProbability, 
-      selectedDayTempHigh, 
-      selectedDayTempLow, 
-      selectedDayUV 
+    const {
+      selectedDayHumidity,
+      selectedDayPrecipProbability,
+      selectedDayTempHigh,
+      selectedDayTempLow,
+      selectedDayUV
     } = this.state;
 
     // Normalize data for display
@@ -88,9 +88,9 @@ class Scheduler extends Component {
       selectedDayWeatherScore: totalScore,
       selectedDayAveragedTemp: averagedTemp
     });
-    
+
   }
-  
+
   // Calculate each day's weather score and push to array then find the best day to run
 
   calcuateWeatherScoresByDay = () => {
@@ -150,7 +150,7 @@ class Scheduler extends Component {
       .catch(error => console.log(`fetchForcast error in Scheduler: ${error}`));
 
   }
-  
+
   // Fetch day data and then call weather score calculator
 
   fetchForcastBySelectedDay = () => {
@@ -179,7 +179,7 @@ class Scheduler extends Component {
 
   handleDayChange = e => {
     e.preventDefault();
-    
+
     let selectedDayIndex = e.target.value === "Sunday"
       ? 0
       : e.target.value === "Monday"
@@ -195,27 +195,27 @@ class Scheduler extends Component {
       : e.target.value === "Saturday"
       ? 6
       : null;
-        
+
     this.setState({
       selectedDayName: e.target.value,
       selectedDayIndex: selectedDayIndex,
     });
-    
+
     this.getDeltaSelectedDay();
 
   }
-  
+
   // Get difference in index between selected day and current day to find index to get data
   // selected day index in data array is relative to current day of index 0
-  
+
   getDeltaSelectedDay = () => {
-    
+
     const { selectedDayIndex, currentDayIndex } = this.state;
-    
+
     let dayScale = 7;
-    
+
     this.setState({
-      
+
       deltaSelectedDay: currentDayIndex < selectedDayIndex
       ? (selectedDayIndex - currentDayIndex)
       : currentDayIndex > selectedDayIndex
@@ -223,11 +223,11 @@ class Scheduler extends Component {
       : currentDayIndex === selectedDayIndex
       ? 0
       : null
-      
+
     },
     this.fetchForcastBySelectedDay()
     );
-    
+
   }
 
   componentDidMount() {
@@ -250,14 +250,12 @@ class Scheduler extends Component {
       selectedDayUserTempScale,
       selectedDayWeatherScore
     } = this.state;
-    
+
     return(
 
         <section id="schedulerSection">
 
-            <Header
-                getLocationData={this.getLocationData}
-            />
+            <Header />
 
             <section id="scheduler" className="column">
 
@@ -275,11 +273,11 @@ class Scheduler extends Component {
                   <option value="Friday">Friday</option>
                   <option value="Saturday">Saturday</option>
                 </select>
-                
+
                 {isDaySelected ?
-                  
+
                     <ScoreData
-                  
+
                       airQuality={selectedDayAQ}
                       currentHumidity={selectedDayHumidity}
                       currentTemp={selectedDayAveragedTemp}
