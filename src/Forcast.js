@@ -91,13 +91,10 @@ class Forcast extends Component {
     }
 
     this.setState({
-        forcastWeatherScores: scoresArray,
-        forcastAveragedTemp: averagedTempArray,
-    });
-    
-    this.setState({
-      isDataReceived: true,
-      isDataRequested: false
+      forcastWeatherScores: scoresArray,
+      forcastAveragedTemp: averagedTempArray,
+      isDataRequested: false,
+      isDataReceived: true
     });
     
   }

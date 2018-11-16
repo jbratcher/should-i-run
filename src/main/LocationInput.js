@@ -36,6 +36,8 @@ class LocationInput extends Component {
           {/* Get localized weather data data from closest weather station to your IP */}
 
           <button id="getLocation" onClick={getLocationData}>Use my location</button>
+          
+          <p>-- <b>OR</b> --</p>
 
           <section className="column">
 

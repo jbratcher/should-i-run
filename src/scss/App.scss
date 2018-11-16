@@ -53,6 +53,16 @@ select, input {
 
 }
 
+.button {
+  background: #ccc;
+  border: none;
+  border-radius: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem 2rem;
+}
+
 // Header
 
 header {
@@ -410,7 +420,7 @@ button {
   width: 100vw;
   overflow-x: hidden;
 
-  h2, p, a {
+  h2, p {
     padding: 1rem 0;
   }
 
@@ -430,6 +440,14 @@ button {
     width: 50vw;
   }
 
+}
+
+#about {
+  
+  a {
+    text-decoration: none;
+  }
+  
 }
 
 // Footer

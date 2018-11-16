@@ -37,6 +37,15 @@ select, input {
   .column label {
     margin: 0.5rem 0 0; }
 
+.button {
+  background: #ccc;
+  border: none;
+  border-radius: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem 2rem; }
+
 header {
   background: #dedede;
   display: flex;
@@ -272,7 +281,7 @@ button {
   text-align: center;
   width: 100vw;
   overflow-x: hidden; }
-  #about h2, #about p, #about a, #scheduler h2, #scheduler p, #scheduler a, #bestDay h2, #bestDay p, #bestDay a, #sevenDayForcast h2, #sevenDayForcast p, #sevenDayForcast a {
+  #about h2, #about p, #scheduler h2, #scheduler p, #bestDay h2, #bestDay p, #sevenDayForcast h2, #sevenDayForcast p {
     padding: 1rem 0; }
 
 #scheduler p {
@@ -283,6 +292,9 @@ button {
 
 #scheduler select {
   width: 50vw; }
+
+#about a {
+  text-decoration: none; }
 
 footer {
   background: #333;

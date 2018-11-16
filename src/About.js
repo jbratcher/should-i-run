@@ -24,7 +24,7 @@ class About extends Component {
 
                 <p>Get a rating on weather conditions for outdoor activities</p>
 
-                <a href="https://jbratcher.github.io/ShouldIRun/">Demo page</a>
+                <a href="https://jbratcher.github.io/ShouldIRun/" class="button">Demo page</a>
 
             </section>
 
