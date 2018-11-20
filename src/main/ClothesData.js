@@ -84,7 +84,7 @@ class ClothesData extends Component {
       currentTempIndex,
       tempIndexCalculated
     } = this.state;
-
+    
     return(
 
       <section id="clothesData">

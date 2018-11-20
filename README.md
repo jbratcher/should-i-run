@@ -11,16 +11,16 @@ To view the live app demo, visit the link below:
 #### Features include:
 
 * IP localization as well as user input localities
-* Temperature scale 
-* Warmth preference 
+* Temperature scale
+* Warmth preference
 * schedule a day to run
 * Find the best day to run in the next 7 days
 
 ##### Technologies used
 
-React
-ES2015 JavaScript
-SCSS
+* React
+* ES2015 JavaScript
+* SCSS
 
 ##### APIs used
 
