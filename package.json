@@ -6,12 +6,12 @@
   "dependencies": {
     "gh-pages": "^1.2.0",
     "google-maps-react": "^2.0.2",
-    "node-sass-chokidar": "^1.3.3",
+    "node-sass-chokidar": "^1.3.4",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +23,11 @@
     "build-css": "node-sass-chokidar ./src/scss/App.scss -o ./src/css/",
     "watch-css": "npm run build-css | node-sass-chokidar ./src/scss/App.scss -o ./src/css/ --watch --recursive",
     "dev": "npm run start | npm run watch-css"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
