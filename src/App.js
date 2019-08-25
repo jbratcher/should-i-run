@@ -105,7 +105,7 @@ class App extends Component {
 
   fetchCityList = e => {
 
-    fetch(`https://api.airvisual.com/v2/cities?state=${e.target.value}&country=${this.state.countryInput}&key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/cities?state=${e.target.value}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(city => {
         return this.setState({
@@ -119,7 +119,7 @@ class App extends Component {
 
   fetchDefaultCityList = (state, country) => {
 
-    fetch(`https://api.airvisual.com/v2/cities?state=${state}&country=${country}&key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/cities?state=${state}&country=${country}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(city => {
         return this.setState({
@@ -134,7 +134,7 @@ class App extends Component {
 
   fetchStateList = e => {
 
-    fetch(`https://api.airvisual.com/v2/states?country=${e.target.value}&key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/states?country=${e.target.value}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(state => {
         return this.setState({
@@ -147,7 +147,7 @@ class App extends Component {
 
   fetchDefaultStateList = (country) => {
 
-    fetch(`https://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(state => {
         return this.setState({
@@ -161,7 +161,7 @@ class App extends Component {
 
   fetchCountryList = () => {
 
-    fetch(`https://api.airvisual.com/v2/countries?key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/countries?key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => parsedJSON.data.map(country => {
         return this.setState({
@@ -177,7 +177,7 @@ class App extends Component {
 
   fetchLocation = () => {
 
-    fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/nearest_city?key=${apiKey}`)
     .then(res => res.json())
     .then(parsedJSON => {
       this.setState({
@@ -201,7 +201,7 @@ class App extends Component {
 
   fetchStd = () => {
 
-    fetch(`https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
+    fetch(`https://calm-refuge-25215.herokuapp.com/https://api.airvisual.com/v2/city?city=${this.state.cityInput}&state=${this.state.stateInput}&country=${this.state.countryInput}&key=${apiKey}`)
       .then(res => res.json())
       .then(parsedJSON => {
         this.setState({
