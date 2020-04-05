@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/ShouldIRun/static/css/main.d8e918e6.chunk.css",
-    "main.js": "/ShouldIRun/static/js/main.5e85ece9.chunk.js",
-    "main.js.map": "/ShouldIRun/static/js/main.5e85ece9.chunk.js.map",
-    "runtime~main.js": "/ShouldIRun/static/js/runtime~main.b75212cb.js",
-    "runtime~main.js.map": "/ShouldIRun/static/js/runtime~main.b75212cb.js.map",
-    "static/js/2.f47a58c7.chunk.js": "/ShouldIRun/static/js/2.f47a58c7.chunk.js",
-    "static/js/2.f47a58c7.chunk.js.map": "/ShouldIRun/static/js/2.f47a58c7.chunk.js.map",
-    "index.html": "/ShouldIRun/index.html",
-    "precache-manifest.f8966e1adce09261374b1c0dc9a2117b.js": "/ShouldIRun/precache-manifest.f8966e1adce09261374b1c0dc9a2117b.js",
-    "service-worker.js": "/ShouldIRun/service-worker.js",
-    "static/css/main.d8e918e6.chunk.css.map": "/ShouldIRun/static/css/main.d8e918e6.chunk.css.map",
-    "static/media/weather-icons.min.css": "/ShouldIRun/static/media/weathericons-regular-webfont.ed0943f2.svg"
-  }
+    "main.css": "/should-i-run/static/css/main.96d2d14b.chunk.css",
+    "main.js": "/should-i-run/static/js/main.e767e1af.chunk.js",
+    "main.js.map": "/should-i-run/static/js/main.e767e1af.chunk.js.map",
+    "runtime-main.js": "/should-i-run/static/js/runtime-main.8515d234.js",
+    "runtime-main.js.map": "/should-i-run/static/js/runtime-main.8515d234.js.map",
+    "static/js/2.9f7647b5.chunk.js": "/should-i-run/static/js/2.9f7647b5.chunk.js",
+    "static/js/2.9f7647b5.chunk.js.map": "/should-i-run/static/js/2.9f7647b5.chunk.js.map",
+    "index.html": "/should-i-run/index.html",
+    "precache-manifest.825715c34e0c2806f42b639ed5b853da.js": "/should-i-run/precache-manifest.825715c34e0c2806f42b639ed5b853da.js",
+    "service-worker.js": "/should-i-run/service-worker.js",
+    "static/css/main.96d2d14b.chunk.css.map": "/should-i-run/static/css/main.96d2d14b.chunk.css.map",
+    "static/js/2.9f7647b5.chunk.js.LICENSE.txt": "/should-i-run/static/js/2.9f7647b5.chunk.js.LICENSE.txt",
+    "static/media/weather-icons.min.css": "/should-i-run/static/media/weathericons-regular-webfont.ed0943f2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8515d234.js",
+    "static/js/2.9f7647b5.chunk.js",
+    "static/css/main.96d2d14b.chunk.css",
+    "static/js/main.e767e1af.chunk.js"
+  ]
 }
