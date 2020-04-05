@@ -7,7 +7,7 @@ class ClothesData extends Component {
     super(props);
 
     this.state = {
-      currentTempIndex: "",
+      currentTempIndex: "neutral",
       tempIndexCalculated: false
     };
   }

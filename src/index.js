@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Scheduler from './Scheduler';
 import BestDay from './BestDay';
-import Forcast from './Forcast';
+import Forecast from './Forecast';
 import About from './About';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
@@ -24,8 +24,8 @@ ReactDOM.render(
                             render={(props) => <BestDay {...props} />}
                         />
                         <Route
-                            exact path='/forcast'
-                            render={(props) => <Forcast {...props} />}
+                            exact path='/forecast'
+                            render={(props) => <Forecast {...props} />}
                         />
                         <Route
                             exact path='/about'

@@ -30,7 +30,7 @@ const Clothing = {
       },
       legs: {
         text: "Athletic shorts",
-        imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+        imgsrc: "https://media.kohlsimg.com/is/image/kohls/3818758_Black"
       },
       feet: {
         text: "Insulated socks",
@@ -48,7 +48,7 @@ const Clothing = {
       },
       legs: {
         text: "Athletic shorts",
-        imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+        imgsrc: "https://media.kohlsimg.com/is/image/kohls/3818758_Black"
       },
       feet: {
         text: "Padded socks",
@@ -66,7 +66,7 @@ const Clothing = {
       },
       legs: {
         text: "Athletic shorts",
-        imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+        imgsrc: "https://media.kohlsimg.com/is/image/kohls/3818758_Black"
       },
       feet: {
         text: "Padded socks",
@@ -84,7 +84,7 @@ const Clothing = {
       },
       legs: {
         text: "Athletic shorts",
-        imgsrc: "https://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dwbe64c536/images/hi-res/24632_BLK.jpg?sw=750&sh=750&sm=fit&sfrm=png"
+        imgsrc: "https://media.kohlsimg.com/is/image/kohls/3818758_Black"
       },
       feet: {
         text: "Padded socks",

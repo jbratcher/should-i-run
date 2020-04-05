@@ -276,12 +276,12 @@ button {
   height: auto;
   top: 15vh; }
 
-#about, #scheduler, #bestDay, #sevenDayForcast {
+#about, #scheduler, #bestDay, #sevenDayForecast {
   min-height: 70vh;
   text-align: center;
   width: 100vw;
   overflow-x: hidden; }
-  #about h2, #about p, #scheduler h2, #scheduler p, #bestDay h2, #bestDay p, #sevenDayForcast h2, #sevenDayForcast p {
+  #about h2, #about p, #scheduler h2, #scheduler p, #bestDay h2, #bestDay p, #sevenDayForecast h2, #sevenDayForecast p {
     padding: 1rem 0; }
 
 #scheduler p {
@@ -326,7 +326,7 @@ footer {
 @media (min-width: 768px) {
   #scheduler select {
     max-width: 25vw; }
-  #sevenDayForcast ul {
+  #sevenDayForecast ul {
     flex-flow: row wrap;
     justify-content: center; }
   header {

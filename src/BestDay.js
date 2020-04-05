@@ -37,15 +37,15 @@ class BestDay extends Component {
       deltaSelectedDay: null,
       currentLat: 38.2527,
       currentLng: -85.7585,
-      forcastHumidity: [],
-      forcastTempHigh: [],
-      forcastTempLow: [],
-      forcastTime: [],
-      forcastUV: [],
-      forcastPrecipProbability: [],
-      forcastWeatherScores: [],
-      forcastWeatherIcon: "wi wi-na",
-      forcastWeatherSummary: "",
+      forecastHumidity: [],
+      forecastTempHigh: [],
+      forecastTempLow: [],
+      forecastTime: [],
+      forecastUV: [],
+      forecastPrecipProbability: [],
+      forecastWeatherScores: [],
+      forecastWeatherIcon: "wi wi-na",
+      forecastWeatherSummary: "",
       isDaySelected: false,
       selectedDayAQ: 0,
       selectedDayHumidity: 0,
@@ -98,17 +98,17 @@ class BestDay extends Component {
   findBestDayToRun = () => {
 
     const {
-      forcastTime,
-      forcastWeatherScores
+      forecastTime,
+      forecastWeatherScores
     } = this.state;
 
     // Get highest score in 7 day range from api data
 
-    let index = forcastWeatherScores.indexOf(Math.max(...forcastWeatherScores));
+    let index = forecastWeatherScores.indexOf(Math.max(...forecastWeatherScores));
 
     // Convert millisecond time to date then to day of week index
 
-    let date = new Date(forcastTime[index] * 1000);
+    let date = new Date(forecastTime[index] * 1000);
 
     let convertedDate = new Date(date);
 
@@ -142,7 +142,7 @@ class BestDay extends Component {
 
       this.getDeltaBestDay();
 
-      this.fetchForcastBySelectedDay();
+      this.fetchForecastBySelectedDay();
 
   }
 
@@ -151,22 +151,22 @@ class BestDay extends Component {
   calcuateWeatherScoresByDay = () => {
 
     const {
-      forcastHumidity,
-      forcastPrecipProbability,
-      forcastTempHigh,
-      forcastTempLow,
-      forcastUV,
+      forecastHumidity,
+      forecastPrecipProbability,
+      forecastTempHigh,
+      forecastTempLow,
+      forecastUV,
     } = this.state;
 
     const scoresArray = [];
 
     for(let i=0; i <=7; i++) {
 
-      let humidityScore = forcastHumidity[i] * 10;
-      let averagedTemp = (forcastTempHigh[i] + forcastTempLow[i]) / 2;
+      let humidityScore = forecastHumidity[i] * 10;
+      let averagedTemp = (forecastTempHigh[i] + forecastTempLow[i]) / 2;
       let tempScore = this.tempScale - ((Math.abs(this.medianTemp - averagedTemp)) / this.stdDevTemp);
-      let uvScore = (this.uvScale - forcastUV[i]);
-      let rainScore = (this.rainScale - (forcastPrecipProbability[i] * 10));
+      let uvScore = (this.uvScale - forecastUV[i]);
+      let rainScore = (this.rainScale - (forecastPrecipProbability[i] * 10));
 
       let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
@@ -175,16 +175,16 @@ class BestDay extends Component {
     }
 
     this.setState({
-        forcastWeatherScores: scoresArray
+        forecastWeatherScores: scoresArray
       });
 
     this.findBestDayToRun();
 
   }
 
-  // Fetch forcast data and call weather score calculator
+  // Fetch forecast data and call weather score calculator
 
-  fetchForcast = () => {
+  fetchForecast = () => {
 
     const {currentLat, currentLng} = this.state;
 
@@ -192,15 +192,15 @@ class BestDay extends Component {
       .then(res => res.json())
       .then(parsedJSON => {
         this.setState({
-          forcastHumidity: parsedJSON.daily.data.map(d => d.humidity),
-          forcastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
-          forcastTempHigh: parsedJSON.daily.data.map(d => d.apparentTemperatureHigh),
-          forcastTempLow: parsedJSON.daily.data.map(d => d.apparentTemperatureLow),
-          forcastUV: parsedJSON.daily.data.map(d => d.uvIndex),
-          forcastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
-          forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
-          forcastWeatherIcon: parsedJSON.daily.data.map(d => d.icon),
-          forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
+          forecastHumidity: parsedJSON.daily.data.map(d => d.humidity),
+          forecastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
+          forecastTempHigh: parsedJSON.daily.data.map(d => d.apparentTemperatureHigh),
+          forecastTempLow: parsedJSON.daily.data.map(d => d.apparentTemperatureLow),
+          forecastUV: parsedJSON.daily.data.map(d => d.uvIndex),
+          forecastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
+          forecastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
+          forecastWeatherIcon: parsedJSON.daily.data.map(d => d.icon),
+          forecastWeatherSummary: parsedJSON.daily.data.map(d => d.summary)
         });
         this.calcuateWeatherScoresByDay();
       })
@@ -210,7 +210,7 @@ class BestDay extends Component {
 
   // Fetch day data and then call weather score calculator
 
-  fetchForcastBySelectedDay = () => {
+  fetchForecastBySelectedDay = () => {
 
     const {currentLat, currentLng, selectedDayIndex} = this.state;
 
@@ -229,7 +229,7 @@ class BestDay extends Component {
         });
         this.calculateWeatherScore();
       })
-      .catch(error => console.log(`fetchForcastBySelectedDay error in Best Day: ${error}`));
+      .catch(error => console.log(`fetchForecastBySelectedDay error in Best Day: ${error}`));
 
   }
 
@@ -285,7 +285,7 @@ class BestDay extends Component {
 
               <label>Find the best day of the week</label>
               <button
-                onClick={this.fetchForcast}
+                onClick={this.fetchForecast}
               >
                 Go
               </button>

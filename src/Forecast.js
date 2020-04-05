@@ -4,7 +4,7 @@ import ScoreData from './main/ScoreData';
 import Header from './header';
 import Footer from './Footer';
 
-class Forcast extends Component {
+class Forecast extends Component {
 
   constructor(props) {
     super(props);
@@ -40,17 +40,17 @@ class Forcast extends Component {
       currentDayIndex: this.d.getDay(),
       currentLat: 38.2527,
       currentLng: -85.7585,
-      forcastAveragedTemp: [],
-      forcastDayNames: [],
-      forcastHumidity: [],
-      forcastPrecipProbability: [],
-      forcastTempHigh: [],
-      forcastTempLow: [],
-      forcastTime: [],
-      forcastUV: [],
-      forcastWeatherIcons: [],
-      forcastWeatherScores: [],
-      forcastWeatherSummary: [],
+      forecastAveragedTemp: [],
+      forecastDayNames: [],
+      forecastHumidity: [],
+      forecastPrecipProbability: [],
+      forecastTempHigh: [],
+      forecastTempLow: [],
+      forecastTime: [],
+      forecastUV: [],
+      forecastWeatherIcons: [],
+      forecastWeatherScores: [],
+      forecastWeatherSummary: [],
       isDataReceived: false,
       isDataRequested: false,
       userTempScale: 'f'
@@ -63,11 +63,11 @@ class Forcast extends Component {
   calcuateWeatherScoresByDay = () => {
 
     const {
-      forcastHumidity,
-      forcastTempHigh,
-      forcastTempLow,
-      forcastUV,
-      forcastPrecipProbability
+      forecastHumidity,
+      forecastTempHigh,
+      forecastTempLow,
+      forecastUV,
+      forecastPrecipProbability
     } = this.state;
 
     const scoresArray = [];
@@ -76,11 +76,11 @@ class Forcast extends Component {
 
     for(let i = 0; i <= 7; i++) {
 
-      let humidityScore = forcastHumidity[i] * 10;
-      let averagedTemp = (forcastTempHigh[i] + forcastTempLow[i]) / 2;
+      let humidityScore = forecastHumidity[i] * 10;
+      let averagedTemp = (forecastTempHigh[i] + forecastTempLow[i]) / 2;
       let tempScore = this.tempScale - ((Math.abs(this.medianTemp - averagedTemp)) / this.stdDevTemp);
-      let uvScore = (this.uvScale - forcastUV[i]);
-      let rainScore = (this.rainScale - (forcastPrecipProbability[i] * 10));
+      let uvScore = (this.uvScale - forecastUV[i]);
+      let rainScore = (this.rainScale - (forecastPrecipProbability[i] * 10));
 
       let totalScore = ((tempScore + uvScore + humidityScore + rainScore) / 4);
 
@@ -91,17 +91,17 @@ class Forcast extends Component {
     }
 
     this.setState({
-      forcastWeatherScores: scoresArray,
-      forcastAveragedTemp: averagedTempArray,
+      forecastWeatherScores: scoresArray,
+      forecastAveragedTemp: averagedTempArray,
       isDataRequested: false,
       isDataReceived: true
     });
     
   }
 
-  // Fetch forcast data, set day names array, and calculate weather scores
+  // Fetch forecast data, set day names array, and calculate weather scores
 
-  fetchForcast = () => {
+  fetchForecast = () => {
 
     const {currentLat, currentLng} = this.state;
 
@@ -109,47 +109,47 @@ class Forcast extends Component {
       .then(res => res.json())
       .then(parsedJSON => {
         this.setState({
-          forcastHumidity: parsedJSON.daily.data.map(d => d.humidity),
-          forcastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
-          forcastTempHigh: parsedJSON.daily.data.map(d => d.apparentTemperatureHigh),
-          forcastTempLow: parsedJSON.daily.data.map(d => d.apparentTemperatureLow),
-          forcastUV: parsedJSON.daily.data.map(d => d.uvIndex),
-          forcastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
-          forcastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
-          forcastWeatherIcons: parsedJSON.daily.data.map(d => d.icon),
-          forcastWeatherSummary: parsedJSON.daily.data.map(d => d.summary),
+          forecastHumidity: parsedJSON.daily.data.map(d => d.humidity),
+          forecastPrecipProbability: parsedJSON.daily.data.map(d => d.precipProbability),
+          forecastTempHigh: parsedJSON.daily.data.map(d => d.apparentTemperatureHigh),
+          forecastTempLow: parsedJSON.daily.data.map(d => d.apparentTemperatureLow),
+          forecastUV: parsedJSON.daily.data.map(d => d.uvIndex),
+          forecastIsRaning: parsedJSON.daily.data.map(d => d.precipProbability),
+          forecastTime: parsedJSON.daily.data.map(d => d.sunriseTime),
+          forecastWeatherIcons: parsedJSON.daily.data.map(d => d.icon),
+          forecastWeatherSummary: parsedJSON.daily.data.map(d => d.summary),
           isDataRequested: true
         });
-        this.getForcastDayNames();
+        this.getForecastDayNames();
         this.calcuateWeatherScoresByDay();
       })
-      .catch(error => console.log(`fetchForcast error in Scheduler: ${error}`));
+      .catch(error => console.log(`fetchForecast error in Scheduler: ${error}`));
 
   }
   
   // Create array of day names starting with the current day of the week
   
-  getForcastDayNames = () => {
+  getForecastDayNames = () => {
     
-    const { forcastDayNames } = this.state;
+    const { forecastDayNames } = this.state;
     
     for(let i = 0; i < 7 ; i++) {
-      forcastDayNames[i] = this.days[(this.d.getDay() + i)];
+      forecastDayNames[i] = this.days[(this.d.getDay() + i)];
     }
     
   }
   
-  getForcastScores = () => {
+  getForecastScores = () => {
     
     const {
-      forcastHumidity,
-      forcastAveragedTemp,
-      forcastUV,
-      forcastWeatherIcons,
-      forcastWeatherSummary,
-      forcastDayNames,
+      forecastHumidity,
+      forecastAveragedTemp,
+      forecastUV,
+      forecastWeatherIcons,
+      forecastWeatherSummary,
+      forecastDayNames,
       userTempScale,
-      forcastWeatherScores
+      forecastWeatherScores
     } = this.state;
     
     let scoreBoard = [];
@@ -162,14 +162,14 @@ class Forcast extends Component {
         
           <ScoreData
             key={i}
-            currentHumidity={forcastHumidity[i]}
-            currentTemp={forcastAveragedTemp[i]}
-            currentUV={forcastUV[i]}
-            currentWeatherIcon={forcastWeatherIcons[i]}
-            currentWeatherSummary={forcastWeatherSummary[i]}
-            forcastDayName={forcastDayNames[i]}
+            currentHumidity={forecastHumidity[i]}
+            currentTemp={forecastAveragedTemp[i]}
+            currentUV={forecastUV[i]}
+            currentWeatherIcon={forecastWeatherIcons[i]}
+            currentWeatherSummary={forecastWeatherSummary[i]}
+            forecastDayName={forecastDayNames[i]}
             userTempScale={userTempScale}
-            weatherScore={forcastWeatherScores[i]}
+            weatherScore={forecastWeatherScores[i]}
           />
       )
       
@@ -183,7 +183,7 @@ class Forcast extends Component {
   
   componentWillMount() {
     
-    this.fetchForcast();
+    this.fetchForecast();
 
   }
 
@@ -196,13 +196,13 @@ class Forcast extends Component {
 
     return(
 
-        <section id="forcastSection">
+        <section id="forecastSection">
 
             <Header/>
 
-            <section id="sevenDayForcast" className="column">
+            <section id="sevenDayForecast" className="column">
 
-                <h2>7 Day Forcast</h2>
+                <h2>7 Day Forecast</h2>
                 
                 {/* Render ul once data is received */}
 
@@ -214,7 +214,7 @@ class Forcast extends Component {
 
                 <ul>
 
-                  {this.getForcastScores()}
+                  {this.getForecastScores()}
                   
                 </ul>
 
@@ -232,4 +232,4 @@ class Forcast extends Component {
 
 }
 
-  export default Forcast;
+  export default Forecast;

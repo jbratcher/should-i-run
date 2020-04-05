@@ -43,7 +43,7 @@ class Header extends Component {
                 <Link to="/bestday">Best Day</Link>
               </li>
               <li>
-                <Link to="/forcast">7 Day Forcast</Link>
+                <Link to="/forecast">7 Day Forecast</Link>
               </li>
               <li>
                 <Link to="/about">About</Link> 

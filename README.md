@@ -54,57 +54,9 @@ npm start
 
 ## Future Features:
 
-* 7 Day Forcast
+* 7 Day Forecast
 
 ## Known "bugs"
 
 * No default selection on page load, must select option (if default must select something else, then re-select choice)
 * Warmth preference mimics temperature index
-
-#### Change Log
-
-###### 0.0.6
-
-* Find best day of week in next 7 days
-* Pick a day of the week to run and get a rating
-* More conditional rendering
-
-###### 0.0.5
-
-* Weather score calculation
-* 7 Day Forcast Data (Under development)
-* Find best day page
-* Scheduler page
-* About page
-
-###### 0.0.5
-
-* Weather score calculation
-* 7 Day Forcast Data (Under development)
-* Find best day page
-* Scheduler page
-* About page
-
-###### 0.0.4
-
-* Map of user location by IP (AirVisual API get closest station coordinates, Google Maps JavaScript API to get map)
-* Weather icons
-* Temp, Humidity, UV index, Air Quality display
-* Weather score rating calculation and display
-* Color coded weather rating
-
-###### 0.0.3
-
-* Dynamic fetch and display of weather stations by location
-
-###### 0.0.2
-
-* Display city, state, and air quality data on submit of form
-* Cleared inputs on submit
-
-
-###### 0.0.1
-
-* Initial commit
-* Customized readme and package.json from create-react-App
-* Added console log of fetch data from city and state input

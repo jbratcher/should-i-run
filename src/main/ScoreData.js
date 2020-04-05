@@ -19,7 +19,7 @@ class ScoreData extends Component {
       currentWeatherIcon,
       currentWeatherSummary,
       data,
-      forcastDayName,
+      forecastDayName,
       mainPollutant,
       selectedDayName,
       userTempScale,
@@ -100,7 +100,7 @@ class ScoreData extends Component {
 
       <section id="scoreData">
         
-        <span id="day">{bestDay || selectedDayName  || forcastDayName}</span>
+        <span id="day">{bestDay || selectedDayName  || forecastDayName}</span>
         <i id="weatherIcon" className={getWeatherIcon}
         ></i>
         <span id="weatherSummary">
