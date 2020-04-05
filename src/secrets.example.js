@@ -1,5 +1,5 @@
 // airvisual api key
-export const apiKey = "";
+export const airVisualApiKey = "";
 
 // dark sky api key
 export const darkskyApiKey = "";
@@ -8,7 +8,7 @@ export const darkskyApiKey = "";
 export const gmapsApiKey = "";
 
 export default { 
-    apiKey, 
+    airVisualApiKey, 
     darkskyApiKey, 
     gmapsApiKey
 };

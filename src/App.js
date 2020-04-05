@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './header';
 import Main from './main';
 import Footer from './Footer';
-import { apiKey, darkskyApiKey } from './secrets';
+import { airVisualApiKey, darkskyApiKey } from './secrets';
 import './css/App.css';
 import './css/weather-icons.min.css';
 
