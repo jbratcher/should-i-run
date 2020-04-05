@@ -24,7 +24,7 @@ nav ul {
     text-decoration: none; }
 
 select, input {
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   margin: 0.5rem 0;
   padding: 0.5rem;
   width: 100%; }
@@ -40,7 +40,7 @@ select, input {
 .button {
   background: #ccc;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   color: #333;
   font-size: 1rem;
   margin: 1rem 0;
@@ -129,7 +129,7 @@ main {
 button {
   background: #ccc;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   margin: 1rem 0; }
@@ -155,9 +155,15 @@ button {
   #userOptions h3 {
     margin: 1rem 0; }
 
-#mainNav a {
-  color: #333;
-  text-decoration: none; }
+#mainNav {
+  display: flex;
+  width: 100%;
+  max-width: 7.5vw; }
+  #mainNav a {
+    color: #333;
+    margin: 0 auto;
+    text-decoration: none;
+    width: 100%; }
 
 #openNav {
   display: none; }
@@ -196,19 +202,23 @@ button {
 
 #dataOutput {
   display: flex;
+  width: 100%;
+  height: 100%;
   min-height: 65vh;
   justify-content: space-around; }
+  #dataOutput #no-data {
+    display: flex;
+    justify-content: center;
+    margin: 4rem 0; }
 
 #clothesData {
-  border: 0.125rem solid #ccc;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   height: 100%;
   margin: 1rem;
-  overflow-y: scroll; }
+  overflow: visible; }
   #clothesData > p {
     font-weight: 900;
     font-size: 1.25rem;
@@ -221,15 +231,13 @@ button {
 
 #scoreData {
   background: #fefefe;
-  border: 0.125rem solid #ccc;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem;
   width: 100%;
   max-width: 40vw;
-  overflow-y: scroll; }
+  overflow: visible; }
   #scoreData #mainParticulate, #scoreData #weatherScoreRating {
     margin-left: 1rem; }
   #scoreData i {
@@ -270,10 +278,9 @@ button {
 #map {
   display: flex;
   position: relative;
-  min-width: 200px;
-  min-height: 200px;
-  width: 100vw;
+  width: auto;
   height: auto;
+  min-height: 185px;
   top: 15vh; }
 
 #about, #scheduler, #bestDay, #sevenDayForecast {
@@ -348,7 +355,7 @@ footer {
   #menu-toggle {
     display: none; }
   #openNav {
-    margin-top: 1rem; }
+    margin: 1rem 2rem; }
   #closeNav {
     margin-top: 1rem; }
   main {
@@ -356,6 +363,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     height: 70vh;
+    max-width: 100vw;
     min-height: 100%;
     text-align: center;
     transition: all 0.5s ease-in-out;
@@ -373,7 +381,8 @@ footer {
       z-index: -1; }
     #formSection #clothesData, #formSection #scoreData {
       height: 100%;
-      min-height: 65vh; }
+      min-height: 65vh;
+      overflow: visible; }
     #formSection:target {
       width: 60vw; }
       #formSection:target #formLabel, #formSection:target #getLocation, #formSection:target form, #formSection:target #userOptions, #formSection:target #formInput {
@@ -388,7 +397,7 @@ footer {
       #formSection:target #closeNav {
         display: block; }
   #formSection:target + #outputContainer > div > #map {
-    width: 60vw; }
+    width: 62.5vw; }
   #openNav {
     display: block; }
   #closeNav {
@@ -426,7 +435,4 @@ footer {
   #scoreData {
     min-height: 75vh; }
   #map {
-    width: 94vw; }
-  footer {
-    position: relative;
-    top: 15vh; } }
+    width: 94vw; } }

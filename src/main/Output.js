@@ -42,7 +42,7 @@ class Output extends Component {
 
           { dataRequested ?
           
-            <h5>Loading</h5>
+            <h3>Loading</h3>
             
           : dataReceived ?
 
@@ -53,11 +53,13 @@ class Output extends Component {
 
             />
 
-          :null}
+          : <section id="no-data">
+              <h3>You can use the menu to the right to get data</h3>
+            </section>}
 
           { dataRequested ?
           
-            <h5>Loading</h5>
+            <h3>Loading</h3>
           
           : dataReceived ?
 
@@ -82,7 +84,7 @@ class Output extends Component {
 
         { dataRequested ?
         
-          <h5>Loading</h5>
+          <h3>Loading</h3>
 
         : dataReceived ?
         
